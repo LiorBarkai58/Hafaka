@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -7,6 +8,9 @@ public class PlayerController : MonoBehaviour {
     [Header("Movement Data")]
 
     [SerializeField] private float moveSpeed = 5f;
+
+    [SerializeField] private float jumpHeight = 1.0f;
+    private float gravityValue = -9.81f;
 
     [Header("References")]
     [SerializeField] private CharacterController characterController;
@@ -21,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 
     private Vector2 moveDirection;
 
-    bool isJumping = false;
+    private float verticalVelocity;
     private Camera mainCamera;
 
     private StateMachine stateMachine;
@@ -35,7 +39,12 @@ public class PlayerController : MonoBehaviour {
     {
         mainCamera = Camera.main;
     }
-
+    void OnEnable(){
+        input.Jump += OnJump;
+    }
+    void OnDisable(){
+        input.Jump -= OnJump;
+    }
     private void SetupStateMachine()
     {
         stateMachine = new StateMachine();
@@ -77,7 +86,8 @@ public class PlayerController : MonoBehaviour {
 
         // Calculate the movement direction based on input and camera orientation
         Vector3 movement = (input.Direction.x * cameraRight + input.Direction.y * cameraForward) * moveSpeed * Time.deltaTime;
-
+        HandleGravity(); // Apply gravity
+        movement.y = verticalVelocity * Time.deltaTime;
         // If there is movement input, rotate the character to face the movement direction
         if (input.Direction.sqrMagnitude > 0.01f)
         {
@@ -89,8 +99,22 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        
+
         // Move the character using the CharacterController
         characterController.Move(movement);
+    }
+
+    private void HandleGravity()
+    {
+        if (characterController.isGrounded && verticalVelocity < 0)
+        {
+            verticalVelocity = -0.1f; // Small value to keep the character grounded
+        }
+        else
+        {
+            verticalVelocity += gravityValue * Time.deltaTime; // Apply gravity
+        }
     }
 
     public void HandleCharacterRotation(){
@@ -98,5 +122,14 @@ public class PlayerController : MonoBehaviour {
     }
     public void HandleJump(){
 
+    }
+
+    private void OnJump()
+    {
+        if (characterController.isGrounded)
+        {
+            // Calculate the jump velocity using the correct formula
+            verticalVelocity = Mathf.Sqrt(2f * jumpHeight * -gravityValue);
+        }
     }
 }

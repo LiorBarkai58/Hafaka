@@ -725,6 +725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  jumpHeight: 3
   characterController: {fileID: 1601714846}
   input: {fileID: 11400000, guid: 648cfaadab1f76e4bb54712877ebf7b9, type: 2}
   Visuals: {fileID: 564350536}
