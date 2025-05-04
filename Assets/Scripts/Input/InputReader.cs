@@ -21,10 +21,20 @@ public class InputReader : ScriptableObject, IPlayerActions
             inputActions.Player.SetCallbacks(this);
         }
         EnablePlayerActions();
-    }
     
+    }
+
+    void OnDisable()
+    {
+        DisablePlayerActions();
+    }
+
     public void EnablePlayerActions() {
         inputActions.Enable();
+    }
+
+    public void DisablePlayerActions() {
+        inputActions.Disable();
     }
     
 
