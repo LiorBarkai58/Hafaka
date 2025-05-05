@@ -21,8 +21,7 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private Animator animator;
 
-
-
+    public bool isGrounded = false;
     private Vector2 moveDirection;
 
     private float verticalVelocity;
@@ -51,9 +50,10 @@ public class PlayerController : MonoBehaviour {
 
         LocomotionState locomotionState = new LocomotionState(this, animator);
         JumpState jumpState = new JumpState(this, animator);
+        FallingState fallingState = new FallingState(this, animator);
 
         Any(locomotionState, new Func<bool>(() => characterController.isGrounded));
-
+        At(locomotionState, fallingState, new Func<bool>(() => verticalVelocity < -0.3 && !characterController.isGrounded));
         stateMachine.SetState(locomotionState);
     }
 
@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour {
     {
         moveDirection = input.Direction;
         stateMachine.Update();
+        isGrounded = characterController.isGrounded;
     }
     void FixedUpdate()
     {

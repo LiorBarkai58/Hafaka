@@ -9,6 +9,7 @@ public class LocomotionState : PlayerState
     public override void OnEnter()
     {
         animator.CrossFade(LocomationHash, crossfadeDuration);
+        Debug.Log("Locomotion State Entered");
     }
     public override void FixedUpdate()
     {

@@ -9,6 +9,7 @@ public class JumpState : PlayerState
     public override void OnEnter()
     {
         animator.CrossFade(JumpHash, crossfadeDuration);
+        Debug.Log("Jump State Entered");
     }
     public override void FixedUpdate()
     {
