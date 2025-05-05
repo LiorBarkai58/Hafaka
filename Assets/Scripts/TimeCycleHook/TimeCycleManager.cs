@@ -1,6 +1,5 @@
 using EventSystem;
 using UnityEngine;
-using UnityEngine.Events;
 using Utilities;
 
 namespace TimeCycleHook
@@ -8,12 +7,12 @@ namespace TimeCycleHook
     public class TimeCycleManager : MonoBehaviour
     {
         // Events
-        [SerializeField] private FloatEventChannel phaseTimeChange;
-        public UnityEvent onTimePhaseChange;
+        [SerializeField] private EmptyEventChannel phaseTimeChannel;
         
         // Phase Duration
         [SerializeField] private float phaseDuration = 100f;
         
+        // Current time phase and array of all the different phases
         private TimePhase _curTimePhase;
         private static readonly TimePhase[] TimePhases =
         {
@@ -21,6 +20,7 @@ namespace TimeCycleHook
             TimePhase.Vanity, TimePhase.Lie
         };
         
+        // Phase timer
         private CountdownTimer _timeCycleTimer;
 
         private void Awake()
@@ -48,9 +48,27 @@ namespace TimeCycleHook
             _timeCycleTimer.Tick(Time.deltaTime);
         }
 
-        private void OnTimerEnd()
-        {
+        public void SetPhase(TimePhase timePhase) {
+            // Set the new phase, even if it's the same - reset it
+            _curTimePhase = timePhase;
             
+            // Reset the timer
+            _timeCycleTimer.Reset();
+            
+            // Invoke phase change event
+            phaseTimeChannel.Invoke(new Empty());
+        }
+
+        private void OnTimerEnd() {
+            // Increment the time phase to the next phase
+            ++_curTimePhase;
+            
+            // If it exceeded the max phases, reset it
+            if (_curTimePhase == TimePhase.MaxPhase)
+                _curTimePhase = TimePhase.War;
+            
+            // Invoke phase change event
+            phaseTimeChannel.Invoke(new Empty());
         }
     }
 
@@ -60,5 +78,6 @@ namespace TimeCycleHook
         Deceive,
         Vanity,
         Lie,
+        MaxPhase,
     }
 }
