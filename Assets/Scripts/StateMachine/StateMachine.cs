@@ -33,18 +33,33 @@ public class StateMachine {
         current = nodes[state.GetType()];
     }
 
-    private ITransition GetTransition(){
-        foreach(ITransition transition in anyTransitions){
-            if(transition.Condition.Invoke()){
+    private ITransition GetTransition()
+    {
+        // Check if the current state is null
+        if (current == null)
+        {
+            return null; // No transition can occur if there is no current state
+        }
+
+        // Check any transitions first
+        foreach (ITransition transition in anyTransitions)
+        {
+            if (transition.Condition.Invoke())
+            {
                 return transition;
             }
         }
-        foreach(ITransition transition in current.Transitions){
-            if(transition.Condition.Invoke()){
+
+        // Check transitions specific to the current state
+        foreach (ITransition transition in current.Transitions)
+        {
+            if (transition != null && transition.Condition.Invoke())
+            {
                 return transition;
             }
         }
-        return null;
+
+        return null; // No valid transition found
     }
 
     public void AddTransition(IState from, IState to, Func<bool> condition){
