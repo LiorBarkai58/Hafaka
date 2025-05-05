@@ -12,7 +12,6 @@ public class JumpState : PlayerState
     }
     public override void FixedUpdate()
     {
-        playerController.HandleJump();
         playerController.HandleMovement();
     }
 }

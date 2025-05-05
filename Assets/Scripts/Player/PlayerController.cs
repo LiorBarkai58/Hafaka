@@ -120,9 +120,7 @@ public class PlayerController : MonoBehaviour {
     public void HandleCharacterRotation(){
         
     }
-    public void HandleJump(){
-
-    }
+    
 
     private void OnJump()
     {
