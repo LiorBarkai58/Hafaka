@@ -18,8 +18,4 @@ namespace EventSystem {
             unityEvent?.Invoke(value);
         }
     }
-    
-    public class FloatEventListener : EventListener<float> { }
-
-    public class IntEventListener : EventListener<int> { }
 }

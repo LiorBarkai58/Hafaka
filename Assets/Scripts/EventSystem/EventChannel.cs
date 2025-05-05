@@ -14,10 +14,4 @@ namespace EventSystem {
         public void Register(EventListener<T> listener) => _listeners.Add(listener);
         public void Deregister(EventListener<T> listener) => _listeners.Remove(listener);
     }
-    
-    [CreateAssetMenu(menuName = "Events/FloatEventChannel")]
-    public class FloatEventChannel : EventChannel<float> { }
-    
-    [CreateAssetMenu(menuName = "Events/IntEventChannel")]
-    public class IntEventChannel : EventChannel<int> { }
 }
