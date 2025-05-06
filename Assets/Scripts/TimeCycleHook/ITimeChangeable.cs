@@ -1,5 +1,5 @@
 namespace TimeCycleHook {
     public interface ITimeChangeable {
-        public void OnTimePhaseChanged();
+        public void OnTimePhaseChanged(TimePhase timePhase);
     }
 }

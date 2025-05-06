@@ -8,7 +8,7 @@ namespace TimeCycleHook
     public class TimeCycleManager : MonoBehaviour
     {
         // Events
-        [SerializeField] private EmptyEventChannel timePhaseChannel;
+        [SerializeField] private PhaseEventChannel timePhaseChannel;
         
         // Phase Duration
         [SerializeField] private float phaseDuration = 100f;
@@ -52,7 +52,7 @@ namespace TimeCycleHook
             _timeCycleTimer.Reset();
             
             // Invoke phase change event
-            timePhaseChannel.Invoke(new Empty());
+            timePhaseChannel.Invoke(_curTimePhase);
         }
 
         private void OnTimerEnd() {
@@ -64,7 +64,10 @@ namespace TimeCycleHook
                 _curTimePhase = TimePhase.War;
             
             // Invoke phase change event
-            timePhaseChannel.Invoke(new Empty());
+            timePhaseChannel.Invoke(_curTimePhase);
+            
+            // Start the timer again
+            _timeCycleTimer.Start();
         }
     }
 

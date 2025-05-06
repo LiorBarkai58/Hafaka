@@ -1,21 +1,25 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace TimeCycleHook {
     public class ChangeableObjectsManager : MonoBehaviour {
         [SerializeField] private TimePhase timePhase;
-        private List<ITimeChangeable> _objects;
-        
-        private void OnValidate() {
-            _objects = GetComponentsInChildren<ITimeChangeable>(true).ToList();
-        }
+        [SerializeField] private List<GameObject> gameObjects = new ();
 
         public void OnTimePhaseChange(TimePhase newTimePhase) {
-            if (timePhase != newTimePhase) return;
-            
-            foreach (var _object in _objects) {
-                _object.OnTimePhaseChanged();
+            if (timePhase != newTimePhase)
+            {
+                // ReSharper disable once InconsistentNaming
+                foreach (var _gameObject in gameObjects) {
+                    _gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                // ReSharper disable once InconsistentNaming
+                foreach (var _gameObject in gameObjects) {
+                    _gameObject.SetActive(true);
+                }
             }
         }
     }

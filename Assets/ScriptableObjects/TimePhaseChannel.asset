@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: d97396f2d4344a9598723cb094f7645d, type: 3}
   m_Name: TimePhaseChannel
-  m_EditorClassIdentifier: Assembly-CSharp:EventSystem:EmptyEventChannel
+  m_EditorClassIdentifier: 
