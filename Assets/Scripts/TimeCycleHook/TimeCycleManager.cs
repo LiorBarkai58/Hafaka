@@ -1,5 +1,6 @@
 using EventSystem;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 
 namespace TimeCycleHook
@@ -7,18 +8,13 @@ namespace TimeCycleHook
     public class TimeCycleManager : MonoBehaviour
     {
         // Events
-        [SerializeField] private EmptyEventChannel phaseTimeChannel;
+        [SerializeField] private EmptyEventChannel timePhaseChannel;
         
         // Phase Duration
         [SerializeField] private float phaseDuration = 100f;
         
-        // Current time phase and array of all the different phases
+        // Current time phase
         private TimePhase _curTimePhase;
-        private static readonly TimePhase[] TimePhases =
-        {
-            TimePhase.War, TimePhase.Deceive,
-            TimePhase.Vanity, TimePhase.Lie
-        };
         
         // Phase timer
         private CountdownTimer _timeCycleTimer;
@@ -56,7 +52,7 @@ namespace TimeCycleHook
             _timeCycleTimer.Reset();
             
             // Invoke phase change event
-            phaseTimeChannel.Invoke(new Empty());
+            timePhaseChannel.Invoke(new Empty());
         }
 
         private void OnTimerEnd() {
@@ -68,7 +64,7 @@ namespace TimeCycleHook
                 _curTimePhase = TimePhase.War;
             
             // Invoke phase change event
-            phaseTimeChannel.Invoke(new Empty());
+            timePhaseChannel.Invoke(new Empty());
         }
     }
 
