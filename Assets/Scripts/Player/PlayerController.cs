@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    protected static readonly int SpeedHash = Animator.StringToHash("Speed");
+
+
     [Header("Movement Data")]
 
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float maximumSpeed = 5f;
 
     [SerializeField] private float jumpHeight = 1.0f;
+
+    [SerializeField] private float acceleration = 5f;
     private float gravityValue = -9.81f;
 
     [Header("References")]
@@ -21,11 +26,12 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private Animator animator;
 
-
-
+    public bool isGrounded = false;
     private Vector2 moveDirection;
 
     private float verticalVelocity;
+
+    private float currentVelocity = 0;
     private Camera mainCamera;
 
     private StateMachine stateMachine;
@@ -51,9 +57,10 @@ public class PlayerController : MonoBehaviour {
 
         LocomotionState locomotionState = new LocomotionState(this, animator);
         JumpState jumpState = new JumpState(this, animator);
+        FallingState fallingState = new FallingState(this, animator);
 
         Any(locomotionState, new Func<bool>(() => characterController.isGrounded));
-
+        At(locomotionState, fallingState, new Func<bool>(() => verticalVelocity < -0.3 && !characterController.isGrounded));
         stateMachine.SetState(locomotionState);
     }
 
@@ -64,6 +71,7 @@ public class PlayerController : MonoBehaviour {
     {
         moveDirection = input.Direction;
         stateMachine.Update();
+        isGrounded = characterController.isGrounded;
     }
     void FixedUpdate()
     {
@@ -85,7 +93,8 @@ public class PlayerController : MonoBehaviour {
         cameraRight.Normalize();
 
         // Calculate the movement direction based on input and camera orientation
-        Vector3 movement = (input.Direction.x * cameraRight + input.Direction.y * cameraForward) * moveSpeed * Time.deltaTime;
+        currentVelocity = Mathf.Lerp(currentVelocity, maximumSpeed * Mathf.Clamp01(moveDirection.magnitude), Time.deltaTime * acceleration); // Calculate the current velocity based on input magnitude
+        Vector3 movement = (input.Direction.x * cameraRight + input.Direction.y * cameraForward) * currentVelocity * Time.deltaTime;
         HandleGravity(); // Apply gravity
         movement.y = verticalVelocity * Time.deltaTime;
         // If there is movement input, rotate the character to face the movement direction
@@ -117,12 +126,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void HandleCharacterRotation(){
-        
+    public void HandleRunSpeed(){
+        animator.SetFloat(SpeedHash, currentVelocity/maximumSpeed, 0.2f, Time.deltaTime);
     }
-    public void HandleJump(){
-
-    }
+    
 
     private void OnJump()
     {
