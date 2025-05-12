@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void HandleRunSpeed(){
-        animator.SetFloat(SpeedHash, currentVelocity, 0.2f, Time.deltaTime);
+        animator.SetFloat(SpeedHash, currentVelocity/maximumSpeed, 0.2f, Time.deltaTime);
     }
     
 
