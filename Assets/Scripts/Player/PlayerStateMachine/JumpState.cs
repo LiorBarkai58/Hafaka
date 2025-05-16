@@ -14,5 +14,7 @@ public class JumpState : PlayerState
     public override void FixedUpdate()
     {
         playerController.HandleMovement();
+        playerController.HandleGravity();
+
     }
 }

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private Animator animator;
 
-    public bool isGrounded = false;
+    private bool isGrounded = false;
     private Vector2 moveDirection;
 
     private float verticalVelocity;
@@ -36,10 +36,18 @@ public class PlayerController : MonoBehaviour {
 
     private StateMachine stateMachine;
 
+    #region Trigger Transitions
+
+    private TriggerTransition attackTrigger;
+
+    private TriggerTransition endAttackTrigger;
+    #endregion
+
 
     private void Awake()
     {
         SetupStateMachine();
+        Cursor.lockState = CursorLockMode.Locked;
     }
     void Start()
     {
@@ -47,9 +55,11 @@ public class PlayerController : MonoBehaviour {
     }
     void OnEnable(){
         input.Jump += OnJump;
+        input.Attack += OnAttack;
     }
     void OnDisable(){
         input.Jump -= OnJump;
+        input.Attack -= OnAttack;
     }
     private void SetupStateMachine()
     {
@@ -58,9 +68,24 @@ public class PlayerController : MonoBehaviour {
         LocomotionState locomotionState = new LocomotionState(this, animator);
         JumpState jumpState = new JumpState(this, animator);
         FallingState fallingState = new FallingState(this, animator);
+        AttackState attackState = new AttackState(this, animator);
 
-        Any(locomotionState, new Func<bool>(() => characterController.isGrounded));
-        At(locomotionState, fallingState, new Func<bool>(() => verticalVelocity < -0.3 && !characterController.isGrounded));
+        attackTrigger = new TriggerTransition(attackState);
+        endAttackTrigger = new TriggerTransition(locomotionState);
+
+        At(fallingState, locomotionState, new Func<bool>(() => isGrounded));
+        At(locomotionState, fallingState, new Func<bool>(() => verticalVelocity < -0.3 && !isGrounded));
+        At(locomotionState, jumpState, new Func<bool>(() => verticalVelocity > 0 && !isGrounded));
+        At(jumpState, fallingState, new Func<bool>(() => verticalVelocity < -0.3 && !isGrounded));
+        At(locomotionState, attackState, attackTrigger.Condition);
+        At(attackState, locomotionState, endAttackTrigger.Condition);
+
+
+        
+        
+        // At(locomotionState, attackState,)
+
+
         stateMachine.SetState(locomotionState);
     }
 
@@ -72,6 +97,7 @@ public class PlayerController : MonoBehaviour {
         moveDirection = input.Direction;
         stateMachine.Update();
         isGrounded = characterController.isGrounded;
+        
     }
     void FixedUpdate()
     {
@@ -93,9 +119,8 @@ public class PlayerController : MonoBehaviour {
         cameraRight.Normalize();
 
         // Calculate the movement direction based on input and camera orientation
-        currentVelocity = Mathf.Lerp(currentVelocity, maximumSpeed * Mathf.Clamp01(moveDirection.magnitude), Time.deltaTime * acceleration); // Calculate the current velocity based on input magnitude
-        Vector3 movement = (input.Direction.x * cameraRight + input.Direction.y * cameraForward) * currentVelocity * Time.deltaTime;
-        HandleGravity(); // Apply gravity
+        currentVelocity = Mathf.Lerp(currentVelocity, maximumSpeed * Mathf.Clamp01(moveDirection.magnitude), Time.fixedDeltaTime * acceleration); // Calculate the current velocity based on input magnitude
+        Vector3 movement = (input.Direction.x * cameraRight + input.Direction.y * cameraForward) * currentVelocity * Time.fixedDeltaTime;
         movement.y = verticalVelocity * Time.deltaTime;
         // If there is movement input, rotate the character to face the movement direction
         if (input.Direction.sqrMagnitude > 0.01f)
@@ -104,17 +129,14 @@ public class PlayerController : MonoBehaviour {
             if (lookDirection != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                Visuals.rotation = Quaternion.Slerp(Visuals.rotation, targetRotation, Time.deltaTime * 10f); // Smooth rotation
+                Visuals.rotation = Quaternion.Slerp(Visuals.rotation, targetRotation, Time.deltaTime * 6f); // Smooth rotation
             }
         }
-
-        
-
         // Move the character using the CharacterController
         characterController.Move(movement);
     }
 
-    private void HandleGravity()
+    public void HandleGravity(float gravityMultiplier = 1)
     {
         if (characterController.isGrounded && verticalVelocity < 0)
         {
@@ -122,12 +144,12 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            verticalVelocity += gravityValue * Time.deltaTime; // Apply gravity
+            verticalVelocity += gravityValue * gravityMultiplier * Time.deltaTime; // Apply gravity
         }
     }
 
     public void HandleRunSpeed(){
-        animator.SetFloat(SpeedHash, currentVelocity/maximumSpeed, 0.2f, Time.deltaTime);
+        animator.SetFloat(SpeedHash, currentVelocity/maximumSpeed, 0.05f, Time.fixedDeltaTime);
     }
     
 
@@ -139,4 +161,18 @@ public class PlayerController : MonoBehaviour {
             verticalVelocity = Mathf.Sqrt(2f * jumpHeight * -gravityValue);
         }
     }
+
+    private void OnAttack(){
+        attackTrigger.Trigger();
+    }
+
+    public void AttackStart(){
+        attackTrigger.Reset();
+    }
+
+    public void OnAttackEnd(){
+        endAttackTrigger.Trigger();
+    }
+
+    
 }

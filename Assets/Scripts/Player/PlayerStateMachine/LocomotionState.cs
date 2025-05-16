@@ -14,6 +14,7 @@ public class LocomotionState : PlayerState
     public override void FixedUpdate()
     {
         playerController.HandleMovement();
+        playerController.HandleGravity();
         playerController.HandleRunSpeed();
     }
 }

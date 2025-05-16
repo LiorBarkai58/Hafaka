@@ -59,6 +59,15 @@ public class StateMachine {
             }
         }
 
+        foreach(TriggerTransition trigger in current.Triggers)
+        {
+            if(trigger != null && trigger.Condition.Invoke())
+            {
+                trigger.Reset();
+                return trigger;
+            }
+        }
+
         return null; // No valid transition found
     }
 
@@ -68,6 +77,15 @@ public class StateMachine {
     public void AddAnyTransition(IState to, Func<bool> condition){
         anyTransitions.Add(new Transition(GetOrAddNode(to).State, condition));
     }
+
+    public void AddTriggerTransition(IState from, TriggerTransition trigger)
+    {
+        GetOrAddNode(from).AddTriggerTransition(trigger);
+    }
+
+    
+
+
 
     StateNode GetOrAddNode(IState state){
         StateNode node = nodes.GetValueOrDefault(state.GetType());
@@ -84,13 +102,20 @@ public class StateMachine {
     private class StateNode {
         public IState State {get; }
         public HashSet<ITransition> Transitions {get; }
+
+        public HashSet<TriggerTransition> Triggers {get;}
         public StateNode(IState state) {
             State = state;
             Transitions = new HashSet<ITransition>();
+            Triggers = new HashSet<TriggerTransition>();
         }
 
         public void AddTransition(IState targetState, Func<bool> condition) {
             Transitions.Add(new Transition(targetState, condition));
+        }
+
+        public void AddTriggerTransition(TriggerTransition trigger){
+            Triggers.Add(trigger);
         }
     }
 }

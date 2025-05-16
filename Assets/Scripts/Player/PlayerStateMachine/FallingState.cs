@@ -17,5 +17,7 @@ public class FallingState : PlayerState
     public override void FixedUpdate()
     {
         playerController.HandleMovement();
+        playerController.HandleGravity(1.5f);
+
     }
 }
