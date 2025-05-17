@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -26,6 +27,11 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private Animator animator;
 
+    [Header("Attacking data")]
+
+    [SerializeField] private List<AnimationStateSO> comboAttacks;
+
+
     private bool isGrounded = false;
     private Vector2 moveDirection;
 
@@ -35,6 +41,10 @@ public class PlayerController : MonoBehaviour {
     private Camera mainCamera;
 
     private StateMachine stateMachine;
+
+    private PlayerState defaultState;
+
+    private AttackState attackState;
 
     #region Trigger Transitions
 
@@ -66,9 +76,12 @@ public class PlayerController : MonoBehaviour {
         stateMachine = new StateMachine();
 
         LocomotionState locomotionState = new LocomotionState(this, animator);
+
+        defaultState = locomotionState;//set default state for editor
+
         JumpState jumpState = new JumpState(this, animator);
         FallingState fallingState = new FallingState(this, animator);
-        AttackState attackState = new AttackState(this, animator);
+        attackState = new AttackState(this, animator, comboAttacks);
 
         attackTrigger = new TriggerTransition(attackState);
         endAttackTrigger = new TriggerTransition(locomotionState);
@@ -77,6 +90,7 @@ public class PlayerController : MonoBehaviour {
         At(locomotionState, fallingState, new Func<bool>(() => verticalVelocity < -0.3 && !isGrounded));
         At(locomotionState, jumpState, new Func<bool>(() => verticalVelocity > 0 && !isGrounded));
         At(jumpState, fallingState, new Func<bool>(() => verticalVelocity < -0.3 && !isGrounded));
+
         At(locomotionState, attackState, attackTrigger.Condition);
         At(attackState, locomotionState, endAttackTrigger.Condition);
 
@@ -161,15 +175,19 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnAttack(){
-        attackTrigger.Trigger();
+        if(attackState != null && stateMachine.Current == attackState) { attackState.TryQueueAttack();}
+        else attackTrigger.Trigger();
     }
 
-    public void AttackStart(){
-        attackTrigger.Reset();
-    }
+    
 
     public void OnAttackEnd(){
         endAttackTrigger.Trigger();
+    }
+
+    public void SetDefaultState(){
+        if(stateMachine == null || defaultState == null) return;
+        stateMachine.SetState(defaultState);
     }
 
     

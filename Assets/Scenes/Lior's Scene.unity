@@ -601,6 +601,10 @@ MonoBehaviour:
   input: {fileID: 11400000, guid: 648cfaadab1f76e4bb54712877ebf7b9, type: 2}
   Visuals: {fileID: 564350536}
   animator: {fileID: 1645475267}
+  comboAttacks:
+  - {fileID: 11400000, guid: 441343916a301b0459608a312bac49f1, type: 2}
+  - {fileID: 11400000, guid: 200deeeeafae69f4487cf87c699b79cb, type: 2}
+  - {fileID: 11400000, guid: cdaf1eac9bf3399498e84b3275c6d746, type: 2}
 --- !u!143 &1601714846
 CharacterController:
   m_ObjectHideFlags: 0

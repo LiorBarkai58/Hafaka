@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class StateMachine {
     StateNode current;
+
+    public IState Current => current.State;
     Dictionary<Type, StateNode> nodes = new();
     HashSet<ITransition> anyTransitions = new();
 
