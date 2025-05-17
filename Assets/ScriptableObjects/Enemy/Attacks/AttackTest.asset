@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85aec0ffa01a4a4b828c6548658953f9, type: 3}
+  m_Name: AttackTest
+  m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: 877ccd99732170e4c95b375098d27c82, type: 3}
+  attackStateName: AttackA1hMelee
+  attackHash: -500144079
+  damage: 0

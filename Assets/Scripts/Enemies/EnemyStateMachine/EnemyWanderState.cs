@@ -9,16 +9,19 @@ namespace Enemies.EnemyStateMachine
         private Vector3 _startPoint;
         private readonly float _wanderRadius;
         private CountdownTimer _wanderWaitTimer;
+        private float _wanderSpeed;
         
-        public EnemyWanderState(EnemyController enemyController, NavMeshAgent agent, float wanderRadius, float wanderTimer) : base(enemyController) {
+        public EnemyWanderState(EnemyController enemyController,Animator animator, NavMeshAgent agent, float wanderRadius, float wanderTimer, float wanderSpeed) : base(enemyController, animator) {
             _agent = agent;
             _wanderRadius = wanderRadius;
             _wanderWaitTimer = new CountdownTimer(wanderTimer);
             _wanderWaitTimer.OnTimerStop += SetNewDestination;
+            _wanderSpeed = wanderSpeed;
         }
 
         public override void OnEnter() {
-            Debug.Log("Wander");
+            _agent.speed = _wanderSpeed;
+            Animator.CrossFade(LocomotionHash, CrossFadeDuration);
             SetNewDestination();
         }
 

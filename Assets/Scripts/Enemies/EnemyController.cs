@@ -1,9 +1,10 @@
 using System;
+using Enemies.Combat;
 using Enemies.Detection;
 using Enemies.EnemyStateMachine;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
+using Utilities;
 
 namespace Enemies
 {
@@ -11,24 +12,35 @@ namespace Enemies
         [Header("References")]
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private PlayerDetector playerDetector;
+        [SerializeField] private Animator animator;
+        [SerializeField] private EnemyCombat enemyCombat;
         
         [Header("Radius")]
         [SerializeField] private float wanderRadius = 10f;
-
+        
         [Header("Timer")] 
-        [SerializeField] private float wanderTimer = 1f;
+        [SerializeField] private float wanderTimerDuration = 1f;
+
+        [Header("Forces")] 
+        [SerializeField] private float wanderSpeed = 2f;
+        [SerializeField] private float chaseSpeed = 3f;
         
         // State machine
         private StateMachine _stateMachine;
 
+        private CountdownTimer _attackTimer;
+
         private void Start() {
             _stateMachine = new StateMachine();
 
-            var wanderState = new EnemyWanderState(this, agent, wanderRadius, wanderTimer);
-            var chaseState = new EnemyChaseState(this, agent, playerDetector.player);
+            var wanderState = new EnemyWanderState(this, animator, agent, wanderRadius, wanderTimerDuration, wanderSpeed);
+            var chaseState = new EnemyChaseState(this, animator, agent, playerDetector.player, chaseSpeed);
+            var attackState = new EnemyAttackState(this, animator, enemyCombat);
             
             At(wanderState, chaseState, () => playerDetector.CanDetectPlayer());
             At(chaseState, wanderState, () => !playerDetector.CanDetectPlayer());
+            At(chaseState, attackState, () => playerDetector.CanAttackPlayer());
+            At(attackState, chaseState, () => !playerDetector.CanAttackPlayer());
             
             _stateMachine.SetState(wanderState);
         }
