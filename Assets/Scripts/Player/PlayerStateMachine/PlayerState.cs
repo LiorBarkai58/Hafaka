@@ -12,7 +12,7 @@ public abstract class PlayerState : BaseState {
     protected static readonly int AttackHash = Animator.StringToHash("Attack");
 
 
-    protected const float crossfadeDuration = 0.2f;
+    protected const float crossfadeDuration = 0f;
 
     public PlayerState(PlayerController playerController, Animator animator) {
         this.playerController = playerController;

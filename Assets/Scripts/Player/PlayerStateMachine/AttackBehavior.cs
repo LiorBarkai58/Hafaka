@@ -3,7 +3,7 @@ using UnityEngine;
 public class AttackBehavior : StateMachineBehaviour
 {
     private PlayerController playerController;
-    public override void OnStateMachineExit(Animator animator, int stateMachinePathHash)
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         FindPlayerController(animator);
         if(playerController){
