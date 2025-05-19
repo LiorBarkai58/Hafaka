@@ -141,31 +141,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2020168425699645907, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2020168425699645907, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2020168425699645907, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2020168426178690678, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: m_Name
       value: Cozy Weather Sphere
       objectReference: {fileID: 0}
     - target: {fileID: 2020168426178690679, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
+      propertyPath: cumulus
+      value: 0.224
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020168426178690679, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
+      propertyPath: chemtrails
+      value: 1.714
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020168426178690679, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: cozyCamera
       value: 
       objectReference: {fileID: 2137204469}
+    - target: {fileID: 2020168426178690679, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
+      propertyPath: altocumulus
+      value: 1.057
+      objectReference: {fileID: 0}
     - target: {fileID: 2020168426178690679, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: borderEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2020168426178690679, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
+      propertyPath: cirrostratus
+      value: 0.528
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020168426178690679, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: skyFogAmount
       value: 0.697
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020168426178690679, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
+      propertyPath: cozyTriggerTag
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2020168426178690679, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: cloudsFogAmount
@@ -173,19 +193,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2020168426178690679, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: systems.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020168426178690679, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
+      propertyPath: 'systems.Array.data[1]'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2020168426178690680, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 16.559525
       objectReference: {fileID: 0}
     - target: {fileID: 2020168426178690680, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 10.102364
       objectReference: {fileID: 0}
     - target: {fileID: 2020168426178690680, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 11.508036
       objectReference: {fileID: 0}
     - target: {fileID: 2020168426178690680, guid: 9a118a53adef55a479045a26c28f920e, type: 3}
       propertyPath: m_LocalRotation.w
