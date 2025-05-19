@@ -3,14 +3,13 @@ using UnityEngine;
 
 public class FallingState : PlayerState
 {
-    public FallingState(PlayerController playerController, Animator animator) : base(playerController, animator)
+    public FallingState(PlayerController playerController, Animator animator, PlayerStates stateIdentifier) : base(playerController, animator, stateIdentifier)
     {
-
     }
 
     public override void OnEnter()
     {
-        animator.CrossFade(FallHash, crossfadeDuration);
+        base.OnEnter();
         Debug.Log("Falling State Entered");
     }
 

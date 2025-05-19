@@ -7,22 +7,25 @@ using Utilities;
 
 public class AttackState : PlayerState
 {
-    private List<AnimationStateSO> comboAttacks;
     private CountdownTimer currentAttackTimer;
 
     private int comboIndex = 0;
 
-    public event UnityAction OnAttackEnd;
+    public event UnityAction OnComboEnd;
 
     private bool nextAttackQueued = false;
-    public AttackState(PlayerController playerController, Animator animator, List<AnimationStateSO> comboAttacks) : base(playerController, animator)
+
+    private bool isAttacking;
+
+    public AttackState(PlayerController playerController, Animator animator, PlayerStates stateIdentifier) : base(playerController, animator, stateIdentifier)
     {
-        this.comboAttacks = comboAttacks;
     }
 
     public override void OnEnter()
     {
+        base.OnEnter();
         comboIndex = 0;
+        nextAttackQueued = false;
         TryQueueAttack();
         Debug.Log("Attack State Entered");
     }
@@ -33,60 +36,44 @@ public class AttackState : PlayerState
     }
     public override void Update()
     {
-        if(currentAttackTimer != null){
+        if (currentAttackTimer != null)
+        {
             currentAttackTimer.Tick(Time.deltaTime);
         }
     }
 
-    public void TryQueueAttack(){
-        if(currentAttackTimer != null && !CanQueueNextAttack()) return;
+    public void TryQueueAttack()
+    {
+        if (!CanQueueNextAttack() || nextAttackQueued) return;
+        if (comboIndex > 2) comboIndex = 0;
 
-        if(comboAttacks == null || comboAttacks.Count == 0) return;
-        if(nextAttackQueued) return;
-        if(currentAttackTimer != null)
-        {
-            if(!currentAttackTimer.IsRunning) PlayAttack();
-            else {
-                currentAttackTimer.OnTimerStop -= AttackEnd;
-                currentAttackTimer.OnTimerStop += PlayAttack;
-                nextAttackQueued = true;
-            }
-        }
-        else{
-            PlayAttack();
-        }
-        
-        
-    }
-
-    private void PlayAttack(){
-        if(comboIndex >= comboAttacks.Count) comboIndex = 0;
-
-        AnimationStateSO currentAttack = comboAttacks[comboIndex];
-
-        animator.CrossFade(currentAttack.hash, crossfadeDuration);
-
-        currentAttackTimer = new CountdownTimer(currentAttack.duration);
-
-        currentAttackTimer.Start();
-
-        currentAttackTimer.OnTimerStop += AttackEnd;
-
-        comboIndex++;
+        animator.SetInteger(AttackHash, comboIndex);
         nextAttackQueued = false;
+        comboIndex++;
     }
+
+
     bool CanQueueNextAttack()
     {
-        if(currentAttackTimer == null) return true;
-        else {
-            if(currentAttackTimer.IsRunning){
-                return currentAttackTimer.Progress >= 0.4f;
-            }
-            return true;
-        }
+        if (!isAttacking) return true;
+        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+        return info.normalizedTime >= 0.3;
+
     }
-    private void AttackEnd(){
-        playerController.OnAttackEnd();
+    public void ComboEnd()
+    {
+        isAttacking = false;
+        comboIndex = 0;
+    }
+
+    public void ComboStart()
+    {
+        isAttacking = true;
+    }
+
+    public void AttackEntered()
+    {
+        nextAttackQueued = false;
     }
     
 

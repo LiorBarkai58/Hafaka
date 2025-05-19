@@ -1,22 +1,34 @@
 using UnityEngine;
+public enum PlayerStates
+{
+    Locomotion, Jumping, Falling, Attacking
+}
 
-public abstract class PlayerState : BaseState {
+public abstract class PlayerState : BaseState
+{
     protected PlayerController playerController;
     protected Animator animator;
 
-    protected static readonly int LocomationHash = Animator.StringToHash("Locomotion");
-    protected static readonly int JumpHash = Animator.StringToHash("Jump");
+    protected PlayerStates stateIdentifier = PlayerStates.Locomotion;
 
-    protected static readonly int FallHash = Animator.StringToHash("Fall");
+    protected static readonly int stateHash = Animator.StringToHash("PlayerState");
 
-    protected static readonly int AttackHash = Animator.StringToHash("Attack");
+    protected static readonly int AttackHash = Animator.StringToHash("AttackState");
+
 
 
     protected const float crossfadeDuration = 0.1f;
 
-    public PlayerState(PlayerController playerController, Animator animator) {
+    public PlayerState(PlayerController playerController, Animator animator, PlayerStates stateIdentifier)
+    {
         this.playerController = playerController;
         this.animator = animator;
+        this.stateIdentifier = stateIdentifier;
     }
+    public override void OnEnter()
+    {
+        animator.SetInteger(stateHash, (int)stateIdentifier);        
+    }
+    
 
 }

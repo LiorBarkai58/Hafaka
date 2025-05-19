@@ -29,8 +29,7 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Attacking data")]
 
-    [SerializeField] private List<AnimationStateSO> comboAttacks;
-
+    [SerializeField] private PlayerAttackManager attackManager;
 
     private bool isGrounded = false;
     private Vector2 moveDirection;
@@ -75,16 +74,19 @@ public class PlayerController : MonoBehaviour {
     {
         stateMachine = new StateMachine();
 
-        LocomotionState locomotionState = new LocomotionState(this, animator);
+        LocomotionState locomotionState = new LocomotionState(this, animator, PlayerStates.Locomotion);
 
         defaultState = locomotionState;//set default state for editor
 
-        JumpState jumpState = new JumpState(this, animator);
-        FallingState fallingState = new FallingState(this, animator);
-        attackState = new AttackState(this, animator, comboAttacks);
+        JumpState jumpState = new JumpState(this, animator, PlayerStates.Jumping);
+        FallingState fallingState = new FallingState(this, animator, PlayerStates.Falling);
+        attackState = new AttackState(this, animator, PlayerStates.Attacking);
+        attackManager.AssignAttackState(attackState);
 
         attackTrigger = new TriggerTransition(attackState);
         endAttackTrigger = new TriggerTransition(locomotionState);
+
+        attackManager.OnComboEnd += () => endAttackTrigger.Trigger();
 
         At(fallingState, locomotionState, new Func<bool>(() => isGrounded));
         At(locomotionState, fallingState, new Func<bool>(() => verticalVelocity < -0.3 && !isGrounded));
@@ -179,14 +181,9 @@ public class PlayerController : MonoBehaviour {
         else attackTrigger.Trigger();
     }
 
-    
-
-    public void OnAttackEnd(){
-        endAttackTrigger.Trigger();
-    }
-
-    public void SetDefaultState(){
-        if(stateMachine == null || defaultState == null) return;
+    public void SetDefaultState()
+    {
+        if (stateMachine == null || defaultState == null) return;
         stateMachine.SetState(defaultState);
     }
 

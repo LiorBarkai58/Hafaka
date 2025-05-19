@@ -1,18 +1,36 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
-public class PlayerAttackManager : MonoBehaviour {
+public class PlayerAttackManager : MonoBehaviour
+{
 
-    private int comboIndex;
+    public event UnityAction OnAttackEntered;
+    public event UnityAction OnComboEntered;
+    public event UnityAction OnComboEnd;
+    private AttackState playerAttackState;
 
-    #region Trigger Transitions
 
-    private TriggerTransition attackTrigger;
-
-    private TriggerTransition endAttackTrigger;
-
-    #endregion
+    public void AssignAttackState(AttackState attackState)
+    {
+        this.playerAttackState = attackState;
+    }
+    public void AttackEntered()
+    {
+        playerAttackState.AttackEntered();
+    }
+    public void ComboEntered()
+    {
+        playerAttackState.ComboStart();
+    }
+    public void ComboEnd()
+    {
+        playerAttackState.ComboEnd();
+        OnComboEnd?.Invoke();
+    }
+    
+    
 
 
 }
