@@ -57,7 +57,7 @@ public class AttackState : PlayerState
     {
         if (!isAttacking) return true;
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-        return info.normalizedTime >= 0.3;
+        return info.normalizedTime >= 0.2;
 
     }
     public void ComboEnd()

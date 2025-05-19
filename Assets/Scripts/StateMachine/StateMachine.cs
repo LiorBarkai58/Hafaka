@@ -24,8 +24,9 @@ public class StateMachine {
         current.State?.OnEnter();
     }
 
-    void ChangeState(IState state){
-        if(state == current.State) return;
+    void ChangeState(IState state)
+    {
+        if (state == current.State) return;
 
         var previousState = current.State;
         var nextState = nodes[state.GetType()].State;
@@ -33,6 +34,13 @@ public class StateMachine {
         previousState?.OnExit();
         nextState?.OnEnter();
         current = nodes[state.GetType()];
+        foreach (StateNode node in nodes.Values)
+        {
+            foreach (TriggerTransition trigger in node.Triggers)
+            {
+                trigger.Reset();
+            }
+        }
     }
 
     private ITransition GetTransition()
