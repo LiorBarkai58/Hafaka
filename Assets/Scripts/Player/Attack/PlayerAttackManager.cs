@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class PlayerAttackManager : MonoBehaviour
 {
 
-    public event UnityAction OnAttackEntered;
     public event UnityAction OnComboEntered;
     public event UnityAction OnComboEnd;
     private AttackState playerAttackState;
