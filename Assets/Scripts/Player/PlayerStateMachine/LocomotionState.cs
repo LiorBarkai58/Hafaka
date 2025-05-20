@@ -8,8 +8,7 @@ public class LocomotionState : PlayerState
 
     public override void OnEnter()
     {
-
-        animator.SetInteger(stateHash, (int)stateIdentifier);
+        base.OnEnter();
         Debug.Log("Locomotion State Entered");
     }
     public override void FixedUpdate()
