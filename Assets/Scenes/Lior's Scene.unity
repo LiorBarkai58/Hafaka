@@ -204,6 +204,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 95842207964945976, guid: 3c9c85e47d53d1f4aaa97330d98c0680, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: a50cd06a0668d1a418d586a2944e3ed5, type: 3}
+    - target: {fileID: 95842207964945976, guid: 3c9c85e47d53d1f4aaa97330d98c0680, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: f1b1343e68a051249836917bf565b5a7, type: 2}
@@ -571,6 +575,7 @@ GameObject:
   - component: {fileID: 1601714847}
   - component: {fileID: 1601714846}
   - component: {fileID: 1601714845}
+  - component: {fileID: 1601714848}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -592,12 +597,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumSpeed: 5
   jumpHeight: 3
-  acceleration: 5
+  acceleration: 50
   characterController: {fileID: 1601714846}
   input: {fileID: 11400000, guid: 648cfaadab1f76e4bb54712877ebf7b9, type: 2}
   Visuals: {fileID: 564350536}
   animator: {fileID: 1645475267}
-  isGrounded: 0
+  attackManager: {fileID: 1601714848}
 --- !u!143 &1601714846
 CharacterController:
   m_ObjectHideFlags: 0
@@ -639,6 +644,18 @@ Transform:
   - {fileID: 564350536}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1601714848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601714844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea28f2281c292144ac524cdf9ce3f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1645475267 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95842207964945976, guid: 3c9c85e47d53d1f4aaa97330d98c0680, type: 3}
