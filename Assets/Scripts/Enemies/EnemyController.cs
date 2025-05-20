@@ -4,7 +4,6 @@ using Enemies.Detection;
 using Enemies.EnemyStateMachine;
 using UnityEngine;
 using UnityEngine.AI;
-using Utilities;
 
 namespace Enemies
 {
@@ -27,8 +26,6 @@ namespace Enemies
         
         // State machine
         private StateMachine _stateMachine;
-
-        private CountdownTimer _attackTimer;
 
         private void Start() {
             _stateMachine = new StateMachine();

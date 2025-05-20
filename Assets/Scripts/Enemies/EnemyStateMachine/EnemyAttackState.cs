@@ -9,6 +9,7 @@ namespace Enemies.EnemyStateMachine
         
         public EnemyAttackState(EnemyController enemyController, Animator animator, EnemyCombat enemyCombat) : base(enemyController, animator) {
             _enemyCombat = enemyCombat;
+            StateIdentifier = EnemyStates.Attacking;
         }
 
         public override void Update() {

@@ -12,11 +12,12 @@ namespace Enemies.EnemyStateMachine
             _agent = agent;
             _player = player;
             _chaseSpeed = chaseSpeed;
+            StateIdentifier = EnemyStates.Locomotion;
         }
 
         public override void OnEnter() {
             _agent.speed = _chaseSpeed;
-            Animator.CrossFade(LocomotionHash, CrossFadeDuration);
+            base.OnEnter();
         }
 
         public override void Update() {

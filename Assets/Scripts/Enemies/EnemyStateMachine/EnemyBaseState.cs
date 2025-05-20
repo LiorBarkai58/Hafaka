@@ -7,10 +7,10 @@ namespace Enemies.EnemyStateMachine
         protected EnemyController EnemyController;
         protected Animator Animator;
 
-        protected static readonly int LocomotionHash = Animator.StringToHash("Locomotion");
-        protected static readonly int AttackHash = Animator.StringToHash("Attack");
+        protected EnemyStates StateIdentifier = EnemyStates.Locomotion;
 
-        protected const float CrossFadeDuration = 0.1f;
+        private static readonly int EnemyState = Animator.StringToHash("EnemyState");
+        protected static readonly int LocomotionHash = Animator.StringToHash("Locomotion");
 
         protected EnemyBaseState(EnemyController enemyController, Animator animator) {
             EnemyController = enemyController;
@@ -18,7 +18,7 @@ namespace Enemies.EnemyStateMachine
         }
         
         public virtual void OnEnter(){
-            
+            Animator.SetInteger(EnemyState, (int)StateIdentifier);
         }
 
         public virtual void Update(){
@@ -32,5 +32,10 @@ namespace Enemies.EnemyStateMachine
         public virtual void OnExit(){
             
         }
+    }
+    
+    public enum EnemyStates{
+        Locomotion,
+        Attacking,
     }
 }

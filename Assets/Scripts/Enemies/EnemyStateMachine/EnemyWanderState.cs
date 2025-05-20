@@ -17,12 +17,13 @@ namespace Enemies.EnemyStateMachine
             _wanderWaitTimer = new CountdownTimer(wanderTimer);
             _wanderWaitTimer.OnTimerStop += SetNewDestination;
             _wanderSpeed = wanderSpeed;
+            StateIdentifier = EnemyStates.Locomotion;
         }
 
         public override void OnEnter() {
             _agent.speed = _wanderSpeed;
-            Animator.CrossFade(LocomotionHash, CrossFadeDuration);
             SetNewDestination();
+            base.OnEnter();
         }
 
         public override void Update() {
