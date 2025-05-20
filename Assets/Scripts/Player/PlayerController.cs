@@ -62,13 +62,18 @@ public class PlayerController : MonoBehaviour {
     {
         mainCamera = Camera.main;
     }
-    void OnEnable(){
+    void OnEnable()
+    {
         input.Jump += OnJump;
         input.Attack += OnAttack;
+        input.Spell += OnSpell;
     }
-    void OnDisable(){
+    void OnDisable()
+    {
         input.Jump -= OnJump;
         input.Attack -= OnAttack;
+        input.Spell -= OnSpell;
+        
     }
     private void SetupStateMachine()
     {
@@ -176,9 +181,27 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void OnAttack(){
-        if(attackState != null && stateMachine.Current == attackState) { attackState.TryQueueAttack();}
-        else attackTrigger.Trigger();
+    private void OnAttack()
+    {
+        if (attackState != null && stateMachine.Current == attackState) { attackState.TryQueueAttack(); }
+        else
+        {
+            attackTrigger.Trigger();
+            attackState.ChangeStartAction(AttackType.Attack);
+        }
+
+    }
+
+    private void OnSpell()
+    {
+        if (attackState != null && stateMachine.Current == attackState) { attackState.TryQueueSpell(); }
+        else
+        {
+            attackState.ChangeStartAction(AttackType.Spell);
+            attackTrigger.Trigger();
+        }
+        
+
     }
 
     public void SetDefaultState()

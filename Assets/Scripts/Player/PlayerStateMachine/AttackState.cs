@@ -4,7 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using Utilities;
 
-
+public enum AttackType
+{
+    Attack, Spell
+}
 public class AttackState : PlayerState
 {
     private CountdownTimer currentAttackTimer;
@@ -17,6 +20,8 @@ public class AttackState : PlayerState
 
     private bool isAttacking;
 
+    private AttackType startAction = AttackType.Attack;
+
     public AttackState(PlayerController playerController, Animator animator, PlayerStates stateIdentifier) : base(playerController, animator, stateIdentifier)
     {
     }
@@ -26,7 +31,8 @@ public class AttackState : PlayerState
         base.OnEnter();
         comboIndex = 0;
         nextAttackQueued = false;
-        TryQueueAttack();
+        if(startAction == AttackType.Attack) TryQueueAttack();
+        if(startAction == AttackType.Spell) TryQueueSpell();
         Debug.Log("Attack State Entered");
     }
 
@@ -48,8 +54,16 @@ public class AttackState : PlayerState
         if (comboIndex > 2) comboIndex = 0;
 
         animator.SetInteger(AttackHash, comboIndex);
-        nextAttackQueued = false;
+        nextAttackQueued = true;
         comboIndex++;
+    }
+
+    public void TryQueueSpell()
+    {
+        if (!CanQueueNextAttack() || nextAttackQueued) return;
+
+        animator.SetTrigger(SpellHash);
+        nextAttackQueued = true;
     }
 
 
@@ -74,6 +88,11 @@ public class AttackState : PlayerState
     public void AttackEntered()
     {
         nextAttackQueued = false;
+    }
+
+    public void ChangeStartAction(AttackType attackType)
+    {
+        this.startAction = attackType;
     }
     
 

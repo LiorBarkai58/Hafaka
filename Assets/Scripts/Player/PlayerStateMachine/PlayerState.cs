@@ -15,6 +15,9 @@ public abstract class PlayerState : BaseState
 
     protected static readonly int AttackHash = Animator.StringToHash("AttackState");
 
+    protected static readonly int SpellHash = Animator.StringToHash("Spell");
+
+
 
 
     protected const float crossfadeDuration = 0.1f;

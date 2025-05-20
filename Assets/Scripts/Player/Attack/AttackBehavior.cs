@@ -21,6 +21,15 @@ public class AttackBehavior : StateMachineBehaviour
         }
     }
 
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        findPlayerAttackManager(animator);
+        if (playerAttackManager)
+        {
+            playerAttackManager.AttackEntered();
+        }
+    }
+
     private void findPlayerAttackManager(Animator animator)
     {
         if (!playerAttackManager)
