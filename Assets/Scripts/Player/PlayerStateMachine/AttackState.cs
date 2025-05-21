@@ -18,6 +18,8 @@ public class AttackState : PlayerState
 
     private bool nextAttackQueued = false;
 
+    private bool canQueueSpell = true;
+
     private bool isAttacking;
 
     private AttackType startAction = AttackType.Attack;
@@ -31,7 +33,8 @@ public class AttackState : PlayerState
         base.OnEnter();
         comboIndex = 0;
         nextAttackQueued = false;
-        if(startAction == AttackType.Attack) TryQueueAttack();
+        canQueueSpell = true;
+        if (startAction == AttackType.Attack) TryQueueAttack();
         if(startAction == AttackType.Spell) TryQueueSpell();
         Debug.Log("Attack State Entered");
     }
@@ -55,15 +58,17 @@ public class AttackState : PlayerState
 
         animator.SetInteger(AttackHash, comboIndex);
         nextAttackQueued = true;
+        canQueueSpell = true;
         comboIndex++;
     }
 
     public void TryQueueSpell()
     {
-        if (!CanQueueNextAttack() || nextAttackQueued) return;
+        if (!CanQueueNextAttack() || nextAttackQueued || !canQueueSpell) return;
 
         animator.SetTrigger(SpellHash);
         nextAttackQueued = true;
+        canQueueSpell = false;
     }
 
 
