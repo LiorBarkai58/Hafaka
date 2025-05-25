@@ -36,7 +36,6 @@ public class AttackState : PlayerState
         canQueueSpell = true;
         if (startAction == AttackType.Attack) TryQueueAttack();
         if(startAction == AttackType.Spell) TryQueueSpell();
-        Debug.Log("Attack State Entered");
     }
 
     public override void FixedUpdate()
