@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 198521280}
-  attackCooldown: 3
+  attackCooldown: 10
   attacksAmount: 3
 --- !u!1 &330585543
 GameObject:

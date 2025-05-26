@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Interactables;
 using UnityEngine;
 
@@ -12,11 +11,11 @@ namespace Managers {
         [SerializeField] private int capacity = 20;
 
         // Backing store for items
-        private readonly List<ItemData> items = new List<ItemData>();
+        private readonly List<ItemData> _items = new();
 
         // Events for UI or other systems to subscribe to
-        public event Action<ItemData> OnItemAdded;
-        public event Action<ItemData> OnItemRemoved;
+        //public event Action<ItemData> OnItemAdded;
+        //public event Action<ItemData> OnItemRemoved;
 
         void Awake()
         {
@@ -33,40 +32,50 @@ namespace Managers {
         /// <summary>
         /// Try to add an item. Returns true if successful.
         /// </summary>
-        public bool Add(ItemData item)
+        public bool TryAdd(ItemData item)
         {
-            if (items.Count >= capacity)
+            foreach (var itemData in _items)
             {
-                Debug.LogWarning("Inventory is full!");
+                if (item != itemData) continue;
+                
+                itemData.quantity += item.quantity;
+                return true;
+            }
+            
+            if (_items.Count >= capacity)
+            {
+                Debug.Log("Inventory is full!");
                 return false;
             }
-            items.Add(item);
-            OnItemAdded?.Invoke(item);
+            
+            _items.Add(item);
             return true;
         }
 
         /// <summary>
         /// Try to remove an item. Returns true if it was in the inventory.
         /// </summary>
-        public bool Remove(ItemData item)
+        public bool TryRemove(ItemData item, int quantity)
         {
-            if (items.Remove(item))
+            foreach (var itemData in _items)
             {
-                OnItemRemoved?.Invoke(item);
+                if (itemData != item) continue;
+                
+                itemData.quantity -= quantity;
+
+                if (itemData.quantity > 0) return true;
+                
+                _items.Remove(item);
                 return true;
             }
-            Debug.LogWarning($"Tried to remove {item.itemName}, but it wasn't in inventory.");
+            
+            Debug.Log($"Tried to remove {item.itemName}, but it wasn't in inventory.");
             return false;
         }
 
         /// <summary>
         /// Read-only view of current items.
         /// </summary>
-        public IReadOnlyList<ItemData> Items => items.AsReadOnly();
-
-        /// <summary>
-        /// (Optional) Check if there's room for N more items.
-        /// </summary>
-        public bool HasSpaceFor(int count = 1) => items.Count + count <= capacity;
+        public IReadOnlyList<ItemData> Items => _items.AsReadOnly();
     }
 }
