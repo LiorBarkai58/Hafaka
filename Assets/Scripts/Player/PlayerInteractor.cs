@@ -1,12 +1,35 @@
 using System.Collections.Generic;
 using Interactables;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Player
 {
     public class PlayerInteractor : MonoBehaviour
     {
-        public List<Interactable> _interactables;
+        [SerializeField] private InputReader input;
+        
+        private List<Interactable> _interactables;
+
+        public event UnityAction<Interactable> InRange;
+        public event UnityAction OutOfRange;
+
+        private void OnEnable()
+        {
+            input.Interact += OnInteract;
+        }
+
+        private void OnDisable()
+        {
+            input.Interact -= OnInteract;
+        }
+
+        private void OnInteract()
+        {
+            if (_interactables.Count == 0) return;
+            
+            _interactables[0].Interact();
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -17,6 +40,7 @@ namespace Player
             if (interactable != null)
             {
                 _interactables.Add(interactable);
+                InRange?.Invoke(interactable);
                 Debug.Log("Item in Range");
             }
         }
@@ -30,6 +54,7 @@ namespace Player
             if (interactable != null)
             {
                 _interactables.Remove(interactable);
+                OutOfRange?.Invoke();
                 Debug.Log("Item not in Range");
             }
         }
