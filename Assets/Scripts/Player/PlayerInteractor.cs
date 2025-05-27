@@ -9,7 +9,7 @@ namespace Player
     {
         [SerializeField] private InputReader input;
         
-        private List<Interactable> _interactables;
+        private readonly List<Interactable> _interactables = new();
 
         public event UnityAction<Interactable> InRange;
         public event UnityAction OutOfRange;
