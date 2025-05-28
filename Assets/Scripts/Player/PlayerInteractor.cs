@@ -9,9 +9,9 @@ namespace Player
     {
         [SerializeField] private InputReader input;
         
-        private readonly List<Interactable> _interactables = new();
+        private readonly List<IInteractable> _interactables = new();
 
-        public event UnityAction<Interactable> InRange;
+        public event UnityAction<IInteractable> InRange;
         public event UnityAction OutOfRange;
 
         private void OnEnable()
@@ -35,7 +35,7 @@ namespace Player
         {
             if (!other.CompareTag("Interactable")) return;
             
-            var interactable = other.GetComponent<Interactable>();
+            var interactable = other.GetComponent<IInteractable>();
 
             if (interactable != null)
             {
@@ -49,7 +49,7 @@ namespace Player
         {
             if (!other.CompareTag("Interactable")) return;
             
-            var interactable = other.GetComponent<Interactable>();
+            var interactable = other.GetComponent<IInteractable>();
 
             if (interactable != null)
             {

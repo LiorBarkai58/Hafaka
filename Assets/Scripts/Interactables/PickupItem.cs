@@ -2,15 +2,15 @@
 using UnityEngine;
 
 namespace Interactables {
-    public class PickupItem : Interactable {
+    public class PickupItem : MonoBehaviour, IInteractable {
         [SerializeField] private ItemData itemData;
-        public override void Interact()
+        public void Interact()
         {
             if(Inventory.Instance.TryAdd(itemData))
                 Destroy(gameObject);
         }
 
-        public override string GetPrompt() => "E to Pick up";
+        public string GetPrompt() => "E to Pick up";
         
     }
 }
