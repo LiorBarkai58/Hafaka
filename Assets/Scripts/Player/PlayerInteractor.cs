@@ -12,7 +12,7 @@ namespace Player
         private readonly List<IInteractable> _interactables = new();
 
         public event UnityAction<IInteractable> InRange;
-        public event UnityAction OutOfRange;
+        public event UnityAction<IInteractable> OutOfRange;
 
         private void OnEnable()
         {
@@ -54,7 +54,7 @@ namespace Player
             if (interactable != null)
             {
                 _interactables.Remove(interactable);
-                OutOfRange?.Invoke();
+                OutOfRange?.Invoke(interactable);
                 Debug.Log("Item not in Range");
             }
         }
