@@ -72,7 +72,7 @@
                     "name": "Next",
                     "type": "Button",
                     "id": "b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -90,6 +90,15 @@
                     "name": "Spell",
                     "type": "Button",
                     "id": "da99ee91-9985-497e-9d46-173a3ecbfdbf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dialogue",
+                    "type": "Button",
+                    "id": "00896f92-92cd-441e-9961-e45cf7b95c2e",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -490,6 +499,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Spell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e65c2dbe-9053-464d-a85d-194e6e774fbe",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

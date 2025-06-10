@@ -4,7 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     protected static readonly int SpeedHash = Animator.StringToHash("Speed");
 
@@ -22,6 +23,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private CharacterController characterController;
 
     [SerializeField] private InputReader input;
+
+    [SerializeField] private InputBlocker blocker;
 
     [SerializeField] private Transform Visuals;
 
@@ -50,7 +53,12 @@ public class PlayerController : MonoBehaviour {
     private TriggerTransition attackTrigger;
 
     private TriggerTransition endAttackTrigger;
+
+    private TriggerTransition dialogueTrigger;
+    private TriggerTransition endDialogueTrigger;
+
     #endregion
+
 
 
     private void Awake()
@@ -73,7 +81,7 @@ public class PlayerController : MonoBehaviour {
         input.Jump -= OnJump;
         input.Attack -= OnAttack;
         input.Spell -= OnSpell;
-        
+
     }
     private void SetupStateMachine()
     {
@@ -85,11 +93,16 @@ public class PlayerController : MonoBehaviour {
 
         JumpState jumpState = new JumpState(this, animator, PlayerStates.Jumping);
         FallingState fallingState = new FallingState(this, animator, PlayerStates.Falling);
+
+        DialogueState dialogueState = new DialogueState(this, animator, PlayerStates.Speaking);
         attackState = new AttackState(this, animator, PlayerStates.Attacking);
         attackManager.AssignAttackState(attackState);
 
         attackTrigger = new TriggerTransition(attackState);
         endAttackTrigger = new TriggerTransition(locomotionState);
+
+        dialogueTrigger = new TriggerTransition(dialogueState);
+        endDialogueTrigger = new TriggerTransition(locomotionState);
 
         attackManager.OnComboEnd += () => endAttackTrigger.Trigger();
 
@@ -101,8 +114,10 @@ public class PlayerController : MonoBehaviour {
         At(locomotionState, attackState, attackTrigger.Condition);
         At(attackState, locomotionState, endAttackTrigger.Condition);
 
+        Any(dialogueState, dialogueTrigger.Condition);
+        At(dialogueState, locomotionState, endDialogueTrigger.Condition);
 
-        
+
 
 
         stateMachine.SetState(locomotionState);
@@ -116,7 +131,7 @@ public class PlayerController : MonoBehaviour {
         moveDirection = input.Direction;
         stateMachine.Update();
         isGrounded = characterController.isGrounded;
-        
+
     }
     void FixedUpdate()
     {
@@ -125,6 +140,8 @@ public class PlayerController : MonoBehaviour {
 
     public void HandleMovement()
     {
+        if (blocker.isBlocked) return;
+
         // Get the camera's forward and right directions
         Vector3 cameraForward = mainCamera.transform.forward;
         Vector3 cameraRight = mainCamera.transform.right;
@@ -167,13 +184,16 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void HandleRunSpeed(){
-        animator.SetFloat(SpeedHash, currentVelocity/maximumSpeed, 0.05f, Time.fixedDeltaTime);
+    public void HandleRunSpeed()
+    {
+        animator.SetFloat(SpeedHash, currentVelocity / maximumSpeed, 0.05f, Time.fixedDeltaTime);
     }
-    
+
 
     private void OnJump()
     {
+        if (blocker.isBlocked) return;
+
         if (characterController.isGrounded)
         {
             // Calculate the jump velocity using the correct formula
@@ -183,6 +203,7 @@ public class PlayerController : MonoBehaviour {
 
     private void OnAttack()
     {
+        if (blocker.isBlocked) return;
         if (attackState != null && stateMachine.Current == attackState) { attackState.TryQueueAttack(); }
         else
         {
@@ -194,13 +215,15 @@ public class PlayerController : MonoBehaviour {
 
     private void OnSpell()
     {
+        if (blocker.isBlocked) return;
+
         if (attackState != null && stateMachine.Current == attackState) { attackState.TryQueueSpell(); }
         else
         {
             attackState.ChangeStartAction(AttackType.Spell);
             attackTrigger.Trigger();
         }
-        
+
 
     }
 
@@ -208,6 +231,12 @@ public class PlayerController : MonoBehaviour {
     {
         if (stateMachine == null || defaultState == null) return;
         stateMachine.SetState(defaultState);
+    }
+
+    public void UpdateDialogueState(bool inDialogue)
+    {
+        if (inDialogue) dialogueTrigger.Trigger();
+        else endDialogueTrigger.Trigger();
     }
 
     

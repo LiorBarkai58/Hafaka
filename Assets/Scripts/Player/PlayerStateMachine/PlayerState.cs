@@ -1,7 +1,7 @@
 using UnityEngine;
 public enum PlayerStates
 {
-    Locomotion, Jumping, Falling, Attacking
+    Locomotion, Jumping, Falling, Attacking, Speaking
 }
 
 public abstract class PlayerState : BaseState

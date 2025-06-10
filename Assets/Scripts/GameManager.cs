@@ -2,15 +2,26 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private PlayerManager playerManager;
+    [SerializeField] private DialogueManager dialogueManager;
+
+    private void Start()
     {
-        
+        dialogueManager.OnDialogueStart += () => playerManager.UpdateDialogueState(true);
+        dialogueManager.OnDialogueEnd += () => playerManager.UpdateDialogueState(false);
     }
 
-    // Update is called once per frame
-    void Update()
+
+#if UNITY_EDITOR
+    void OnValidate()
     {
-        
+        playerManager = FindFirstObjectByType<PlayerManager>();
+        dialogueManager = FindFirstObjectByType<DialogueManager>();
     }
+#endif
+
+
+
+
 }
+

@@ -94,7 +94,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Next"",
                     ""type"": ""Button"",
                     ""id"": ""b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -112,6 +112,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Spell"",
                     ""type"": ""Button"",
                     ""id"": ""da99ee91-9985-497e-9d46-173a3ecbfdbf"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dialogue"",
+                    ""type"": ""Button"",
+                    ""id"": ""00896f92-92cd-441e-9961-e45cf7b95c2e"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -512,6 +521,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Spell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e65c2dbe-9053-464d-a85d-194e6e774fbe"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1109,6 +1129,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Spell = m_Player.FindAction("Spell", throwIfNotFound: true);
+        m_Player_Dialogue = m_Player.FindAction("Dialogue", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1198,6 +1219,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Next;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Spell;
+    private readonly InputAction m_Player_Dialogue;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1212,6 +1234,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Next => m_Wrapper.m_Player_Next;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Spell => m_Wrapper.m_Player_Spell;
+        public InputAction @Dialogue => m_Wrapper.m_Player_Dialogue;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1251,6 +1274,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Spell.started += instance.OnSpell;
             @Spell.performed += instance.OnSpell;
             @Spell.canceled += instance.OnSpell;
+            @Dialogue.started += instance.OnDialogue;
+            @Dialogue.performed += instance.OnDialogue;
+            @Dialogue.canceled += instance.OnDialogue;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1285,6 +1311,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Spell.started -= instance.OnSpell;
             @Spell.performed -= instance.OnSpell;
             @Spell.canceled -= instance.OnSpell;
+            @Dialogue.started -= instance.OnDialogue;
+            @Dialogue.performed -= instance.OnDialogue;
+            @Dialogue.canceled -= instance.OnDialogue;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1477,6 +1506,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnNext(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnSpell(InputAction.CallbackContext context);
+        void OnDialogue(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

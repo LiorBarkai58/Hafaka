@@ -86,7 +86,10 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Jump?.Invoke();
+        if (context.started)
+        {
+            Jump?.Invoke();
+        }
     }
 
     public void OnSpell(InputAction.CallbackContext context)

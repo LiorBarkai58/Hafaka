@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 
@@ -9,6 +10,8 @@ public class DialogueManager : MonoBehaviour {
     [SerializeField] private ScriptableDialogue defaultDialogue;
 
     [SerializeField] private InputReader inputReader;
+
+    [SerializeField] private InputBlocker playerBlocker;
 
     [Header("Dialogue UI")]
 
@@ -28,6 +31,14 @@ public class DialogueManager : MonoBehaviour {
 
     public ScriptableDialogue currentDialogue;
 
+    #region Events
+    public event UnityAction OnDialogueStart;
+    public event UnityAction OnDialogueEnd;
+
+    #endregion
+
+    private static readonly string DialogueBlocker = "Dialogue";
+
 
     void Start(){
         inputReader.Dialogue += OnDialgoue;
@@ -39,13 +50,21 @@ public class DialogueManager : MonoBehaviour {
         StartDialogue(defaultDialogue);
     }
 
+    [ContextMenu("Debug next entry")]
+    public void DebugNextEntry(){
+        TryNextEntry();
+    }
 
-    private void OnDialgoue(){
+
+    private void OnDialgoue()
+    {
         TryNextEntry();
     }
 
     private void StartDialogue(ScriptableDialogue dialogue){
         UIWindow.gameObject.SetActive(true);
+        OnDialogueStart?.Invoke();
+        playerBlocker.AddBlocker(DialogueBlocker);
         TryNextEntry();
     }
 
@@ -58,12 +77,16 @@ public class DialogueManager : MonoBehaviour {
         switch (currentEntry.speaker)
         {
             case SpeakerType.leftSpeaker:
-                leftSpeaker.SetText(currentEntry.character.Name);
-                leftSplash.sprite = currentEntry.character.CharacterSplash;
+                leftSpeaker.SetText(currentEntry.LeftCharacter.Name);
+                leftSplash.sprite = currentEntry.LeftCharacter.CharacterSplash;
+                rightSpeaker.SetText(currentEntry.RightCharacter.Name);
+                rightSplash.sprite = currentEntry.RightCharacter.CharacterSplash;
                 break;
             case SpeakerType.rightSpeaker:
-                rightSpeaker.SetText(currentEntry.character.Name);
-                rightSplash.sprite = currentEntry.character.CharacterSplash;
+                rightSpeaker.SetText(currentEntry.RightCharacter.Name);
+                rightSplash.sprite = currentEntry.RightCharacter.CharacterSplash;
+                leftSpeaker.SetText(currentEntry.LeftCharacter.Name);
+                leftSplash.sprite = currentEntry.LeftCharacter.CharacterSplash;
                 break;
             default:
                 break;
@@ -73,8 +96,12 @@ public class DialogueManager : MonoBehaviour {
 
     }
 
-    private void FinishDialogue(){
+    private void FinishDialogue()
+    {
         //End dialogue logic
+        OnDialogueEnd?.Invoke();
+        playerBlocker.RemoveBlocker(DialogueBlocker);
+        UIWindow.gameObject.SetActive(false);
     }
 
 

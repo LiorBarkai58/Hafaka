@@ -7,7 +7,8 @@ public enum SpeakerType {
     rightSpeaker
 }
 [CreateAssetMenu(fileName = "Dialogue", menuName = "Dialogue/Dialogue")]
-public class ScriptableDialogue : ScriptableObject {
+public class ScriptableDialogue : ScriptableObject
+{
 
     [SerializeField] private List<DialogueEntry> dialogues;
 
@@ -16,21 +17,28 @@ public class ScriptableDialogue : ScriptableObject {
 
     private int currentIndex = 0;
 
-    void OnEnable(){
+    void OnEnable()
+    {
         currentIndex = 0;
     }
 
-    public DialogueEntry GetCurrentEntry(){
-        if(currentIndex < dialogues.Count) return dialogues[currentIndex++];
+    public DialogueEntry GetCurrentEntry()
+    {
+        if (currentIndex < dialogues.Count) return dialogues[currentIndex++];
+        currentIndex = 0;
         return null;
     }
+    
 }
 
 
 [System.Serializable]
-public class DialogueEntry {
+public class DialogueEntry
+{
     public string dialogue;
     public SpeakerType speaker;
-    public DialogueCharacter character;
+    public DialogueCharacter LeftCharacter;
+    public DialogueCharacter RightCharacter;
+    
 
 }
