@@ -11,6 +11,7 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event UnityAction<bool> Dash = delegate { };
     public event UnityAction Attack = delegate { };
     public event UnityAction Spell = delegate { };
+    public event UnityAction Dialogue = delegate { };
 
     PlayerInputActions inputActions;
 
@@ -92,6 +93,12 @@ public class InputReader : ScriptableObject, IPlayerActions
     {
         if (context.phase == InputActionPhase.Started) {
             Spell.Invoke();
+        }
+    }
+
+    public void OnDialogue(InputAction.CallbackContext context){
+        if (context.phase == InputActionPhase.Started) {
+            Dialogue.Invoke();
         }
     }
 }
