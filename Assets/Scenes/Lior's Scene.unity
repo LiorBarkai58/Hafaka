@@ -886,7 +886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96543a68d1c0ae3479b4d262b139f4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 51
+  maxHealth: 0
 --- !u!136 &633048461
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1568,7 +1568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fcbacdbe8770441b26cdc5ca908213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 13
+  maxHealth: 103
 --- !u!1 &1427589667
 GameObject:
   m_ObjectHideFlags: 0
