@@ -5,8 +5,7 @@ using UnityEngine.Events;
 
 namespace Player
 {
-    public class PlayerInteractor : MonoBehaviour
-    {
+    public class PlayerInteractor : MonoBehaviour {
         [SerializeField] private InputReader input;
         
         private readonly List<IInteractable> _interactables = new();
@@ -29,6 +28,7 @@ namespace Player
             if (_interactables.Count == 0) return;
             
             _interactables[0].Interact();
+            _interactables.Remove(_interactables[0]);
         }
 
         private void OnTriggerEnter(Collider other)
