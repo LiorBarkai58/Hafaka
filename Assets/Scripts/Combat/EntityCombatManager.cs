@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class EntityCombatManager : MonoBehaviour
 {
-    [SerializeField] protected float MaxHealth;
+    [SerializeField] protected float maxHealth;
 
-
+    public float MaxHealth => maxHealth;
 
     protected float currentHealth;
+
+    public float CurrentHealth => currentHealth;
     void OnEnable()
     {
         currentHealth = MaxHealth;
