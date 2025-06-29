@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+[CreateAssetMenu(fileName = "BossAbilityData", menuName = "Boss/BossAbilityData")]
 public class BossAbilityData : ScriptableObject
 {
     [SerializeField] private float cooldown;

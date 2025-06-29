@@ -5,7 +5,7 @@ using Utilities;
 public abstract class BossAbility : MonoBehaviour
 {
     [SerializeField]
-    private BossAbilityData abilityData;
+    protected BossAbilityData abilityData;
     
     private CountdownTimer _cooldownTimer;
     private CountdownTimer _durationTimer;
@@ -21,7 +21,7 @@ public abstract class BossAbility : MonoBehaviour
         _cooldownTimer?.Tick(Time.deltaTime);
         _durationTimer?.Tick(Time.deltaTime);
 
-    }
+    } 
 
     public virtual void Activate()
     {
@@ -29,6 +29,10 @@ public abstract class BossAbility : MonoBehaviour
         _durationTimer.Start();
         
         //Implement effect
+    }
+    
+    public virtual void OnEnd()
+    {
     }
     
     
