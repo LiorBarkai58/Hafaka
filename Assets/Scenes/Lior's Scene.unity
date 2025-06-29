@@ -414,7 +414,7 @@ Transform:
   m_GameObject: {fileID: 168816450}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.636, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1216,13 +1216,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817161611}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.48263907, y: 0.516778, z: 0.516778, w: 0.48263907}
-  m_LocalPosition: {x: -2.418, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.00000023841858, y: 0, z: 0}
   m_LocalScale: {x: 0.5227, y: 1.170848, z: 0.5227}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 168816451}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 93.913}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!136 &817161613
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1786,9 +1786,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityData: {fileID: 11400000, guid: 7077039926180c747b54b4953fb1ca96, type: 2}
+  visuals: {fileID: 817161612}
   swipeObject: {fileID: 168816450}
   startPoint: {fileID: 1211929669}
   endPoint: {fileID: 1556607172}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -1.8160378
+      outSlope: -1.8160378
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.6823469
+      outSlope: 0.6823469
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.30416667
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1211929668
 GameObject:
   m_ObjectHideFlags: 0
