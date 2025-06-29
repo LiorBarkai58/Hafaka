@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private InputBlocker blocker;
 
+    [SerializeField] private PlayerTransform playerTransform;//Global player transform
+
     [SerializeField] private Transform Visuals;
 
     [SerializeField] private Animator animator;
@@ -65,6 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         SetupStateMachine();
         Cursor.lockState = CursorLockMode.Locked;
+        playerTransform.Transform = transform;
     }
     void Start()
     {
