@@ -10,6 +10,8 @@ public abstract class BossAbility : MonoBehaviour
     private CountdownTimer _cooldownTimer;
     private CountdownTimer _durationTimer;
 
+    
+
     private void Start()
     {
         _cooldownTimer = new CountdownTimer(abilityData.Cooldown);
