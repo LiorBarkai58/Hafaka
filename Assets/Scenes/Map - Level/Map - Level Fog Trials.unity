@@ -1010,7 +1010,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 113029338}
@@ -7322,14 +7322,14 @@ MonoBehaviour:
   fogStart3: 25.8
   fogStart4: 50
   fogHeight: 1
-  fogDensityMultiplier: 1
+  fogDensityMultiplier: 3.95
   fogLightFlareIntensity: 0.868197
   fogLightFlareFalloff: 6.3307505
   fogLightFlareSquish: 3.930699
   fogSmoothness: 0.757
-  fogVariationAmount: 0.78
+  fogVariationAmount: 0.53
   fogVariationDirection: {x: 6, y: 0, z: 0}
-  fogVariationDistance: 51.6
+  fogVariationDistance: 19
   fogVariationScale: 10.6
   heightFogIntensity: 1
   heightFogVariationScale: 1000
@@ -7494,12 +7494,12 @@ MonoBehaviour:
   weatherModule: {fileID: 1928160301}
   timeModule: {fileID: 1928160300}
   atmosphereModule: {fileID: 0}
-  windModule: {fileID: 1928160299}
+  windModule: {fileID: 1928160303}
   events:
     timeToCheckFor: 0.875
     currentMinute: 1175
     currentHour: 19
-  cozyTriggerTag: FX Block Zone
+  cozyTriggerTag: Player
   cozyTriggers:
   - {fileID: 0}
   systems:
@@ -7521,8 +7521,8 @@ MonoBehaviour:
   - {fileID: 1928160295}
   - {fileID: 1928160294}
   - {fileID: 1928160302}
-  - {fileID: 1928160299}
   - {fileID: 1928160293}
+  - {fileID: 1928160303}
 --- !u!4 &221619260
 Transform:
   m_ObjectHideFlags: 0
@@ -7532,13 +7532,14 @@ Transform:
   m_GameObject: {fileID: 221619258}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000000037252899, y: -0, z: -0.0000000074505797, w: 1}
-  m_LocalPosition: {x: 260.475, y: 2.65, z: -1030}
+  m_LocalPosition: {x: 273.99945, y: 22.60122, z: -1055.1484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 70391072}
   - {fileID: 1223796990}
   - {fileID: 1928160298}
+  - {fileID: 800960993}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &227305002
@@ -8936,7 +8937,7 @@ GameObject:
   - component: {fileID: 395409681}
   - component: {fileID: 395409682}
   m_Layer: 0
-  m_Name: Scripting
+  m_Name: Weather Cycler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16875,6 +16876,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 544424038}
   m_LocalEulerAnglesHint: {x: 0, y: 104.649, z: 0}
+--- !u!1 &800960991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 800960993}
+  - component: {fileID: 800960992}
+  m_Layer: 0
+  m_Name: Cozy FX Block Zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &800960992
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800960991}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &800960993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800960991}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0000000037252899, y: 0, z: 0.0000000074505797, w: 1}
+  m_LocalPosition: {x: -260.475, y: -2.6499963, z: 1035}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 221619260}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &801046847
 GameObject:
   m_ObjectHideFlags: 0
@@ -20379,7 +20433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1207248149
 Light:
   m_ObjectHideFlags: 0
@@ -27975,8 +28029,8 @@ GameObject:
   - component: {fileID: 1928160295}
   - component: {fileID: 1928160294}
   - component: {fileID: 1928160302}
-  - component: {fileID: 1928160299}
   - component: {fileID: 1928160293}
+  - component: {fileID: 1928160303}
   m_Layer: 0
   m_Name: Modules
   m_TagString: Untagged
@@ -28406,30 +28460,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 221619260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1928160299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928160292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c876b65dcaef0845aa187019a7f70bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cachedWeatherSphere: {fileID: 221619259}
-  cachedSystem: {fileID: 0}
-  defaultWindProfile: {fileID: 11400000, guid: 94bed43d2a7d48f428f62cb4dcb20a81, type: 2}
-  windZone: {fileID: 0}
-  windSpeed: 0.6
-  windChangeSpeed: 10
-  windAmount: 0.1
-  windGusting: 0.2
-  windMultiplier: 1
-  useWindzone: 1
-  useShaderWind: 1
-  windFXes: []
 --- !u!114 &1928160300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28541,6 +28571,30 @@ MonoBehaviour:
   dryingSpeed: 0.5
   snowSpeed: 0
   rainSpeed: 0
+--- !u!114 &1928160303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928160292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c876b65dcaef0845aa187019a7f70bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cachedWeatherSphere: {fileID: 221619259}
+  cachedSystem: {fileID: 0}
+  defaultWindProfile: {fileID: 11400000, guid: 94bed43d2a7d48f428f62cb4dcb20a81, type: 2}
+  windZone: {fileID: 0}
+  windSpeed: 0.6
+  windChangeSpeed: 10
+  windAmount: 0.1
+  windGusting: 0.2
+  windMultiplier: 1
+  useWindzone: 1
+  useShaderWind: 1
+  windFXes: []
 --- !u!1 &1957543101
 GameObject:
   m_ObjectHideFlags: 0
