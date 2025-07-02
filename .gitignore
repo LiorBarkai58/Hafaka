@@ -7,6 +7,7 @@
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
+*.unitypackage.meta
 
 # Uncomment if using Unity 2020+
 # MemoryCaptures/
