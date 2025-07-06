@@ -94,3 +94,18 @@ public class InputReader : ScriptableObject, IPlayerActions
             Jump?.Invoke();
         }
     }
+    public void OnSpell(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started) {
+            Spell.Invoke();
+        }
+    }
+
+    public void OnDialogue(InputAction.CallbackContext context){
+        if (context.phase == InputActionPhase.Started) {
+            Dialogue.Invoke();
+        }
+    }
+
+    
+}
