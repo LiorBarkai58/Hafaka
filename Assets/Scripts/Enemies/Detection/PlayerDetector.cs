@@ -25,6 +25,11 @@ namespace Enemies.Detection {
             return _detectionStrategy.Execute(player, transform);
         }
         
+        public bool CanAttackPlayer() {
+            var directionToPlayer = player.position - transform.position;
+            return directionToPlayer.magnitude <= attackRange;
+        }
+        
         private void OnDrawGizmos() {
             Gizmos.color = Color.red;
 

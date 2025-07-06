@@ -18,4 +18,6 @@ namespace EventSystem {
             unityEvent?.Invoke(value);
         }
     }
+    
+    public class EmptyEventListener : EventListener<Empty> { }
 }

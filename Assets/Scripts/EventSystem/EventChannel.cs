@@ -14,4 +14,9 @@ namespace EventSystem {
         public void Register(EventListener<T> listener) => _listeners.Add(listener);
         public void Deregister(EventListener<T> listener) => _listeners.Remove(listener);
     }
+    
+    public readonly struct Empty { }
+    
+    [CreateAssetMenu(menuName = "Events/EmptyEventChannel")]
+    public class EmptyEventChannel : EventChannel<Empty> { }
 }
