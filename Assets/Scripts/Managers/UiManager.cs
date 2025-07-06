@@ -2,6 +2,7 @@ using Interactables;
 using Player;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Managers
 {
@@ -10,6 +11,19 @@ namespace Managers
         [SerializeField] private PlayerInteractor playerInteractor;
         [SerializeField] private GameObject interactUi;
         [SerializeField] private TextMeshProUGUI interactText;
+
+        [Header("Bars")] 
+        [SerializeField] private Slider hpBar;
+        [SerializeField] private Slider manaBar;
+
+        [Header("XP")] 
+        [SerializeField] private TextMeshProUGUI xpText;
+
+        [Header("Combo")] 
+        [SerializeField] private TextMeshProUGUI comboText;
+
+        [Header("Flask")] 
+        [SerializeField] private TextMeshProUGUI flaskAmountText;
 
         private IInteractable _interactableOwner;
 
