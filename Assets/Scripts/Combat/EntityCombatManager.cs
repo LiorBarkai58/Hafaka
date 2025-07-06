@@ -19,12 +19,10 @@ public class EntityCombatManager : MonoBehaviour
     {
         currentHealth -= damageDealtArgs.damage;
 
-        Debug.Log($"Took {damageDealtArgs.damage}");
 
         if (currentHealth <= 0) Death();
     }
 
     protected virtual void Death() {
-        Debug.Log("Entity died");
     }
 }
