@@ -31,7 +31,7 @@ namespace Enemies
             _stateMachine = new StateMachine();
 
             var wanderState = new EnemyWanderState(this, animator, agent, wanderRadius, wanderTimerDuration, wanderSpeed);
-            var chaseState = new EnemyChaseState(this, animator, agent, playerDetector.player, chaseSpeed);
+            var chaseState = new EnemyChaseState(this, animator, agent, playerDetector.player.Transform, chaseSpeed);
             var attackState = new EnemyAttackState(this, animator, enemyCombat);
             
             At(wanderState, chaseState, () => playerDetector.CanDetectPlayer());
