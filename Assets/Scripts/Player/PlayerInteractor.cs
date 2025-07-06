@@ -29,6 +29,14 @@ namespace Player
             
             _interactables[0].Interact();
             _interactables.Remove(_interactables[0]);
+            if (_interactables.Count == 0)
+            {
+                OutOfRange?.Invoke(null);
+            }
+            else
+            {
+                InRange?.Invoke(_interactables[0]);
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -57,6 +65,7 @@ namespace Player
                 OutOfRange?.Invoke(interactable);
                 Debug.Log("Item not in Range");
             }
+            
         }
     }
 }

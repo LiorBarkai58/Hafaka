@@ -52,7 +52,7 @@ namespace Managers
         }
 
         private void HidePrompt(IInteractable interactable) {
-            if (_interactableOwner != interactable) return;
+            if (_interactableOwner != interactable && interactable != null) return;
 
             _interactableOwner = null;
             interactUi.SetActive(false);
