@@ -11,7 +11,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private List<Collider> WeaponColliders;
 
 
-    public void EnableColliders()
+    public virtual void EnableColliders()
     {
         foreach (Collider collider in WeaponColliders)
         {
@@ -19,7 +19,7 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public void DisableColliders()
+    public virtual void DisableColliders()
     {
         foreach (Collider collider in WeaponColliders)
         {

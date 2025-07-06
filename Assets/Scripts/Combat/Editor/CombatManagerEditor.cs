@@ -16,6 +16,9 @@ public class EntityCombatManagerEditor : Editor
 
     public override void OnInspectorGUI()
     {
+
+        DrawDefaultInspector();
+        
         serializedObject.Update();
 
         EditorGUILayout.LabelField("Entity Combat Settings", EditorStyles.boldLabel);
