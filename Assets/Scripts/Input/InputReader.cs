@@ -12,6 +12,7 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event UnityAction Attack = delegate { };
     public event UnityAction Spell = delegate { };
     public event UnityAction Dialogue = delegate { };
+    public event UnityAction Interact = delegate { };
 
     PlayerInputActions inputActions;
 
@@ -81,7 +82,9 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        //noop
+        if (context.phase == InputActionPhase.Started) {
+            Interact.Invoke();
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -91,17 +94,3 @@ public class InputReader : ScriptableObject, IPlayerActions
             Jump?.Invoke();
         }
     }
-
-    public void OnSpell(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started) {
-            Spell.Invoke();
-        }
-    }
-
-    public void OnDialogue(InputAction.CallbackContext context){
-        if (context.phase == InputActionPhase.Started) {
-            Dialogue.Invoke();
-        }
-    }
-}
