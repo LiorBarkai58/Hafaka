@@ -1,3 +1,4 @@
+using Experience;
 using Interactables;
 using Player;
 using TMPro;
@@ -9,6 +10,7 @@ namespace Managers
     public class UiManager : MonoBehaviour {
         [Header("References")]
         [SerializeField] private PlayerInteractor playerInteractor;
+        [SerializeField] private ExperienceManager xpManager;
         
         [Header("Interact")]
         [SerializeField] private GameObject interactUi;
@@ -32,11 +34,13 @@ namespace Managers
         private void OnEnable() {
             playerInteractor.InRange += ShowPrompt;
             playerInteractor.OutOfRange += HidePrompt;
+            xpManager.OnEssenceChanged += SetXpText;
         }
 
         private void OnDisable() {
             playerInteractor.InRange -= ShowPrompt;
             playerInteractor.OutOfRange -= HidePrompt;
+            xpManager.OnEssenceChanged -= SetXpText;
         }
 
         private void ShowPrompt(IInteractable interactable) {
@@ -52,6 +56,10 @@ namespace Managers
 
             _interactableOwner = null;
             interactUi.SetActive(false);
+        }
+
+        private void SetXpText(int newXp) {
+            xpText.text = newXp.ToString();
         }
     }
 }
