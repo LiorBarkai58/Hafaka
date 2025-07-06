@@ -9,6 +9,8 @@ namespace Managers
     public class UiManager : MonoBehaviour {
         [Header("References")]
         [SerializeField] private PlayerInteractor playerInteractor;
+        
+        [Header("Interact")]
         [SerializeField] private GameObject interactUi;
         [SerializeField] private TextMeshProUGUI interactText;
 
