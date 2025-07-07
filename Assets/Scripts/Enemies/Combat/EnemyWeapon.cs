@@ -27,6 +27,7 @@ namespace Enemies.Combat
             {
                 base.DisableColliders();
                 playerHit.Clear();
+                Debug.Log("Disable");
             }
     }
 }

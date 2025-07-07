@@ -1,25 +1,8 @@
 using System.Collections.Generic;
+using Combat;
 using UnityEngine;
 
 
-public class PlayerWeaponManager : MonoBehaviour
+public class PlayerWeaponManager : WeaponsManager
 {
-    [SerializeField] private List<Weapon> weapons;
-
-
-    public void EnableColliders()
-    {
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.EnableColliders();
-        }
-    }
-
-    public void DisableColliders()
-    {
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.DisableColliders();
-        }
-    }
 }

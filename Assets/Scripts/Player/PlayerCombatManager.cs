@@ -30,10 +30,10 @@ public class PlayerCombatManager : EntityCombatManager
     {
         combatStateChannel.Invoke(new PlayerCombatState()
         {
-            CurrentHealth = currentHealth/2,
+            CurrentHealth = currentHealth,
             MaxHealth = maxHealth,
             MaxMana = maxMana,
-            CurrentMana = _currentMana/2
+            CurrentMana = _currentMana
         });
     }
 }

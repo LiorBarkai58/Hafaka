@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class EntityCombatManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class EntityCombatManager : MonoBehaviour
     protected float currentHealth;
 
     public float CurrentHealth => currentHealth;
+
+    public event UnityAction OnDeath;
     protected virtual void OnEnable()
     {
         currentHealth = MaxHealth;
@@ -23,6 +26,8 @@ public class EntityCombatManager : MonoBehaviour
         if (currentHealth <= 0) Death();
     }
 
-    protected virtual void Death() {
+    protected virtual void Death()
+    {
+        OnDeath?.Invoke();
     }
 }

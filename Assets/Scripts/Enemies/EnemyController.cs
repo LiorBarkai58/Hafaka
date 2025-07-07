@@ -13,6 +13,7 @@ namespace Enemies
         [SerializeField] private PlayerDetector playerDetector;
         [SerializeField] private Animator animator;
         [SerializeField] private EnemyCombat enemyCombat;
+        [SerializeField] private EnemyCombatManager combatManager;
         
         [Header("Radius")]
         [SerializeField] private float wanderRadius = 10f;
@@ -40,6 +41,8 @@ namespace Enemies
             At(attackState, chaseState, () => !playerDetector.CanAttackPlayer());
             
             _stateMachine.SetState(wanderState);
+
+            combatManager.OnDeath += () => gameObject.SetActive(false);
         }
 
         private void Update() {
