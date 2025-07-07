@@ -10,7 +10,7 @@ public class EntityCombatManager : MonoBehaviour
     protected float currentHealth;
 
     public float CurrentHealth => currentHealth;
-    void OnEnable()
+    protected virtual void OnEnable()
     {
         currentHealth = MaxHealth;
     }

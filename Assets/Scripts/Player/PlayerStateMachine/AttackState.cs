@@ -31,6 +31,7 @@ public class AttackState : PlayerState
     public override void OnEnter()
     {
         base.OnEnter();
+        Debug.Log("Enter attack state");
         comboIndex = 0;
         nextAttackQueued = false;
         canQueueSpell = true;
@@ -82,6 +83,7 @@ public class AttackState : PlayerState
     {
         isAttacking = false;
         comboIndex = 0;
+        animator.SetInteger(AttackHash, 0);
     }
 
     public void ComboStart()

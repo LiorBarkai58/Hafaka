@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
 using Random = UnityEngine.Random;
@@ -17,6 +18,9 @@ namespace Enemies.Combat {
         private CountdownTimer _attackTimer;
 
         private int _attackIndex;
+        
+        [Header("Hitboxes")]
+        [SerializeField] private List<Collider> hitboxes;
         
         private static readonly int AttackHash = Animator.StringToHash("AttackIndex");
 
@@ -42,6 +46,22 @@ namespace Enemies.Combat {
 
         private void SetRandomAttackIndex() {
             _attackIndex = Random.Range(0, attacksAmount);
+        }
+        
+        public void EnableColliders()
+        {
+            foreach (Collider collider in hitboxes)
+            {
+                collider.enabled = true;
+            }
+        }
+        
+        public void DisableColliders()
+        {
+            foreach (Collider collider in hitboxes)
+            {
+                collider.enabled = false;
+            }
         }
     }
 }

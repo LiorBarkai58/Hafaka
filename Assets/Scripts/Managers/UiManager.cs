@@ -1,3 +1,4 @@
+using EventSystem;
 using Experience;
 using Interactables;
 using Player;
@@ -11,7 +12,7 @@ namespace Managers
         [Header("References")]
         [SerializeField] private PlayerInteractor playerInteractor;
         [SerializeField] private ExperienceManager xpManager;
-        
+        [SerializeField] private PlayerCombatStateListener combatStateListener;
         [Header("Interact")]
         [SerializeField] private GameObject interactUi;
         [SerializeField] private TextMeshProUGUI interactText;
@@ -35,12 +36,15 @@ namespace Managers
             playerInteractor.InRange += ShowPrompt;
             playerInteractor.OutOfRange += HidePrompt;
             xpManager.OnEssenceChanged += SetXpText;
+            combatStateListener.OnEvent += UpdateCombatState;
         }
 
         private void OnDisable() {
             playerInteractor.InRange -= ShowPrompt;
             playerInteractor.OutOfRange -= HidePrompt;
             xpManager.OnEssenceChanged -= SetXpText;
+            combatStateListener.OnEvent -= UpdateCombatState;
+            
         }
 
         private void ShowPrompt(IInteractable interactable) {
@@ -60,6 +64,12 @@ namespace Managers
 
         private void SetXpText(int newXp) {
             xpText.text = newXp.ToString();
+        }
+
+        private void UpdateCombatState(PlayerCombatState combatState)
+        {
+            hpBar.value = combatState.CurrentHealth / combatState.MaxHealth;
+            manaBar.value = combatState.CurrentMana / combatState.MaxMana;
         }
     }
 }

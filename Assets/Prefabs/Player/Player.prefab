@@ -389,9 +389,9 @@ GameObject:
   - component: {fileID: 8029311376719802660}
   - component: {fileID: 295716593809005263}
   - component: {fileID: 7026119050968034504}
-  - component: {fileID: 6233768367199406512}
   - component: {fileID: 4450313174280888476}
   - component: {fileID: 1892054365630175536}
+  - component: {fileID: 6384465372447141045}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -462,19 +462,7 @@ MonoBehaviour:
   playerTransform: {fileID: 11400000, guid: d51c5962ea384884f973c171d5654064, type: 2}
   Visuals: {fileID: 627583043034602233}
   animator: {fileID: 4965773987213539726}
-  attackManager: {fileID: 6233768367199406512}
---- !u!114 &6233768367199406512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5518883714480951344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cea28f2281c292144ac524cdf9ce3f3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  attackManager: {fileID: 7673746466533454001}
 --- !u!114 &4450313174280888476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +503,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6384465372447141045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5518883714480951344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 641f736e94a54ed6904c1d3c85848bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 5359107569815483408}
+  - {fileID: 7653776062814588105}
 --- !u!1 &5623887435634063765
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +609,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96543a68d1c0ae3479b4d262b139f4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 30
+  maxMana: 30
+  combatStateChannel: {fileID: 11400000, guid: 7cbb5f045fe20e44e9d5d41bc455992d, type: 2}
 --- !u!136 &5556430224781306335
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -716,6 +721,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1248874732774416, guid: 3c9c85e47d53d1f4aaa97330d98c0680, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8796452576424791276}
+    - targetCorrespondingSourceObject: {fileID: 1248874732774416, guid: 3c9c85e47d53d1f4aaa97330d98c0680, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7673746466533454001}
   m_SourcePrefab: {fileID: 100100000, guid: 3c9c85e47d53d1f4aaa97330d98c0680, type: 3}
 --- !u!95 &4965773987213539726 stripped
 Animator:
@@ -757,6 +765,18 @@ MonoBehaviour:
   weapons:
   - {fileID: 5359107569815483408}
   - {fileID: 7653776062814588105}
+--- !u!114 &7673746466533454001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024303058810651558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea28f2281c292144ac524cdf9ce3f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6717257765055618655
 PrefabInstance:
   m_ObjectHideFlags: 0

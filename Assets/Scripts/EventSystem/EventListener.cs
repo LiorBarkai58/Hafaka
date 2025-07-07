@@ -6,6 +6,8 @@ namespace EventSystem {
         [SerializeField] private EventChannel<T> eventChannel;
         [SerializeField] private UnityEvent<T> unityEvent;
 
+        public event UnityAction<T> OnEvent;
+
         protected void Awake() {
             eventChannel.Register(this);
         }
@@ -16,6 +18,7 @@ namespace EventSystem {
 
         public void Raise(T value) {
             unityEvent?.Invoke(value);
+            OnEvent?.Invoke(value);
         }
     }
     
