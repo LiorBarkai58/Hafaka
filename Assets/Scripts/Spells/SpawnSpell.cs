@@ -4,9 +4,9 @@ namespace Spells
 {
     public class SpawnSpell : Spell
     {
-        [SerializeField] private Transform shootingPoint;
+        [SerializeField] protected Transform shootingPoint;
 
-        [SerializeField] private DamagingArea projectilePrefab;
+        [SerializeField] protected DamagingArea projectilePrefab;
         public override void Activate()
         {
             DamagingArea current = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity).WithDamage(Damage).WithDirection(shootingPoint.forward);

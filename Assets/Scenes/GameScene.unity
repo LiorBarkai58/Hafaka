@@ -14041,7 +14041,7 @@ PrefabInstance:
       objectReference: {fileID: 111658193}
     - target: {fileID: 7673746466533454001, guid: 635408e0420090846870dc6d69fb827b, type: 3}
       propertyPath: spells.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7673746466533454001, guid: 635408e0420090846870dc6d69fb827b, type: 3}
       propertyPath: 'spells.Array.data[0]'
@@ -14051,6 +14051,10 @@ PrefabInstance:
       propertyPath: 'spells.Array.data[1]'
       value: 
       objectReference: {fileID: 57863351}
+    - target: {fileID: 7673746466533454001, guid: 635408e0420090846870dc6d69fb827b, type: 3}
+      propertyPath: 'spells.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1442429968}
     - target: {fileID: 8029311376719802660, guid: 635408e0420090846870dc6d69fb827b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 259.66895
@@ -27490,6 +27494,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1442429969}
   - {fileID: 1799322381}
   - {fileID: 57863350}
   m_Father: {fileID: 719997386}
@@ -30251,6 +30256,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4438399821102590789, guid: 4334bd3c6eafead48a01776201f6bf51, type: 3}
   m_PrefabInstance: {fileID: 1325560100}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1331505835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1331505836}
+  m_Layer: 0
+  m_Name: Shootingpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1331505836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331505835}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1442429969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1336658607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32194,6 +32230,56 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441476949}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1442429967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1442429969}
+  - component: {fileID: 1442429968}
+  m_Layer: 0
+  m_Name: PillarSpell
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1442429968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442429967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d215dff66b44df9f01056c0ee9277e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  shootingPoint: {fileID: 1331505836}
+  projectilePrefab: {fileID: 118040644838162318, guid: d80b37b002c8f464eaea1c495128e130, type: 3}
+  Anticipation: {fileID: 8676717290654552930, guid: 47379d1e86afb0649a1760788ab53a30, type: 3}
+  activationDelay: 1
+--- !u!4 &1442429969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442429967}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.8159485, y: 1.4430001, z: 0.020385742}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1331505836}
+  m_Father: {fileID: 1157218210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1444041286
 PrefabInstance:
   m_ObjectHideFlags: 0
