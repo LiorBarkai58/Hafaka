@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7109518152881227830}
   - component: {fileID: 7969661506188533367}
+  - component: {fileID: 3908137830937658581}
   m_Layer: 0
   m_Name: UiManager
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInteractor: {fileID: 0}
   xpManager: {fileID: 0}
+  combatStateListener: {fileID: 3908137830937658581}
   interactUi: {fileID: 0}
   interactText: {fileID: 0}
   hpBar: {fileID: 0}
@@ -53,3 +55,19 @@ MonoBehaviour:
   xpText: {fileID: 0}
   comboText: {fileID: 0}
   flaskAmountText: {fileID: 0}
+--- !u!114 &3908137830937658581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648386398792577230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53aadd1204cc4cc3963584692659f20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventChannel: {fileID: 11400000, guid: 7cbb5f045fe20e44e9d5d41bc455992d, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []

@@ -8,8 +8,7 @@ public class ProjectileSpell : Spell
     [SerializeField] private SpellProjectile projectilePrefab;
     public override void Activate()
     {
-        SpellProjectile current = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity);
-        current.SetDirection(transform.forward);
+        SpellProjectile current = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity).WithDamage(5f).WithDirection(transform.forward);
     }
     
 }
