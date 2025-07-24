@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Player;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpHeight = 1.0f;
 
     [SerializeField] private float acceleration = 5f;
+
+    [SerializeField] private float rotationSpeed = 8f;
     private float gravityValue = -9.81f;
 
     [Header("References")]
@@ -31,11 +35,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform Visuals;
 
     [SerializeField] private Animator animator;
+    
+    [SerializeField] private LockOnTarget lockOnTarget;
+
+    [SerializeField] private CinemachineCamera CinemachineCamera;
 
     [Header("Attacking data")]
 
     [SerializeField] private PlayerAttackManager attackManager;
 
+    private bool _lockOn = false;
     private bool isGrounded = false;
     private Vector2 moveDirection;
 
@@ -62,7 +71,6 @@ public class PlayerController : MonoBehaviour
     #endregion
 
 
-
     private void Awake()
     {
         SetupStateMachine();
@@ -78,12 +86,15 @@ public class PlayerController : MonoBehaviour
         input.Jump += OnJump;
         input.Attack += OnAttack;
         input.Spell += OnSpell;
+        input.Lock += OnLock;
     }
     void OnDisable()
     {
         input.Jump -= OnJump;
         input.Attack -= OnAttack;
         input.Spell -= OnSpell;
+        input.Lock -= OnLock;
+        
 
     }
     private void SetupStateMachine()
@@ -139,6 +150,12 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         stateMachine.FixedUpdate();
+        Vector3 target = lockOnTarget.target ? lockOnTarget.target.position : transform.position;
+        
+        Vector3 direction = target - CinemachineCamera.transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        CinemachineCamera.transform.rotation = lookRotation;
+        
     }
 
     public void HandleMovement()
@@ -164,11 +181,12 @@ public class PlayerController : MonoBehaviour
         // If there is movement input, rotate the character to face the movement direction
         if (input.Direction.sqrMagnitude > 0.01f)
         {
-            Vector3 lookDirection = new Vector3(movement.x, 0, movement.z); // Flatten the movement vector
+            var lookDirection = new Vector3(movement.x, 0, movement.z); // Flatten the movement vector   
+
             if (lookDirection != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                Visuals.rotation = Quaternion.Slerp(Visuals.rotation, targetRotation, Time.deltaTime * 6f); // Smooth rotation
+                Visuals.rotation = Quaternion.Slerp(Visuals.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed); // Smooth rotation
             }
         }
         // Move the character using the CharacterController
@@ -240,6 +258,11 @@ public class PlayerController : MonoBehaviour
     {
         if (inDialogue) dialogueTrigger.Trigger();
         else endDialogueTrigger.Trigger();
+    }
+
+    private void OnLock()
+    {
+        _lockOn = true;
     }
 
     

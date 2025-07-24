@@ -13,6 +13,8 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event UnityAction Spell = delegate { };
     public event UnityAction Dialogue = delegate { };
     public event UnityAction Interact = delegate { };
+    
+    public event UnityAction Lock = delegate { };
 
     PlayerInputActions inputActions;
 
@@ -107,5 +109,10 @@ public class InputReader : ScriptableObject, IPlayerActions
         }
     }
 
-    
+    public void OnLock(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started) {
+            Lock.Invoke();
+        }
+    }
 }
