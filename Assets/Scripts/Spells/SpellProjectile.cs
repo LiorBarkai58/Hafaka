@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SpellProjectile : MonoBehaviour {
@@ -21,12 +22,17 @@ public class SpellProjectile : MonoBehaviour {
         return this;
     }
 
+    private void Start()
+    {
+        Destroy(gameObject, LifeTime);
+    }
+
     public void FixedUpdate()
     {
         transform.position += direction * ProjectileSpeed * Time.fixedDeltaTime;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Enemy"))
         {
