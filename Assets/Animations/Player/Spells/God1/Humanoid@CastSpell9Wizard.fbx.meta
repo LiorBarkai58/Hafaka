@@ -45,7 +45,7 @@ ModelImporter:
       name: CastSpell10Wizard
       takeName: Take 001
       internalID: 0
-      firstFrame: 3
+      firstFrame: 53
       lastFrame: 82
       wrapMode: 0
       orientationOffsetY: 0
@@ -65,7 +65,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.5989946
+        functionName: CastSpellAtIndex
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 3
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

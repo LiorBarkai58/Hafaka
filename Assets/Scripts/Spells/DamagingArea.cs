@@ -39,7 +39,6 @@ namespace Spells
                     {
                         damage = _damage
                     });
-                    Destroy(gameObject);
                 }
             }
         }

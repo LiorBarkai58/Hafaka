@@ -18,7 +18,7 @@ namespace Spells
         {
             Instantiate(Anticipation, shootingPoint.position, Quaternion.identity).Play();
             yield return new WaitForSeconds(activationDelay); // Wait for the specified delay
-            DamagingArea current = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity).WithDamage(Damage).WithDirection(shootingPoint.up);
+            DamagingArea current = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity).WithDamage(Damage).WithDirection(shootingPoint.forward);
         }
 
     }
