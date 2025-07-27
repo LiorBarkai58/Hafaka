@@ -1,7 +1,9 @@
 using EventSystem;
+using System.Collections;
 using Experience;
 using Interactables;
 using Player;
+using TimeCycleHook;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,6 +32,11 @@ namespace Managers
         [Header("Flask")] 
         [SerializeField] private TextMeshProUGUI flaskAmountText;
 
+        [Header("Time Phase Change Message")] 
+        [SerializeField] private GameObject timePhaseGameObject;
+        [SerializeField] private TextMeshProUGUI timeChangeText;
+        [SerializeField] private float timeChangeTextDuration = 3f;
+
         private IInteractable _interactableOwner;
 
         private void OnEnable() {
@@ -45,6 +52,33 @@ namespace Managers
             xpManager.OnEssenceChanged -= SetXpText;
             combatStateListener.OnEvent -= UpdateCombatState;
             
+        }
+
+        public void TimePhaseChange(TimePhase timePhase) {
+            switch (timePhase) {
+                case TimePhase.War:
+                    timeChangeText.text = "God of War is Ruling";
+                    break;
+                case TimePhase.Deceive:
+                    timeChangeText.text = "God of Deception is Ruling";
+                    break;
+                case TimePhase.Vanity:
+                    timeChangeText.text = "God of Vanity is Ruling";
+                    break;
+                case TimePhase.Lie:
+                    timeChangeText.text = "God of Lies is Ruling";
+                    break;
+            }
+
+            StartCoroutine(ShowTextForSeconds());
+        }
+
+        private IEnumerator ShowTextForSeconds() {
+            timePhaseGameObject.SetActive(true);
+
+            yield return new WaitForSeconds(timeChangeTextDuration);
+
+            timePhaseGameObject.SetActive(false);
         }
 
         private void ShowPrompt(IInteractable interactable) {

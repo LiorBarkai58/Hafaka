@@ -3,34 +3,28 @@ using UnityEngine.Events;
 
 namespace Experience {
     public class FlaskUpgradeManager : MonoBehaviour {
-        [Header("Seed Cost Array")]
-        [Tooltip("Flask Uses per Seed Count (index = seeds collected)")]
-        [SerializeField] private int[] seedCostPerFlaskLevel;
+        [Header("Flask Base & Growth Formula")]
+        [SerializeField] private int baseFlaskUses = 3;
+        [SerializeField] private int flaskIncrementPerSeed = 1;
         
-        public int CurLevel { get; private set; }
+        public int SeedCount { get; private set; }
         public int CurrentFlaskUses { get; private set; }
-        
+
         public event UnityAction<int> OnFlaskUpgraded;
 
-        public bool TryUpgradeFlask(int seedAmount) {
-            var nextLevel = CurLevel + 1;
-
-            if (nextLevel < seedCostPerFlaskLevel.Length && seedAmount >= seedCostPerFlaskLevel[nextLevel]) {
-                CurLevel = nextLevel;
-                OnFlaskUpgraded?.Invoke(CurrentFlaskUses);
-                return true;
-            }
-
-            return false;
+        private void Start() {
+            // Initialize with zero seeds
+            ApplySeedEffects();
         }
-        
-        public int GetCostForNextTier() {
-            var nextTier = CurLevel + 1;
-            
-            if (nextTier < seedCostPerFlaskLevel.Length)
-                return seedCostPerFlaskLevel[nextTier];
-            
-            return -1; // maxed
+
+        public void UpgradeFlask() {
+            SeedCount++;
+            ApplySeedEffects();
+            OnFlaskUpgraded?.Invoke(CurrentFlaskUses);
+        }
+
+        private void ApplySeedEffects() {
+            CurrentFlaskUses = baseFlaskUses + SeedCount * flaskIncrementPerSeed;
         }
     }
 }
