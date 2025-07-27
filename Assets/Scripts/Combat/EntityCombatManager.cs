@@ -1,0 +1,33 @@
+using UnityEngine;
+using UnityEngine.Events;
+
+
+public class EntityCombatManager : MonoBehaviour
+{
+    [SerializeField] protected float maxHealth;
+
+    public float MaxHealth => maxHealth;
+
+    protected float currentHealth;
+
+    public float CurrentHealth => currentHealth;
+
+    public event UnityAction OnDeath;
+    protected virtual void OnEnable()
+    {
+        currentHealth = MaxHealth;
+    }
+
+    public virtual void TakeDamage(DamageDealtArgs damageDealtArgs)
+    {
+        currentHealth -= damageDealtArgs.damage;
+
+
+        if (currentHealth <= 0) Death();
+    }
+
+    protected virtual void Death()
+    {
+        OnDeath?.Invoke();
+    }
+}

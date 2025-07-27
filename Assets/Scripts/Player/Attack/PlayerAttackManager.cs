@@ -10,6 +10,7 @@ public class PlayerAttackManager : MonoBehaviour
     public event UnityAction OnComboEnd;
     private AttackState playerAttackState;
 
+    [SerializeField] private List<Spell> spells;
 
     public void AssignAttackState(AttackState attackState)
     {
@@ -27,6 +28,14 @@ public class PlayerAttackManager : MonoBehaviour
     {
         playerAttackState.ComboEnd();
         OnComboEnd?.Invoke();
+    }
+
+    public void CastSpellAtIndex(int index)
+    {
+        if (index < spells.Count)
+        {
+            spells[index].Activate();
+        }
     }
     
     

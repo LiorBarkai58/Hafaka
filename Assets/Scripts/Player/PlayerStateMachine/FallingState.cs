@@ -10,7 +10,6 @@ public class FallingState : PlayerState
     public override void OnEnter()
     {
         base.OnEnter();
-        Debug.Log("Falling State Entered");
     }
 
     public override void FixedUpdate()

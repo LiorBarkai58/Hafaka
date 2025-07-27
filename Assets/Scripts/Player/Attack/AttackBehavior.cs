@@ -6,7 +6,7 @@ public class AttackBehavior : StateMachineBehaviour
 
     public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
     {
-        findPlayerAttackManager(animator);
+        FindPlayerAttackManager(animator);
         if(playerAttackManager){
             playerAttackManager.ComboEntered();
         }
@@ -14,18 +14,27 @@ public class AttackBehavior : StateMachineBehaviour
 
     public override void OnStateMachineExit(Animator animator, int stateMachinePathHash)
     {
-        findPlayerAttackManager(animator);
+        FindPlayerAttackManager(animator);
         if (playerAttackManager)
         {
             playerAttackManager.ComboEnd();
         }
     }
 
-    private void findPlayerAttackManager(Animator animator)
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        FindPlayerAttackManager(animator);
+        if (playerAttackManager)
+        {
+            playerAttackManager.AttackEntered();
+        }
+    }
+
+    private void FindPlayerAttackManager(Animator animator)
     {
         if (!playerAttackManager)
         {
-            playerAttackManager = animator.GetComponentInParent<PlayerAttackManager>();
+            playerAttackManager = animator.GetComponent<PlayerAttackManager>();
         }
     }
 }

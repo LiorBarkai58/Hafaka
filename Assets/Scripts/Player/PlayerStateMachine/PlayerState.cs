@@ -1,7 +1,7 @@
 using UnityEngine;
 public enum PlayerStates
 {
-    Locomotion, Jumping, Falling, Attacking
+    Locomotion, Jumping, Falling, Attacking, Speaking
 }
 
 public abstract class PlayerState : BaseState
@@ -14,6 +14,9 @@ public abstract class PlayerState : BaseState
     protected static readonly int stateHash = Animator.StringToHash("PlayerState");
 
     protected static readonly int AttackHash = Animator.StringToHash("AttackState");
+
+    protected static readonly int SpellHash = Animator.StringToHash("Spell");
+
 
 
 

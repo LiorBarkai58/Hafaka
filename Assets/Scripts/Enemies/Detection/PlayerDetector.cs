@@ -12,7 +12,7 @@ namespace Enemies.Detection {
         [SerializeField] private float attackRange = 2f;            // Distance from enemy to player to attack
         
         [Header("References")]
-        public Transform player;
+        [SerializeField] public PlayerTransform player;
         
         // Detection strategy
         private IDetectionStrategy _detectionStrategy;
@@ -22,11 +22,11 @@ namespace Enemies.Detection {
         }
         
         public bool CanDetectPlayer() {
-            return _detectionStrategy.Execute(player, transform);
+            return _detectionStrategy.Execute(player.Transform, transform);
         }
         
         public bool CanAttackPlayer() {
-            var directionToPlayer = player.position - transform.position;
+            var directionToPlayer = player.Position - transform.position;
             return directionToPlayer.magnitude <= attackRange;
         }
         

@@ -9,7 +9,7 @@ public class LocomotionState : PlayerState
     public override void OnEnter()
     {
         base.OnEnter();
-        Debug.Log("Locomotion State Entered");
+        Debug.Log("Entering Locomotion State");
     }
     public override void FixedUpdate()
     {

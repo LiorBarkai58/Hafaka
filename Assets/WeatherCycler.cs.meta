@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: cecc85f4a94d0b649bb2b26766ce9fd7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - overlayProfile: {fileID: 11400000, guid: 56652bb77d1606b4396767fbb07e50ab, type: 2}
+  - partlyCloudyProfile: {fileID: 11400000, guid: ae94c1a397a01e442a11e8b23ebb1cef, type: 2}
+  - chemtrailsProfile: {fileID: 11400000, guid: de311de87cd9d1e4cbe2d9899cbc5680, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -9,7 +9,6 @@ public class JumpState : PlayerState
     public override void OnEnter()
     {
         base.OnEnter();
-        Debug.Log("Jump State Entered");
     }
     public override void FixedUpdate()
     {

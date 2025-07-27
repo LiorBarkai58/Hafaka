@@ -4,7 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using Utilities;
 
-
+public enum AttackType
+{
+    Attack, Spell
+}
 public class AttackState : PlayerState
 {
     private CountdownTimer currentAttackTimer;
@@ -15,7 +18,13 @@ public class AttackState : PlayerState
 
     private bool nextAttackQueued = false;
 
+    private bool canQueueSpell = true;
+
     private bool isAttacking;
+
+    private AttackType startAction = AttackType.Attack;
+    
+    private static readonly int QueuedHash = Animator.StringToHash("AttackQueued");
 
     public AttackState(PlayerController playerController, Animator animator, PlayerStates stateIdentifier) : base(playerController, animator, stateIdentifier)
     {
@@ -24,10 +33,14 @@ public class AttackState : PlayerState
     public override void OnEnter()
     {
         base.OnEnter();
+        Debug.Log("Enter attack state");
         comboIndex = 0;
         nextAttackQueued = false;
-        TryQueueAttack();
-        Debug.Log("Attack State Entered");
+        animator.SetBool(QueuedHash, nextAttackQueued);
+        canQueueSpell = true;
+        if (startAction == AttackType.Attack) TryQueueAttack();
+        if(startAction == AttackType.Spell) TryQueueSpell();
+        playerController.RotateToTarget();
     }
 
     public override void FixedUpdate()
@@ -48,8 +61,22 @@ public class AttackState : PlayerState
         if (comboIndex > 2) comboIndex = 0;
 
         animator.SetInteger(AttackHash, comboIndex);
-        nextAttackQueued = false;
+        nextAttackQueued = true;
+        animator.SetBool(QueuedHash, nextAttackQueued);
+        
+        canQueueSpell = true;
         comboIndex++;
+    }
+
+    public void TryQueueSpell()
+    {
+        if (!CanQueueNextAttack() || nextAttackQueued || !canQueueSpell) return;
+
+        animator.SetTrigger(SpellHash);
+        nextAttackQueued = true;
+        animator.SetBool(QueuedHash, nextAttackQueued);
+        
+        canQueueSpell = false;
     }
 
 
@@ -64,6 +91,7 @@ public class AttackState : PlayerState
     {
         isAttacking = false;
         comboIndex = 0;
+        animator.SetInteger(AttackHash, 0);
     }
 
     public void ComboStart()
@@ -74,6 +102,13 @@ public class AttackState : PlayerState
     public void AttackEntered()
     {
         nextAttackQueued = false;
+        animator.SetBool(QueuedHash, nextAttackQueued);
+        
+    }
+
+    public void ChangeStartAction(AttackType attackType)
+    {
+        this.startAction = attackType;
     }
     
 
