@@ -1,0 +1,99 @@
+using System.Collections;
+using Experience;
+using Interactables;
+using Player;
+using TimeCycleHook;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Managers
+{
+    public class UiManager : MonoBehaviour {
+        [Header("References")]
+        [SerializeField] private PlayerInteractor playerInteractor;
+        [SerializeField] private ExperienceManager xpManager;
+        
+        [Header("Interact")]
+        [SerializeField] private GameObject interactUi;
+        [SerializeField] private TextMeshProUGUI interactText;
+
+        [Header("Bars")] 
+        [SerializeField] private Slider hpBar;
+        [SerializeField] private Slider manaBar;
+
+        [Header("XP")] 
+        [SerializeField] private TextMeshProUGUI xpText;
+
+        [Header("Combo")] 
+        [SerializeField] private TextMeshProUGUI comboText;
+
+        [Header("Flask")] 
+        [SerializeField] private TextMeshProUGUI flaskAmountText;
+
+        [Header("Time Phase Change Message")] 
+        [SerializeField] private GameObject timePhaseGameObject;
+        [SerializeField] private TextMeshProUGUI timeChangeText;
+        [SerializeField] private float timeChangeTextDuration = 3f;
+
+        private IInteractable _interactableOwner;
+
+        private void OnEnable() {
+            playerInteractor.InRange += ShowPrompt;
+            playerInteractor.OutOfRange += HidePrompt;
+            xpManager.OnEssenceChanged += SetXpText;
+        }
+
+        private void OnDisable() {
+            playerInteractor.InRange -= ShowPrompt;
+            playerInteractor.OutOfRange -= HidePrompt;
+            xpManager.OnEssenceChanged -= SetXpText;
+        }
+
+        public void TimePhaseChange(TimePhase timePhase) {
+            switch (timePhase) {
+                case TimePhase.War:
+                    timeChangeText.text = "God of War is Ruling";
+                    break;
+                case TimePhase.Deceive:
+                    timeChangeText.text = "God of Deception is Ruling";
+                    break;
+                case TimePhase.Vanity:
+                    timeChangeText.text = "God of Vanity is Ruling";
+                    break;
+                case TimePhase.Lie:
+                    timeChangeText.text = "God of Lies is Ruling";
+                    break;
+            }
+
+            StartCoroutine(ShowTextForSeconds());
+        }
+
+        private IEnumerator ShowTextForSeconds() {
+            timePhaseGameObject.SetActive(true);
+
+            yield return new WaitForSeconds(timeChangeTextDuration);
+
+            timePhaseGameObject.SetActive(false);
+        }
+
+        private void ShowPrompt(IInteractable interactable) {
+            if (_interactableOwner != null && _interactableOwner != interactable) return;
+
+            _interactableOwner = interactable;
+            interactText.text = interactable.GetPrompt();
+            interactUi.SetActive(true);
+        }
+
+        private void HidePrompt(IInteractable interactable) {
+            if (_interactableOwner != interactable) return;
+
+            _interactableOwner = null;
+            interactUi.SetActive(false);
+        }
+
+        private void SetXpText(int newXp) {
+            xpText.text = newXp.ToString();
+        }
+    }
+}

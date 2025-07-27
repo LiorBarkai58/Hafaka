@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event UnityAction Jump = delegate { };
     public event UnityAction<bool> Dash = delegate { };
     public event UnityAction Attack = delegate { };
+    public event UnityAction Interact = delegate { };
 
     PlayerInputActions inputActions;
 
@@ -79,7 +80,9 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        //noop
+        if (context.phase == InputActionPhase.Started) {
+            Interact.Invoke();
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
