@@ -150,11 +150,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         stateMachine.FixedUpdate();
-        Vector3 target = lockOnTarget.target ? lockOnTarget.target.position : transform.position;
-        
-        Vector3 direction = target - CinemachineCamera.transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        CinemachineCamera.transform.rotation = lookRotation;
         
     }
 
@@ -205,10 +200,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void RotateToTarget()
+    {
+        if (lockOnTarget.targets.Count > 0)
+        {
+            Vector3 direction = lockOnTarget.targets[0].position - transform.position;
+            direction.y = 0;
+            Visuals.rotation = Quaternion.LookRotation(direction);    
+        }
+        
+    }
+
     public void HandleRunSpeed()
     {
         animator.SetFloat(SpeedHash, currentVelocity / maximumSpeed, 0.05f, Time.fixedDeltaTime);
     }
+    
 
 
     private void OnJump()

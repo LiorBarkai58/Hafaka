@@ -40,6 +40,7 @@ public class AttackState : PlayerState
         canQueueSpell = true;
         if (startAction == AttackType.Attack) TryQueueAttack();
         if(startAction == AttackType.Spell) TryQueueSpell();
+        playerController.RotateToTarget();
     }
 
     public override void FixedUpdate()

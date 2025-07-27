@@ -1,26 +1,27 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player
 {
     public class LockOnTarget : MonoBehaviour
     {
-        public Transform target;
+        public List<Transform> targets;
 
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Enemy"))
             {
-                target = other.transform;
+                targets.Add(other.transform);
             }
         }
         
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Enemy") && target == other.transform)
+            if (other.CompareTag("Enemy") && targets.Contains(other.transform))
             {
-                target = null;
+                targets.Remove(other.transform);
             }
         }
     }
