@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7109518152881227830}
   - component: {fileID: 7969661506188533367}
+  - component: {fileID: 7517349421185167851}
   m_Layer: 0
   m_Name: UiManager
   m_TagString: Untagged
@@ -53,3 +54,20 @@ MonoBehaviour:
   xpText: {fileID: 0}
   comboText: {fileID: 0}
   flaskAmountText: {fileID: 0}
+  timeChangeText: {fileID: 0}
+--- !u!114 &7517349421185167851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648386398792577230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdefdf93921c42f9a830b6c439e77274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventChannel: {fileID: 11400000, guid: f518807ba3e634a4ea0f618b12752378, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []

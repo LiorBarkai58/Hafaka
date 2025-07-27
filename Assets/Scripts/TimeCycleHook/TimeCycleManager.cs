@@ -1,6 +1,5 @@
 using EventSystem;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Utilities;
 
 namespace TimeCycleHook
