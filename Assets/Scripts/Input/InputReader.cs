@@ -8,11 +8,12 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event UnityAction<Vector2> Move = delegate { };
     public event UnityAction<Vector2, bool> Look = delegate { };
     public event UnityAction Jump = delegate { };
-    public event UnityAction<bool> Dash = delegate { };
+    public event UnityAction Dash = delegate { };
     public event UnityAction Attack = delegate { };
     public event UnityAction Spell = delegate { };
     public event UnityAction Dialogue = delegate { };
     public event UnityAction Interact = delegate { };
+
     
     public event UnityAction Lock = delegate { };
 
@@ -80,6 +81,14 @@ public class InputReader : ScriptableObject, IPlayerActions
     public void OnCrouch(InputAction.CallbackContext context)
     {
         //noop
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Dash?.Invoke();
+        }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
