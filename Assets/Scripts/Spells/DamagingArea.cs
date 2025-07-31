@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Spells
 {
@@ -9,6 +10,8 @@ namespace Spells
 
         [SerializeField] private ParticleSystem effect;
         private float _damage;
+        
+        public event UnityAction OnHit;
         
         public DamagingArea WithDamage(float damage)
         {
@@ -40,6 +43,7 @@ namespace Spells
                         damage = _damage
                     });
                 }
+                OnHit?.Invoke();
             }
         }
     }

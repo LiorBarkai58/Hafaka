@@ -21,6 +21,8 @@ namespace Spells
             anticipiationCurrent.transform.rotation = Quaternion.Euler(90, 0, 0);
             yield return new WaitForSeconds(activationDelay); // Wait for the specified delay
             DamagingArea current = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity).WithDamage(Damage).WithDirection(shootingPoint.forward);
+            current.OnHit += InvokeHit;
+            
         }
 
     }

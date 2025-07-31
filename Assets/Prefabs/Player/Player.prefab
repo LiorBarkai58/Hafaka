@@ -615,7 +615,7 @@ MonoBehaviour:
   damage: 5
   shootingPoint: {fileID: 3095498425884369860}
   projectilePrefab: {fileID: 118040644838162318, guid: 0d1f94fac5faf304cbde68e0bc61cc8c, type: 3}
-  Anticipation: {fileID: 8676717290654552930, guid: 47379d1e86afb0649a1760788ab53a30, type: 3}
+  anticipation: {fileID: 0}
   activationDelay: 1
 --- !u!1 &4036052441784605440
 GameObject:
@@ -1376,6 +1376,8 @@ MonoBehaviour:
   jumpHeight: 3
   acceleration: 50
   rotationSpeed: 8
+  dashSpeed: 10
+  dashDuration: 0.2
   characterController: {fileID: 295716593809005263}
   input: {fileID: 11400000, guid: 648cfaadab1f76e4bb54712877ebf7b9, type: 2}
   blocker: {fileID: 11400000, guid: 0602c2441c4936f459fcdb6d34531d78, type: 2}
@@ -1916,6 +1918,9 @@ MonoBehaviour:
   - {fileID: 7550993470123656948}
   - {fileID: 3469199365957106113}
   - {fileID: 4705512619338341771}
+  weaponManager: {fileID: 8796452576424791276}
+  maxCombo: 6
+  comboCounterChannel: {fileID: 11400000, guid: 4dd2983835472cb42b9c0ad79d52f95f, type: 2}
 --- !u!1001 &6717257765055618655
 PrefabInstance:
   m_ObjectHideFlags: 0

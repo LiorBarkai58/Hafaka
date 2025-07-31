@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
 
     private AttackState attackState;
 
+    private LocomotionState locomotionState;
+
     private CountdownTimer _dashTimer;
 
     #region Trigger Transitions
@@ -112,7 +114,7 @@ public class PlayerController : MonoBehaviour
         _dashTimer = new CountdownTimer(dashDuration);
         stateMachine = new StateMachine();
 
-        LocomotionState locomotionState = new LocomotionState(this, animator, PlayerStates.Locomotion);
+        locomotionState = new LocomotionState(this, animator, PlayerStates.Locomotion);
 
         defaultState = locomotionState;//set default state for editor
 
@@ -255,8 +257,10 @@ public class PlayerController : MonoBehaviour
     private void OnDash()
     {
         if (blocker.isBlocked) return;
-        
-        _dashTimer.Start();
+        if (characterController.isGrounded && stateMachine.Current == locomotionState)
+        {
+            _dashTimer.Start();
+        }
         
     }
 

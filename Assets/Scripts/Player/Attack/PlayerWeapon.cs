@@ -20,6 +20,7 @@ public class PlayerWeapon : Weapon
                     staggerValue = 10,
                 });
             }
+            InvokeHit();
         }
     }
 
