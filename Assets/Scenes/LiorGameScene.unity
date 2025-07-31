@@ -14053,6 +14053,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3469199365957106113, guid: 635408e0420090846870dc6d69fb827b, type: 3}
+      propertyPath: anticipation
+      value: 
+      objectReference: {fileID: 8676717290654552930, guid: 47379d1e86afb0649a1760788ab53a30, type: 3}
     - target: {fileID: 5518883714480951344, guid: 635408e0420090846870dc6d69fb827b, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -26942,7 +26946,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 0aeb7a74d6f736742b84ff01a40fea31, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 36d49c8905b29794e8df4c63c04d33e1, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1120000761
 Transform:
@@ -35614,6 +35618,22 @@ PrefabInstance:
     - target: {fileID: 648386398792577230, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
       propertyPath: m_Name
       value: UiManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5867010456667279980, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5867010456667279980, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218776806700937945, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218776806700937945, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7109518152881227830, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
       propertyPath: m_LocalPosition.x

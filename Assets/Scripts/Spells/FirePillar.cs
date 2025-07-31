@@ -5,7 +5,7 @@ namespace Spells
 {
     public class FirePillar : SpawnSpell
     {
-        [SerializeField] private ParticleSystem Anticipation;
+        [SerializeField] private ParticleSystem anticipation;
         
         [SerializeField] private float activationDelay = 1f; // Delay time in seconds
         
@@ -16,7 +16,9 @@ namespace Spells
 
         private IEnumerator ActivateWithDelay()
         {
-            Instantiate(Anticipation, shootingPoint.position, Quaternion.identity).Play();
+            ParticleSystem anticipiationCurrent = Instantiate(anticipation, shootingPoint.position, Quaternion.identity);
+            anticipiationCurrent.Play();
+            anticipiationCurrent.transform.rotation = Quaternion.Euler(90, 0, 0);
             yield return new WaitForSeconds(activationDelay); // Wait for the specified delay
             DamagingArea current = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity).WithDamage(Damage).WithDirection(shootingPoint.forward);
         }
