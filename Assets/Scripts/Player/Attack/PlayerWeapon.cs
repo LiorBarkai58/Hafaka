@@ -19,8 +19,8 @@ public class PlayerWeapon : Weapon
                     isCrit = false,
                     staggerValue = 10,
                 });
+                InvokeHit();
             }
-            InvokeHit();
         }
     }
 

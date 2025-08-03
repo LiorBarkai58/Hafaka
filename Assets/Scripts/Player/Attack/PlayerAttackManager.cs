@@ -19,10 +19,14 @@ public class PlayerAttackManager : MonoBehaviour
     
     [SerializeField] private int maxCombo = 6;
     
-    [SerializeField] private FloatEventChannel comboCounterChannel;
+    [SerializeField] private IntEventChannel comboCounterChannel;
     private void Start()
     {
         weaponManager.onHit += IncreaseComboIndex;
+        foreach (Spell spell in spells)
+        {
+            spell.OnHit += IncreaseComboIndex;
+        }
     }
 
     public void AssignAttackState(AttackState attackState)
@@ -49,6 +53,10 @@ public class PlayerAttackManager : MonoBehaviour
         {
             currentComboCounter++;
             comboCounterChannel.Invoke(currentComboCounter);
+        }
+        else
+        {
+            currentComboCounter = 0;
         }
     }
 
