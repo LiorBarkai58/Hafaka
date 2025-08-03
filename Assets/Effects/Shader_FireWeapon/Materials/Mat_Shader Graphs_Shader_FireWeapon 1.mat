@@ -62,7 +62,7 @@ Material:
     - _Color: {r: 16, g: 2.446818, b: 0, a: 1}
     - _Tex_Movement: {r: 0, g: -0.3, b: 0, a: 0}
     - _Tex_Movement_2: {r: 0.2, g: -0.5, b: 0, a: 0}
-    - _Tex_Tilling: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _Tex_Tilling: {r: 1, g: 1, b: 0, a: 0}
     - _Tex_Tilling_2: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
