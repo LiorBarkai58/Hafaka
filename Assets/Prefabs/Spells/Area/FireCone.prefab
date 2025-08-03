@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LifeTime: 2
-  effect: {fileID: 0}
+  effect: {fileID: 3380059238057756243}
 --- !u!65 &7748504706229847706
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,5 +129,10 @@ PrefabInstance:
 --- !u!4 &75807215599223335 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2709017776026386594, guid: b8d0c9bf9f573594884e75f096f939a3, type: 3}
+  m_PrefabInstance: {fileID: 2636029730023899781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3380059238057756243 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 755882243490333910, guid: b8d0c9bf9f573594884e75f096f939a3, type: 3}
   m_PrefabInstance: {fileID: 2636029730023899781}
   m_PrefabAsset: {fileID: 0}

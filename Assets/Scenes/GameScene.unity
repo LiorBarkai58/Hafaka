@@ -13993,7 +13993,11 @@ PrefabInstance:
     - target: {fileID: 3469199365957106113, guid: 635408e0420090846870dc6d69fb827b, type: 3}
       propertyPath: anticipation
       value: 
-      objectReference: {fileID: 8676717290654552930, guid: 47379d1e86afb0649a1760788ab53a30, type: 3}
+      objectReference: {fileID: 8311737899669011278, guid: 3b2bb069c5f0c6447a40791471dedab0, type: 3}
+    - target: {fileID: 3469199365957106113, guid: 635408e0420090846870dc6d69fb827b, type: 3}
+      propertyPath: activationDelay
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3845216692500936494, guid: 635408e0420090846870dc6d69fb827b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.65
