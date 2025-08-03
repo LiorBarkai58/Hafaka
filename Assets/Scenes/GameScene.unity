@@ -10082,17 +10082,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3761323109331100197, guid: bd41122507b36324c8ddb76990837fd6, type: 3}
   m_PrefabInstance: {fileID: 310082836}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &315445654 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3469199365957106113, guid: 635408e0420090846870dc6d69fb827b, type: 3}
-  m_PrefabInstance: {fileID: 591346028}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d215dff66b44df9f01056c0ee9277e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &316767725
 GameObject:
   m_ObjectHideFlags: 0
@@ -14018,26 +14007,6 @@ PrefabInstance:
       propertyPath: CinemachineCamera
       value: 
       objectReference: {fileID: 111658193}
-    - target: {fileID: 7673746466533454001, guid: 635408e0420090846870dc6d69fb827b, type: 3}
-      propertyPath: spells.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7673746466533454001, guid: 635408e0420090846870dc6d69fb827b, type: 3}
-      propertyPath: 'spells.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1657890090}
-    - target: {fileID: 7673746466533454001, guid: 635408e0420090846870dc6d69fb827b, type: 3}
-      propertyPath: 'spells.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1680841528}
-    - target: {fileID: 7673746466533454001, guid: 635408e0420090846870dc6d69fb827b, type: 3}
-      propertyPath: 'spells.Array.data[2]'
-      value: 
-      objectReference: {fileID: 315445654}
-    - target: {fileID: 7673746466533454001, guid: 635408e0420090846870dc6d69fb827b, type: 3}
-      propertyPath: 'spells.Array.data[3]'
-      value: 
-      objectReference: {fileID: 1489918267}
     - target: {fileID: 8029311376719802660, guid: 635408e0420090846870dc6d69fb827b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 259.66895
@@ -33078,17 +33047,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479404501}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1489918267 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4705512619338341771, guid: 635408e0420090846870dc6d69fb827b, type: 3}
-  m_PrefabInstance: {fileID: 591346028}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccc5bdc39d0949a78cb5e9e3f7659b29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1492621616
 GameObject:
   m_ObjectHideFlags: 0
@@ -36495,17 +36453,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6824491752295074168, guid: f6593c440e6713342acfc28efc6261df, type: 3}
   m_PrefabInstance: {fileID: 1649831826}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1657890090 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8399220606358024062, guid: 635408e0420090846870dc6d69fb827b, type: 3}
-  m_PrefabInstance: {fileID: 591346028}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fdefb4b8d724884c81d4dc283f745a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1660145976 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3110419120087667818, guid: 5aed7f791a03c2a4ba0040d2fa161639, type: 3}
@@ -36957,17 +36904,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3605465375257850539, guid: fd754373983fe5d41aba01dd6345d8b3, type: 3}
   m_PrefabInstance: {fileID: 1679868225}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1680841528 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7550993470123656948, guid: 635408e0420090846870dc6d69fb827b, type: 3}
-  m_PrefabInstance: {fileID: 591346028}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccc5bdc39d0949a78cb5e9e3f7659b29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1687026975
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1841,7 +1841,7 @@ MonoBehaviour:
   - {fileID: 4705512619338341771}
   weaponManager: {fileID: 8796452576424791276}
   maxCombo: 6
-  comboCounterChannel: {fileID: 0}
+  comboCounterChannel: {fileID: 11400000, guid: 4dd2983835472cb42b9c0ad79d52f95f, type: 2}
 --- !u!1001 &6717257765055618655
 PrefabInstance:
   m_ObjectHideFlags: 0
