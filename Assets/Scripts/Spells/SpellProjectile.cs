@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpellProjectile : MonoBehaviour {
     [SerializeField] private float ProjectileSpeed;
@@ -9,6 +10,8 @@ public class SpellProjectile : MonoBehaviour {
     private Vector3 direction;
 
     private float _damage;
+    
+    public event UnityAction OnHit;
     
 
     public SpellProjectile WithDirection(Vector3 direction){
@@ -41,8 +44,10 @@ public class SpellProjectile : MonoBehaviour {
             {
                 combatManager.TakeDamage(new DamageDealtArgs()
                 {
-                    damage = _damage
+                    damage = _damage,
+                    attackedEntity = combatManager.transform
                 });
+                OnHit?.Invoke();
                 Destroy(gameObject);
             }
         }

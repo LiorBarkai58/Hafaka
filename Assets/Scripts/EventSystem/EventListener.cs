@@ -21,6 +21,4 @@ namespace EventSystem {
             OnEvent?.Invoke(value);
         }
     }
-    
-    public class EmptyEventListener : EventListener<Empty> { }
 }

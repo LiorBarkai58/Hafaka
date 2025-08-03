@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public abstract class Weapon : MonoBehaviour
 
     [SerializeField] private List<Collider> WeaponColliders;
 
-
+    public event UnityAction OnHit;
     public virtual void EnableColliders()
     {
         foreach (Collider collider in WeaponColliders)
@@ -25,6 +26,11 @@ public abstract class Weapon : MonoBehaviour
         {
             collider.enabled = false;
         }
+    }
+
+    protected void InvokeHit()
+    {
+        OnHit?.Invoke();
     }
 
 }

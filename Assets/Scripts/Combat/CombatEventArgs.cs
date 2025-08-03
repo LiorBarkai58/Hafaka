@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public struct DamageDealtArgs
 {
     public float damage;
@@ -7,4 +9,6 @@ public struct DamageDealtArgs
     public float staggerValue;
 
     public EntityCombatManager attackingEntity;
+    
+    public Transform attackedEntity;
 }
