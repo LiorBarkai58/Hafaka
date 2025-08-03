@@ -13994,6 +13994,18 @@ PrefabInstance:
       propertyPath: anticipation
       value: 
       objectReference: {fileID: 8676717290654552930, guid: 47379d1e86afb0649a1760788ab53a30, type: 3}
+    - target: {fileID: 3845216692500936494, guid: 635408e0420090846870dc6d69fb827b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845216692500936494, guid: 635408e0420090846870dc6d69fb827b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845216692500936494, guid: 635408e0420090846870dc6d69fb827b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 5518883714480951344, guid: 635408e0420090846870dc6d69fb827b, type: 3}
       propertyPath: m_Name
       value: Player (1)

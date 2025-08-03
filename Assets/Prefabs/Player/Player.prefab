@@ -940,7 +940,7 @@ Transform:
   m_GameObject: {fileID: 4957983809217391877}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1920,7 +1920,7 @@ MonoBehaviour:
   - {fileID: 4705512619338341771}
   weaponManager: {fileID: 8796452576424791276}
   maxCombo: 6
-  comboCounterChannel: {fileID: 11400000, guid: 4dd2983835472cb42b9c0ad79d52f95f, type: 2}
+  comboCounterChannel: {fileID: 0}
 --- !u!1001 &6717257765055618655
 PrefabInstance:
   m_ObjectHideFlags: 0

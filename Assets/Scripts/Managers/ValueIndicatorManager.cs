@@ -35,6 +35,7 @@ namespace Managers {
             {
                  Destroy(floatingPopup.gameObject);
             });
+            
         }
     }
 }
