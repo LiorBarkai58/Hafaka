@@ -44,7 +44,8 @@ public class SpellProjectile : MonoBehaviour {
             {
                 combatManager.TakeDamage(new DamageDealtArgs()
                 {
-                    damage = _damage
+                    damage = _damage,
+                    attackedEntity = combatManager.transform
                 });
                 OnHit?.Invoke();
                 Destroy(gameObject);
