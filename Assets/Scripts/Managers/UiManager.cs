@@ -1,5 +1,6 @@
 using EventSystem;
 using System.Collections;
+using DG.Tweening;
 using Experience;
 using Interactables;
 using Player;
@@ -114,7 +115,13 @@ namespace Managers
         private void UpdateCombatState(PlayerCombatState combatState)
         {
             hpBar.value = combatState.CurrentHealth / combatState.MaxHealth;
+            
             manaBar.value = combatState.CurrentMana / combatState.MaxMana;
+
+            hpBar.transform.DOScale(1.1f, 0.2f).SetEase(Ease.OutQuad).OnComplete(() =>
+            {
+                hpBar.transform.DOScale(1, 0.3f).SetEase(Ease.InQuad);
+            });
         }
 
         private void OpenGameOverUi(Empty empty) {

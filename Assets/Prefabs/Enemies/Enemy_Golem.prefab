@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 948330540985221897}
   m_Layer: 0
   m_Name: Enemy_Golem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -361,6 +361,7 @@ Transform:
   - {fileID: 4616667403579744}
   - {fileID: 4810071759811394}
   - {fileID: 7418221371341852640}
+  - {fileID: 5070543397686444164}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &95902137545226380
@@ -442,7 +443,7 @@ MonoBehaviour:
   playerDetector: {fileID: 5293992320594548385}
   animator: {fileID: 95902137545226380}
   enemyCombat: {fileID: 6304155463178962350}
-  combatManager: {fileID: 0}
+  combatManager: {fileID: 3087229558370470931}
   wanderRadius: 10
   wanderTimerDuration: 1
   wanderSpeed: 2
@@ -462,7 +463,8 @@ MonoBehaviour:
   animator: {fileID: 95902137545226380}
   attackCooldown: 10
   attacksAmount: 3
-  hitboxes: []
+  hitboxes:
+  - {fileID: 710129169852405551}
 --- !u!195 &948330540985221897
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1866,6 +1868,75 @@ Transform:
   - {fileID: 4359018392181336}
   m_Father: {fileID: 4923149105459994}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2099884428535012487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3413485779795566580}
+  - component: {fileID: 710129169852405551}
+  - component: {fileID: 7467738775273779110}
+  m_Layer: 0
+  m_Name: combatHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3413485779795566580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099884428535012487}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5070543397686444164}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &710129169852405551
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099884428535012487}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.99
+  m_Center: {x: 0, y: 1.02, z: 1.46}
+--- !u!114 &7467738775273779110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099884428535012487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c5fe2c45fb457a9fa974e94d81a016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageOfCombo: []
+  WeaponColliders:
+  - {fileID: 710129169852405551}
 --- !u!1 &3110419120087667818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,6 +1948,7 @@ GameObject:
   - component: {fileID: 7418221371341852640}
   - component: {fileID: 3087229558370470931}
   - component: {fileID: 1054110150967121672}
+  - component: {fileID: 229776990899564557}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Enemy
@@ -1914,6 +1986,7 @@ MonoBehaviour:
   maxHealth: 274
   visuals: {fileID: 4616667403579744}
   damageArgsEventChannel: {fileID: 11400000, guid: 89bb1247dfb802f478ba04f913e5a537, type: 2}
+  hurtDuration: 1
 --- !u!136 &1054110150967121672
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1937,3 +2010,62 @@ CapsuleCollider:
   m_Height: 2.558013
   m_Direction: 1
   m_Center: {x: 0, y: 0.7790065, z: 0}
+--- !u!54 &229776990899564557
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3110419120087667818}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!1 &5491179563893939107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5070543397686444164}
+  m_Layer: 0
+  m_Name: CombatHitboxes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5070543397686444164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491179563893939107}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3413485779795566580}
+  m_Father: {fileID: 4526463827110206}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

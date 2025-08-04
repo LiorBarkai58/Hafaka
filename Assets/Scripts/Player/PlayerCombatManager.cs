@@ -1,4 +1,5 @@
 using EventSystem;
+using MoreMountains.Feedbacks;
 using Player;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,6 +13,7 @@ public class PlayerCombatManager : EntityCombatManager
 
     [SerializeField] private PlayerCombatStateChannel combatStateChannel;
 
+    [SerializeField] private MMF_Player hitFeedbacks;
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -24,6 +26,7 @@ public class PlayerCombatManager : EntityCombatManager
     {
         base.TakeDamage(damageDealtArgs);
         UpdatePlayerState();
+        hitFeedbacks.PlayFeedbacks();
     }
 
     private void UpdatePlayerState()
