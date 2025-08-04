@@ -6,8 +6,16 @@ namespace Enemies
 {
     public class EnemyCombatManager : EntityCombatManager
     {
-        [SerializeField] private Transform visuals;
+        [Header("Events")]
         [SerializeField] private DamageArgsEventChannel damageArgsEventChannel;
+        [SerializeField] private IntEventChannel onEnemyDeathEventChannel;
+        
+        [Header("References")]
+        [SerializeField] private Transform visuals;
+        
+        [Header("XP Reward")]
+        [SerializeField] private int xpReward = 20;
+        
         public override void TakeDamage(DamageDealtArgs damageDealtArgs)
         {
             visuals.DOShakePosition(0.5f, 0.5f);
@@ -15,6 +23,9 @@ namespace Enemies
             damageArgsEventChannel.Invoke(damageDealtArgs);
         }
 
-        
+        protected override void Death() {
+            onEnemyDeathEventChannel.Invoke(xpReward);
+            base.Death();
+        }
     }
 }

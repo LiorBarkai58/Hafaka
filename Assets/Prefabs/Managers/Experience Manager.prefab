@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1577786657368742929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1497381417241035775}
+  - component: {fileID: 1536707843948567819}
+  - component: {fileID: 5702168716950731282}
+  m_Layer: 0
+  m_Name: Experience Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1497381417241035775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577786657368742929}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1536707843948567819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577786657368742929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467e0bd88c5045e1b670c3e7f529e9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseEssenceCost: 100
+  growthMultiplier: 1.5
+  levelExponent: 1.2
+  onEnemyDeathEventListener: {fileID: 5702168716950731282}
+  statBumps:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 9b548c2c99d9ec7418fb1e70683571ca, type: 2}
+  - {fileID: 11400000, guid: e503a1cfbd020b74ca3add09df1c998a, type: 2}
+  - {fileID: 11400000, guid: 3102dfc23d1582e458c34d570f521d7f, type: 2}
+  - {fileID: 11400000, guid: 76188b832769a04439bebfb005a28a4b, type: 2}
+  - {fileID: 11400000, guid: 6e2f7a4c23e84a744b7960c798abb19b, type: 2}
+--- !u!114 &5702168716950731282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577786657368742929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1721b7cc62f4408aaca6549eafa1a65d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventChannel: {fileID: 11400000, guid: 89acc08e29faba34581e8f1e3a2843b7, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []

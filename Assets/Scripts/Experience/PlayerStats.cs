@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,9 +28,17 @@ namespace Experience {
         {
             if (Instance != null && Instance != this) Destroy(gameObject);
             else Instance = this;
+        }
 
-            // Subscribe to events
+        private void OnEnable() {
             xpManager.OnLevelUp += HandleLevelUp;
+        }
+
+        private void OnDisable() {
+            xpManager.OnLevelUp -= HandleLevelUp;
+        }
+
+        private void Start() {
             UpdateStats();
         }
 
