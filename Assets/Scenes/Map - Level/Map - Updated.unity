@@ -6713,7 +6713,7 @@ GameObject:
   m_Icon: {fileID: 2800000, guid: 391aaa0b581312941b814e87136835b7, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &221619259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6786,19 +6786,19 @@ MonoBehaviour:
   rainbowTexture: {fileID: 0}
   rainbowIntensity: 0
   useRainbow: 1
-  fogStart1: 6
-  fogStart2: 9.3
-  fogStart3: 21.8
-  fogStart4: 42.5
+  fogStart1: 2.7
+  fogStart2: 10.1
+  fogStart3: 18.5
+  fogStart4: 39.9
   fogHeight: 0.954
-  fogDensityMultiplier: 4.12
+  fogDensityMultiplier: 3.9
   fogLightFlareIntensity: 0.868197
   fogLightFlareFalloff: 6.3307505
   fogLightFlareSquish: 3.930699
-  fogSmoothness: 0.661
+  fogSmoothness: 0.792
   fogVariationAmount: 0.53
   fogVariationDirection: {x: 6, y: 0, z: 0}
-  fogVariationDistance: 19
+  fogVariationDistance: 9
   fogVariationScale: 10.6
   heightFogIntensity: 1
   heightFogVariationScale: 1000
@@ -7001,7 +7001,7 @@ Transform:
   m_GameObject: {fileID: 221619258}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000000037252899, y: -0, z: -0.0000000074505797, w: 1}
-  m_LocalPosition: {x: 155.19087, y: 59.782516, z: -980.06354}
+  m_LocalPosition: {x: 130.85187, y: 20.35659, z: -1036.4248}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9488,7 +9488,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510822546}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 0, g: 0, b: 0, a: 0}
