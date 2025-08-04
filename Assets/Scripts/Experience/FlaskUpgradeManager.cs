@@ -1,5 +1,5 @@
-﻿using System;
-using EventSystem;
+﻿using EventSystem;
+using Interactables;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,7 +18,11 @@ namespace Experience {
         public event UnityAction<int> OnFlaskUpgraded;
 
         private void OnEnable() {
-            //upgradePickupEventListener.OnEvent +=
+            upgradePickupEventListener.OnEvent += UpgradeFlask;
+        }
+
+        private void OnDisable() {
+            upgradePickupEventListener.OnEvent -= UpgradeFlask;
         }
 
         private void Start() {
@@ -26,7 +30,7 @@ namespace Experience {
             ApplySeedEffects();
         }
 
-        public void UpgradeFlask() {
+        private void UpgradeFlask(UpgradeType upgradeType) {
             SeedCount++;
             ApplySeedEffects();
             OnFlaskUpgraded?.Invoke(CurrentFlaskUses);

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1610375239674979422}
   - component: {fileID: 1222605098702152031}
+  - component: {fileID: 887470738639686367}
   m_Layer: 0
   m_Name: Flask Upgrade Manager
   m_TagString: Untagged
@@ -46,3 +47,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseFlaskUses: 3
   flaskIncrementPerSeed: 1
+  upgradePickupEventListener: {fileID: 887470738639686367}
+--- !u!114 &887470738639686367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298283114754862576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd41453d7c034872ad185a9b13994142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventChannel: {fileID: 11400000, guid: 41cf31e029f949341af8e3f06b3e1398, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
