@@ -37,5 +37,6 @@ namespace Enemies.EnemyStateMachine
     public enum EnemyStates{
         Locomotion,
         Attacking,
+        Hurt
     }
 }

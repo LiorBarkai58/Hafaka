@@ -10,6 +10,7 @@ public abstract class Weapon : MonoBehaviour
     public List<float> DamageOfCombo => damageOfCombo;
 
     [SerializeField] private List<Collider> WeaponColliders;
+    
 
     public event UnityAction OnHit;
     public virtual void EnableColliders()

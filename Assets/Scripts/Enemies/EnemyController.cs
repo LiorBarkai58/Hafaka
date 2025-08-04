@@ -34,11 +34,15 @@ namespace Enemies
             var wanderState = new EnemyWanderState(this, animator, agent, wanderRadius, wanderTimerDuration, wanderSpeed);
             var chaseState = new EnemyChaseState(this, animator, agent, playerDetector.player.Transform, chaseSpeed);
             var attackState = new EnemyAttackState(this, animator, enemyCombat);
-            
+            var hitState = new EnemyHitState(this, animator);
             At(wanderState, chaseState, () => playerDetector.CanDetectPlayer());
             At(chaseState, wanderState, () => !playerDetector.CanDetectPlayer());
             At(chaseState, attackState, () => playerDetector.CanAttackPlayer());
             At(attackState, chaseState, () => !playerDetector.CanAttackPlayer());
+            
+            
+            Any(hitState, () => combatManager.isHurt && _stateMachine.Current != hitState);
+            
             
             _stateMachine.SetState(wanderState);
 
@@ -56,5 +60,6 @@ namespace Enemies
         private void At(IState from, IState to, Func<bool> condition) {
             _stateMachine.AddTransition(from, to, condition);
         }
+        void Any(IState to, Func<bool> condition) => _stateMachine.AddAnyTransition(to, condition);
     }
 }

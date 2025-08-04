@@ -15,7 +15,9 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private List<Spell> spells;
     [SerializeField] private PlayerWeaponManager weaponManager;
 
-    private int currentComboCounter = 0;
+
+    private int currentComboCounter = 1;
+    public int CurrentComboCounter => Mathf.Clamp(currentComboCounter, 1, maxCombo);
     
     [SerializeField] private int maxCombo = 6;
     
@@ -45,6 +47,9 @@ public class PlayerAttackManager : MonoBehaviour
     {
         playerAttackState.ComboEnd();
         OnComboEnd?.Invoke();
+        currentComboCounter = 1;
+        comboCounterChannel.Invoke(currentComboCounter);
+        
     }
 
     private void IncreaseComboIndex()
@@ -56,7 +61,7 @@ public class PlayerAttackManager : MonoBehaviour
         }
         else
         {
-            currentComboCounter = 0;
+            currentComboCounter = 1;
         }
     }
 
@@ -64,7 +69,7 @@ public class PlayerAttackManager : MonoBehaviour
     {
         if (index < spells.Count)
         {
-            spells[index].Activate();
+            spells[index].Activate(CurrentComboCounter);
         }
     }
     

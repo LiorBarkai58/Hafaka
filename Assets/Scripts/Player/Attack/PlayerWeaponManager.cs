@@ -11,6 +11,10 @@ public class PlayerWeaponManager : WeaponsManager
 
     public event UnityAction onHit;
 
+    public void UpdateComboMultiplier(int combo)
+    {
+    }
+
     public void Start()
     {
         foreach (Weapon weapon in weapons)

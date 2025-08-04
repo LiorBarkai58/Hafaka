@@ -8,7 +8,7 @@ public abstract class Spell : MonoBehaviour {
     public float Damage => damage;
     
     public event UnityAction OnHit;
-    public abstract void Activate();
+    public abstract void Activate(float comboCounter);
 
     protected void InvokeHit()
     {
