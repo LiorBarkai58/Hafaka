@@ -8446,19 +8446,19 @@ MonoBehaviour:
   rainbowTexture: {fileID: 0}
   rainbowIntensity: 0
   useRainbow: 1
-  fogStart1: 6
-  fogStart2: 9.3
-  fogStart3: 21.8
-  fogStart4: 42.5
+  fogStart1: 2.7
+  fogStart2: 10.1
+  fogStart3: 18.5
+  fogStart4: 39.9
   fogHeight: 0.954
-  fogDensityMultiplier: 4.12
+  fogDensityMultiplier: 3.9
   fogLightFlareIntensity: 0.868197
   fogLightFlareFalloff: 6.3307505
   fogLightFlareSquish: 3.930699
-  fogSmoothness: 0.661
+  fogSmoothness: 0.792
   fogVariationAmount: 0.53
   fogVariationDirection: {x: 6, y: 0, z: 0}
-  fogVariationDistance: 19
+  fogVariationDistance: 9
   fogVariationScale: 10.6
   heightFogIntensity: 1
   heightFogVariationScale: 1000
@@ -27135,7 +27135,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 2fb6164c724e5e14d8cad18e26f9e7f6, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 61a0f45336812474694088c0ac3f794c, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1120000761
 Transform:
