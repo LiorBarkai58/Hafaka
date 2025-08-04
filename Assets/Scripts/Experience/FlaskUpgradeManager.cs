@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using EventSystem;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Experience {
@@ -6,11 +8,18 @@ namespace Experience {
         [Header("Flask Base & Growth Formula")]
         [SerializeField] private int baseFlaskUses = 3;
         [SerializeField] private int flaskIncrementPerSeed = 1;
+
+        [Header("Events")] 
+        [SerializeField] private UpgradePickupEventListener upgradePickupEventListener;
         
         public int SeedCount { get; private set; }
         public int CurrentFlaskUses { get; private set; }
 
         public event UnityAction<int> OnFlaskUpgraded;
+
+        private void OnEnable() {
+            //upgradePickupEventListener.OnEvent +=
+        }
 
         private void Start() {
             // Initialize with zero seeds

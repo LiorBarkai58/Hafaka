@@ -16,7 +16,4 @@ namespace EventSystem {
     }
     
     public readonly struct Empty { }
-    
-    [CreateAssetMenu(menuName = "Events/EmptyEventChannel")]
-    public class EmptyEventChannel : EventChannel<Empty> { }
 }

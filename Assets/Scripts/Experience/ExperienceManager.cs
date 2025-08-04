@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using EventSystem;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Experience {
@@ -9,16 +10,28 @@ namespace Experience {
         [SerializeField] private float growthMultiplier = 1.5f;
         [SerializeField] private float levelExponent = 1.2f;
 
+        [Header("Event Listener")] 
+        [SerializeField] private IntEventListener onEnemyDeathEventListener;
+
         [Header("Stat bumps per level (index 0 unused)")]
         [SerializeField] private StatIncrease[] statBumps;
 
         public int CurrentEssence { get; private set; }
         public int CurrentLevel { get; private set; } = 1;
-
+        
+        // Events
         public event UnityAction<int> OnLevelUp;
         public event UnityAction<int> OnEssenceChanged;
 
-        public void AddEssence(int amount) {
+        private void OnEnable() {
+            onEnemyDeathEventListener.OnEvent += AddEssence;
+        }
+
+        private void OnDisable() {
+            onEnemyDeathEventListener.OnEvent -= AddEssence;
+        }
+
+        private void AddEssence(int amount) {
             CurrentEssence += amount;
             OnEssenceChanged?.Invoke(CurrentEssence);
 
@@ -38,7 +51,8 @@ namespace Experience {
         public StatIncrease GetStatIncreaseForLevel(int level) {
             if (level > 0 && level < statBumps.Length)
                 return statBumps[level];
-            return new StatIncrease();
+            
+            return ScriptableObject.CreateInstance<StatIncrease>();
         }
     }
 }

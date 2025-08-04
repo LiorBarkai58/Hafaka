@@ -8,8 +8,16 @@ namespace Enemies
 {
     public class EnemyCombatManager : EntityCombatManager
     {
-        [SerializeField] private Transform visuals;
+        [Header("Events")]
         [SerializeField] private DamageArgsEventChannel damageArgsEventChannel;
+        [SerializeField] private IntEventChannel onEnemyDeathEventChannel;
+        
+        [Header("References")]
+        [SerializeField] private Transform visuals;
+        
+        [Header("XP Reward")]
+        [SerializeField] private int xpReward = 20;
+        
 
         private CountdownTimer hurtTimer;
 
@@ -24,11 +32,15 @@ namespace Enemies
 
         public override void TakeDamage(DamageDealtArgs damageDealtArgs)
         {
+            visuals.DOShakePosition(0.5f, 0.5f);
             base.TakeDamage(damageDealtArgs);
             damageArgsEventChannel.Invoke(damageDealtArgs);
             if(!hurtTimer.IsRunning) hurtTimer.Start();
         }
 
-        
+        protected override void Death() {
+            onEnemyDeathEventChannel.Invoke(xpReward);
+            base.Death();
+        }
     }
 }

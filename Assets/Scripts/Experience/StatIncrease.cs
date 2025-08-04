@@ -1,8 +1,8 @@
-﻿using System;
+﻿using UnityEngine;
 
 namespace Experience {
-    [Serializable]
-    public struct StatIncrease
+    [CreateAssetMenu(menuName = "Stats Upgrade/Stats")]
+    public class StatIncrease : ScriptableObject
     {
         public int hp;
         public int fp;

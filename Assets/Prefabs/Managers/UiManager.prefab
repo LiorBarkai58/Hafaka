@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b51d8ac74b8481eb6ceeedbce35d659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   playerInteractor: {fileID: 0}
   xpManager: {fileID: 0}
+  gameOverListener: {fileID: 4066314922826062034}
+  phaseEventListener: {fileID: 7517349421185167851}
   combatStateListener: {fileID: 5470020893924538423}
   interactUi: {fileID: 880445841154674063}
   interactText: {fileID: 7773128585465164691}
@@ -59,12 +60,10 @@ MonoBehaviour:
   xpText: {fileID: 6244034922991500428}
   comboText: {fileID: 8451520775693103517}
   flaskAmountText: {fileID: 5809493599157755129}
-  phaseEventListener: {fileID: 7517349421185167851}
   timePhaseGameObject: {fileID: 6968426211756262669}
   timeChangeText: {fileID: 5179175150661872424}
   timeChangeTextDuration: 3
   gameOverParent: {fileID: 2683780886301402208}
-  gameOverListener: {fileID: 4066314922826062034}
 --- !u!114 &7517349421185167851
 MonoBehaviour:
   m_ObjectHideFlags: 0
