@@ -355,8 +355,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4616667403579744}
   - {fileID: 4810071759811394}
@@ -1984,8 +1984,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 274
-  visuals: {fileID: 4616667403579744}
   damageArgsEventChannel: {fileID: 11400000, guid: 89bb1247dfb802f478ba04f913e5a537, type: 2}
+  onEnemyDeathEventChannel: {fileID: 0}
+  visuals: {fileID: 4616667403579744}
+  xpReward: 20
   hurtDuration: 1
 --- !u!136 &1054110150967121672
 CapsuleCollider:
