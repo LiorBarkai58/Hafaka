@@ -49,7 +49,6 @@ namespace Player
             {
                 _interactables.Add(interactable);
                 InRange?.Invoke(interactable);
-                Debug.Log("Item in Range");
             }
         }
 
@@ -63,7 +62,6 @@ namespace Player
             {
                 _interactables.Remove(interactable);
                 OutOfRange?.Invoke(interactable);
-                Debug.Log("Item not in Range");
             }
             
         }

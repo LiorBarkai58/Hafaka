@@ -14,6 +14,7 @@ namespace Managers
         [Header("References")]
         [SerializeField] private PlayerInteractor playerInteractor;
         [SerializeField] private ExperienceManager xpManager;
+        [SerializeField] private FlaskUpgradeManager flaskUpgradeManager;
         
         [Header("Events Listeners")]
         [SerializeField] private EmptyEventListener gameOverListener;
@@ -54,6 +55,7 @@ namespace Managers
             playerInteractor.InRange += ShowPrompt;
             playerInteractor.OutOfRange += HidePrompt;
             xpManager.OnEssenceChanged += SetXpText;
+            flaskUpgradeManager.OnFlaskUpgraded += SetFlaskAmountText;
         }
 
         private void OnDisable() {
@@ -63,6 +65,7 @@ namespace Managers
             playerInteractor.InRange -= ShowPrompt;
             playerInteractor.OutOfRange -= HidePrompt;
             xpManager.OnEssenceChanged -= SetXpText;
+            flaskUpgradeManager.OnFlaskUpgraded -= SetFlaskAmountText;
         }
 
         public void TimePhaseChange(TimePhase timePhase) {
@@ -109,6 +112,10 @@ namespace Managers
 
         private void SetXpText(int newXp) {
             xpText.text = newXp.ToString();
+        }
+
+        private void SetFlaskAmountText(int amount) {
+            flaskAmountText.text = amount.ToString();
         }
 
         private void UpdateCombatState(PlayerCombatState combatState)

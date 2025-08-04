@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Managers {
     public class Inventory : MonoBehaviour {
-        // The one and only Inventory instance
         public static Inventory Instance { get; private set; }
 
         [Header("Inventory Settings")]
@@ -17,9 +16,8 @@ namespace Managers {
         //public event Action<ItemData> OnItemAdded;
         //public event Action<ItemData> OnItemRemoved;
 
-        void Awake()
+        private void Awake()
         {
-            // Classic MonoBehaviour singleton pattern
             if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
@@ -28,10 +26,8 @@ namespace Managers {
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
-        /// <summary>
-        /// Try to add an item. Returns true if successful.
-        /// </summary>
+        
+        // Try to add an item. Returns true if successful.
         public bool TryAdd(ItemData item)
         {
             foreach (var itemData in _items)
@@ -51,10 +47,8 @@ namespace Managers {
             _items.Add(item);
             return true;
         }
-
-        /// <summary>
-        /// Try to remove an item. Returns true if it was in the inventory.
-        /// </summary>
+        
+        // Try to remove an item. Returns true if it was in the inventory.
         public bool TryRemove(ItemData item, int quantity)
         {
             foreach (var itemData in _items)
@@ -72,10 +66,5 @@ namespace Managers {
             Debug.Log($"Tried to remove {item.itemName}, but it wasn't in inventory.");
             return false;
         }
-
-        /// <summary>
-        /// Read-only view of current items.
-        /// </summary>
-        public IReadOnlyList<ItemData> Items => _items.AsReadOnly();
     }
 }
