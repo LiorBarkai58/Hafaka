@@ -219,7 +219,7 @@
                     },
                     "_overwriteSettings": false,
                     "_guid": "bd41122507b36324c8ddb76990837fd6",
-                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Building_01.prefab",
+                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Old Houses/Building_01.prefab",
                     "_frequency": 1.0,
                     "_parentId": 638873327158054155,
                     "_overwriteThumbnailSettings": false,
@@ -334,7 +334,7 @@
                     },
                     "_overwriteSettings": false,
                     "_guid": "fd754373983fe5d41aba01dd6345d8b3",
-                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Building_01_-Z Variant.prefab",
+                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Old Houses/Building_01_-Z Variant.prefab",
                     "_frequency": 1.0,
                     "_parentId": 638873327158054155,
                     "_overwriteThumbnailSettings": false,
@@ -449,7 +449,7 @@
                     },
                     "_overwriteSettings": false,
                     "_guid": "94a34d61b2d0cd745aff6ae2f4b4f995",
-                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Building_02.prefab",
+                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Old Houses/Building_02.prefab",
                     "_frequency": 1.0,
                     "_parentId": 638873327158054155,
                     "_overwriteThumbnailSettings": false,
@@ -564,7 +564,7 @@
                     },
                     "_overwriteSettings": false,
                     "_guid": "4334bd3c6eafead48a01776201f6bf51",
-                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Building_02_-Z Variant.prefab",
+                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Old Houses/Building_02_-Z Variant.prefab",
                     "_frequency": 1.0,
                     "_parentId": 638873327158054155,
                     "_overwriteThumbnailSettings": false,
@@ -679,7 +679,7 @@
                     },
                     "_overwriteSettings": false,
                     "_guid": "f6593c440e6713342acfc28efc6261df",
-                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Building_03.prefab",
+                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Old Houses/Building_03.prefab",
                     "_frequency": 1.0,
                     "_parentId": 638873327158054155,
                     "_overwriteThumbnailSettings": false,
@@ -794,7 +794,7 @@
                     },
                     "_overwriteSettings": false,
                     "_guid": "3a71305cd65ccdc47ba6233725f4550f",
-                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Building_03_-Z Variant.prefab",
+                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Old Houses/Building_03_-Z Variant.prefab",
                     "_frequency": 1.0,
                     "_parentId": 638873327158054155,
                     "_overwriteThumbnailSettings": false,
@@ -1022,9 +1022,582 @@
                     },
                     "_overwriteSettings": false,
                     "_guid": "f6593c440e6713342acfc28efc6261df",
-                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Building_03.prefab",
+                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Old Houses/Building_03.prefab",
                     "_frequency": 1.0,
                     "_parentId": 638873327162676203,
+                    "_overwriteThumbnailSettings": false,
+                    "_includeInThumbnail": true,
+                    "_isAsset2D": false
+                }
+            ],
+            "_frequencyMode": 0,
+            "_pattern": "1...",
+            "_restartPatternForEachStroke": true
+        },
+        {
+            "_id": 638899095490426278,
+            "_surfaceDistance": 0.0,
+            "_randomSurfaceDistance": true,
+            "_randomSurfaceDistanceRange": {
+                "_v1": -0.004999999888241291,
+                "_v2": 0.004999999888241291,
+                "_min": -0.004999999888241291,
+                "_max": 0.004999999888241291
+            },
+            "_embedInSurface": true,
+            "_embedAtPivotHeight": true,
+            "_localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_rotateToTheSurface": true,
+            "_eulerOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_addRandomRotation": false,
+            "_rotationFactor": 90.0,
+            "_rotateInMultiples": false,
+            "_randomEulerOffset": {
+                "x": {
+                    "_v1": 0.0,
+                    "_v2": 0.0,
+                    "_min": 0.0,
+                    "_max": 0.0
+                },
+                "y": {
+                    "_v1": 0.0,
+                    "_v2": 0.0,
+                    "_min": 0.0,
+                    "_max": 0.0
+                },
+                "z": {
+                    "_v1": 0.0,
+                    "_v2": 0.0,
+                    "_min": 0.0,
+                    "_max": 0.0
+                }
+            },
+            "_alwaysOrientUp": true,
+            "_separateScaleAxes": false,
+            "_scaleMultiplier": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "_randomScaleMultiplier": true,
+            "_randomScaleMultiplierRange": {
+                "x": {
+                    "_v1": 1.0,
+                    "_v2": 1.2000000476837159,
+                    "_min": 1.0,
+                    "_max": 1.2000000476837159
+                },
+                "y": {
+                    "_v1": 1.0,
+                    "_v2": 1.2000000476837159,
+                    "_min": 1.0,
+                    "_max": 1.2000000476837159
+                },
+                "z": {
+                    "_v1": 1.0,
+                    "_v2": 1.2000000476837159,
+                    "_min": 1.0,
+                    "_max": 1.2000000476837159
+                }
+            },
+            "_flipX": 0,
+            "_flipY": 0,
+            "_thumbnailSettings": {
+                "_backgroudColor": {
+                    "r": 0.5,
+                    "g": 0.5,
+                    "b": 0.5,
+                    "a": 1.0
+                },
+                "_lightEuler": {
+                    "x": 130.0,
+                    "y": -165.0
+                },
+                "_lightColor": {
+                    "r": 1.0,
+                    "g": 1.0,
+                    "b": 1.0,
+                    "a": 1.0
+                },
+                "_lightIntensity": 1.0,
+                "_zoom": 1.0,
+                "_targetEuler": {
+                    "x": 0.0,
+                    "y": 125.0,
+                    "z": 0.0
+                },
+                "_targetOffset": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "_useCustomImage": false
+            },
+            "_name": "Building_01_No Roof",
+            "_items": [
+                {
+                    "_id": 638899095490426279,
+                    "_surfaceDistance": 0.0,
+                    "_randomSurfaceDistance": true,
+                    "_randomSurfaceDistanceRange": {
+                        "_v1": -0.004999999888241291,
+                        "_v2": 0.004999999888241291,
+                        "_min": -0.004999999888241291,
+                        "_max": 0.004999999888241291
+                    },
+                    "_embedInSurface": true,
+                    "_embedAtPivotHeight": true,
+                    "_localPositionOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "_rotateToTheSurface": false,
+                    "_eulerOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "_addRandomRotation": false,
+                    "_rotationFactor": 90.0,
+                    "_rotateInMultiples": false,
+                    "_randomEulerOffset": {
+                        "x": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        },
+                        "y": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        },
+                        "z": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        }
+                    },
+                    "_alwaysOrientUp": false,
+                    "_separateScaleAxes": false,
+                    "_scaleMultiplier": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "_randomScaleMultiplier": true,
+                    "_randomScaleMultiplierRange": {
+                        "x": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        },
+                        "y": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        },
+                        "z": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        }
+                    },
+                    "_flipX": 0,
+                    "_flipY": 0,
+                    "_thumbnailSettings": {
+                        "_backgroudColor": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5,
+                            "a": 1.0
+                        },
+                        "_lightEuler": {
+                            "x": 130.0,
+                            "y": -165.0
+                        },
+                        "_lightColor": {
+                            "r": 1.0,
+                            "g": 1.0,
+                            "b": 1.0,
+                            "a": 1.0
+                        },
+                        "_lightIntensity": 1.0,
+                        "_zoom": 1.0,
+                        "_targetEuler": {
+                            "x": 0.0,
+                            "y": 125.0,
+                            "z": 0.0
+                        },
+                        "_targetOffset": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "_useCustomImage": false
+                    },
+                    "_overwriteSettings": true,
+                    "_guid": "c899ebf0f12dfcc45a0a04705e62577d",
+                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Building_01_No Roof.prefab",
+                    "_frequency": 1.0,
+                    "_parentId": 638899095490426278,
+                    "_overwriteThumbnailSettings": false,
+                    "_includeInThumbnail": true,
+                    "_isAsset2D": false
+                },
+                {
+                    "_id": 638899095574711935,
+                    "_surfaceDistance": 0.0,
+                    "_randomSurfaceDistance": true,
+                    "_randomSurfaceDistanceRange": {
+                        "_v1": -0.004999999888241291,
+                        "_v2": 0.004999999888241291,
+                        "_min": -0.004999999888241291,
+                        "_max": 0.004999999888241291
+                    },
+                    "_embedInSurface": true,
+                    "_embedAtPivotHeight": true,
+                    "_localPositionOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "_rotateToTheSurface": false,
+                    "_eulerOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "_addRandomRotation": false,
+                    "_rotationFactor": 90.0,
+                    "_rotateInMultiples": false,
+                    "_randomEulerOffset": {
+                        "x": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        },
+                        "y": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        },
+                        "z": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        }
+                    },
+                    "_alwaysOrientUp": false,
+                    "_separateScaleAxes": false,
+                    "_scaleMultiplier": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "_randomScaleMultiplier": true,
+                    "_randomScaleMultiplierRange": {
+                        "x": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        },
+                        "y": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        },
+                        "z": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        }
+                    },
+                    "_flipX": 0,
+                    "_flipY": 0,
+                    "_thumbnailSettings": {
+                        "_backgroudColor": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5,
+                            "a": 1.0
+                        },
+                        "_lightEuler": {
+                            "x": 130.0,
+                            "y": -165.0
+                        },
+                        "_lightColor": {
+                            "r": 1.0,
+                            "g": 1.0,
+                            "b": 1.0,
+                            "a": 1.0
+                        },
+                        "_lightIntensity": 1.0,
+                        "_zoom": 1.0,
+                        "_targetEuler": {
+                            "x": 0.0,
+                            "y": 125.0,
+                            "z": 0.0
+                        },
+                        "_targetOffset": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "_useCustomImage": false
+                    },
+                    "_overwriteSettings": true,
+                    "_guid": "d678d87a27e5ca548a8c30f6a8148d1c",
+                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Building_01_With Roof.prefab",
+                    "_frequency": 1.0,
+                    "_parentId": 638899095490426278,
+                    "_overwriteThumbnailSettings": false,
+                    "_includeInThumbnail": true,
+                    "_isAsset2D": false
+                },
+                {
+                    "_id": 638899095752102877,
+                    "_surfaceDistance": 0.0,
+                    "_randomSurfaceDistance": true,
+                    "_randomSurfaceDistanceRange": {
+                        "_v1": -0.004999999888241291,
+                        "_v2": 0.004999999888241291,
+                        "_min": -0.004999999888241291,
+                        "_max": 0.004999999888241291
+                    },
+                    "_embedInSurface": true,
+                    "_embedAtPivotHeight": true,
+                    "_localPositionOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "_rotateToTheSurface": false,
+                    "_eulerOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "_addRandomRotation": false,
+                    "_rotationFactor": 90.0,
+                    "_rotateInMultiples": false,
+                    "_randomEulerOffset": {
+                        "x": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        },
+                        "y": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        },
+                        "z": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        }
+                    },
+                    "_alwaysOrientUp": false,
+                    "_separateScaleAxes": false,
+                    "_scaleMultiplier": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "_randomScaleMultiplier": true,
+                    "_randomScaleMultiplierRange": {
+                        "x": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        },
+                        "y": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        },
+                        "z": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        }
+                    },
+                    "_flipX": 0,
+                    "_flipY": 0,
+                    "_thumbnailSettings": {
+                        "_backgroudColor": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5,
+                            "a": 1.0
+                        },
+                        "_lightEuler": {
+                            "x": 130.0,
+                            "y": -165.0
+                        },
+                        "_lightColor": {
+                            "r": 1.0,
+                            "g": 1.0,
+                            "b": 1.0,
+                            "a": 1.0
+                        },
+                        "_lightIntensity": 1.0,
+                        "_zoom": 1.0,
+                        "_targetEuler": {
+                            "x": 0.0,
+                            "y": 125.0,
+                            "z": 0.0
+                        },
+                        "_targetOffset": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "_useCustomImage": false
+                    },
+                    "_overwriteSettings": true,
+                    "_guid": "b1b3f414b2bc03f4c992deee80a8cdf2",
+                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Building_01_With Roof Variant -Z.prefab",
+                    "_frequency": 1.0,
+                    "_parentId": 638899095490426278,
+                    "_overwriteThumbnailSettings": false,
+                    "_includeInThumbnail": true,
+                    "_isAsset2D": false
+                },
+                {
+                    "_id": 638899095766157525,
+                    "_surfaceDistance": 0.0,
+                    "_randomSurfaceDistance": true,
+                    "_randomSurfaceDistanceRange": {
+                        "_v1": -0.004999999888241291,
+                        "_v2": 0.004999999888241291,
+                        "_min": -0.004999999888241291,
+                        "_max": 0.004999999888241291
+                    },
+                    "_embedInSurface": true,
+                    "_embedAtPivotHeight": true,
+                    "_localPositionOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "_rotateToTheSurface": false,
+                    "_eulerOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "_addRandomRotation": false,
+                    "_rotationFactor": 90.0,
+                    "_rotateInMultiples": false,
+                    "_randomEulerOffset": {
+                        "x": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        },
+                        "y": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        },
+                        "z": {
+                            "_v1": 0.0,
+                            "_v2": 0.0,
+                            "_min": 0.0,
+                            "_max": 0.0
+                        }
+                    },
+                    "_alwaysOrientUp": false,
+                    "_separateScaleAxes": false,
+                    "_scaleMultiplier": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "_randomScaleMultiplier": true,
+                    "_randomScaleMultiplierRange": {
+                        "x": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        },
+                        "y": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        },
+                        "z": {
+                            "_v1": 1.0,
+                            "_v2": 1.2000000476837159,
+                            "_min": 1.0,
+                            "_max": 1.2000000476837159
+                        }
+                    },
+                    "_flipX": 0,
+                    "_flipY": 0,
+                    "_thumbnailSettings": {
+                        "_backgroudColor": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5,
+                            "a": 1.0
+                        },
+                        "_lightEuler": {
+                            "x": 130.0,
+                            "y": -165.0
+                        },
+                        "_lightColor": {
+                            "r": 1.0,
+                            "g": 1.0,
+                            "b": 1.0,
+                            "a": 1.0
+                        },
+                        "_lightIntensity": 1.0,
+                        "_zoom": 1.0,
+                        "_targetEuler": {
+                            "x": 0.0,
+                            "y": 125.0,
+                            "z": 0.0
+                        },
+                        "_targetOffset": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "_useCustomImage": false
+                    },
+                    "_overwriteSettings": true,
+                    "_guid": "dffc9f494b3b65f42b691097c9608083",
+                    "_prefabPath": "Assets/Scenes/Map - Level/Models Prefabs/Houses/Building_02.prefab",
+                    "_frequency": 1.0,
+                    "_parentId": 638899095490426278,
                     "_overwriteThumbnailSettings": false,
                     "_includeInThumbnail": true,
                     "_isAsset2D": false
@@ -1177,5 +1750,5 @@
             "_useCustomImage": false
         }
     },
-    "_hashCode": 664810875
+    "_hashCode": -24934483
 }
