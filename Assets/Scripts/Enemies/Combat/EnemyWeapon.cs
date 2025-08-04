@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +23,12 @@ namespace Enemies.Combat
                     }
                 }
             }
-        
+
+            private void OnDisable()
+            {
+                playerHit.Clear();
+            }
+
             public override void DisableColliders()
             {
                 base.DisableColliders();

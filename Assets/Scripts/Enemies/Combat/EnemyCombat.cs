@@ -52,7 +52,8 @@ namespace Enemies.Combat {
         {
             foreach (Collider collider in hitboxes)
             {
-                collider.enabled = true;
+                collider.gameObject.SetActive(true);
+
             }
         }
         
@@ -60,7 +61,7 @@ namespace Enemies.Combat {
         {
             foreach (Collider collider in hitboxes)
             {
-                collider.enabled = false;
+                collider.gameObject.SetActive(false);
             }
         }
     }

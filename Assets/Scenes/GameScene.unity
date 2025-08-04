@@ -27869,9 +27869,20 @@ PrefabInstance:
       propertyPath: combatManager
       value: 
       objectReference: {fileID: 1660145983}
+    - target: {fileID: 6304155463178962350, guid: 5aed7f791a03c2a4ba0040d2fa161639, type: 3}
+      propertyPath: hitboxes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304155463178962350, guid: 5aed7f791a03c2a4ba0040d2fa161639, type: 3}
+      propertyPath: 'hitboxes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1835301695}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4526463827110206, guid: 5aed7f791a03c2a4ba0040d2fa161639, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1839490435}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3110419120087667818, guid: 5aed7f791a03c2a4ba0040d2fa161639, type: 3}
       insertIndex: -1
@@ -40077,6 +40088,107 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830564377}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1835301692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1835301693}
+  - component: {fileID: 1835301695}
+  - component: {fileID: 1835301694}
+  m_Layer: 0
+  m_Name: combatHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1835301693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835301692}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1839490435}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1835301694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835301692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c5fe2c45fb457a9fa974e94d81a016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageOfCombo: []
+  WeaponColliders:
+  - {fileID: 1835301695}
+--- !u!135 &1835301695
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835301692}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.99
+  m_Center: {x: 0, y: 1.02, z: 1.46}
+--- !u!1 &1839490434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1839490435}
+  m_Layer: 0
+  m_Name: CombatHitboxes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1839490435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839490434}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1835301693}
+  m_Father: {fileID: 1918755563}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1843198566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41616,6 +41728,11 @@ Transform:
   - {fileID: 255978987}
   m_Father: {fileID: 1745214021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1918755563 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4526463827110206, guid: 5aed7f791a03c2a4ba0040d2fa161639, type: 3}
+  m_PrefabInstance: {fileID: 1189869970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1923335658
 PrefabInstance:
   m_ObjectHideFlags: 0
