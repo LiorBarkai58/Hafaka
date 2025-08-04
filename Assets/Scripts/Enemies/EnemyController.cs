@@ -42,7 +42,7 @@ namespace Enemies
             
             
             Any(hitState, () => combatManager.isHurt && _stateMachine.Current != hitState);
-            
+            At(hitState, chaseState, () => !combatManager.isHurt);
             
             _stateMachine.SetState(wanderState);
 
