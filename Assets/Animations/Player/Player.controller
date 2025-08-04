@@ -988,6 +988,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: AttackState
     m_EventTreshold: 1
+  - m_ConditionMode: 1
+    m_ConditionEvent: AttackQueued
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6965587837569955575}
   m_Solo: 0
