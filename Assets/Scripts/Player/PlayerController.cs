@@ -227,9 +227,9 @@ public class PlayerController : MonoBehaviour
 
     public void RotateToTarget()
     {
-        if (lockOnTarget.targets.Count > 0)
+        if (lockOnTarget.target)
         {
-            Vector3 direction = lockOnTarget.targets[0].position - transform.position;
+            Vector3 direction = lockOnTarget.target.position - transform.position;
             direction.y = 0;
             Visuals.rotation = Quaternion.LookRotation(direction);    
         }

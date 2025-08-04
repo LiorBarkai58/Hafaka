@@ -30,6 +30,11 @@ namespace Enemies
             hurtTimer = new CountdownTimer(hurtDuration);
         }
 
+        private void Update()
+        {
+            hurtTimer?.Tick(Time.deltaTime);
+        }
+
         public override void TakeDamage(DamageDealtArgs damageDealtArgs)
         {
             visuals.DOShakePosition(0.5f, 0.5f);

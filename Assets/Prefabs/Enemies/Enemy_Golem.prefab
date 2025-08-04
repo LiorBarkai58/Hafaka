@@ -425,7 +425,7 @@ MonoBehaviour:
   detectionRadius: 10
   innerDetectionRadius: 5
   detectionCooldown: 1
-  attackRange: 2.5
+  attackRange: 4
   player: {fileID: 11400000, guid: d51c5962ea384884f973c171d5654064, type: 2}
 --- !u!114 &2652840870415586912
 MonoBehaviour:
@@ -1983,9 +1983,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7dd2638265e4d3ab97fb135893c9cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 274
+  maxHealth: 95
   damageArgsEventChannel: {fileID: 11400000, guid: 89bb1247dfb802f478ba04f913e5a537, type: 2}
-  onEnemyDeathEventChannel: {fileID: 0}
+  onEnemyDeathEventChannel: {fileID: 11400000, guid: 89acc08e29faba34581e8f1e3a2843b7, type: 2}
   visuals: {fileID: 4616667403579744}
   xpReward: 20
   hurtDuration: 1

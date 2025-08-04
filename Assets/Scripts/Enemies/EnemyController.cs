@@ -41,8 +41,9 @@ namespace Enemies
             At(attackState, chaseState, () => !playerDetector.CanAttackPlayer());
             
             
+            
             Any(hitState, () => combatManager.isHurt && _stateMachine.Current != hitState);
-            At(hitState, chaseState, () => !combatManager.isHurt);
+            At(hitState, attackState, () => !combatManager.isHurt);
             
             _stateMachine.SetState(wanderState);
 
@@ -51,6 +52,7 @@ namespace Enemies
 
         private void Update() {
             _stateMachine.Update();
+            Debug.Log($"playerdetectorplayer :{playerDetector.CanDetectPlayer()}, canplayerattack: {playerDetector.CanAttackPlayer()}");
         }
 
         private void FixedUpdate() {

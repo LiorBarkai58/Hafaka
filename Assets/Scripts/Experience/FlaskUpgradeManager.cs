@@ -33,11 +33,12 @@ namespace Experience {
         private void UpgradeFlask(UpgradeType upgradeType) {
             SeedCount++;
             ApplySeedEffects();
-            OnFlaskUpgraded?.Invoke(CurrentFlaskUses);
         }
 
         private void ApplySeedEffects() {
             CurrentFlaskUses = baseFlaskUses + SeedCount * flaskIncrementPerSeed;
+            OnFlaskUpgraded?.Invoke(CurrentFlaskUses);
+            
         }
     }
 }

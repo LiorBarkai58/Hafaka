@@ -6,22 +6,22 @@ namespace Player
 {
     public class LockOnTarget : MonoBehaviour
     {
-        public List<Transform> targets;
+        public Transform target;
 
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Enemy"))
             {
-                targets.Add(other.transform);
+                target = other.transform;
             }
         }
         
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Enemy") && targets.Contains(other.transform))
+            if (other.CompareTag("Enemy") && target == other.transform)
             {
-                targets.Remove(other.transform);
+                target = null;
             }
         }
     }
