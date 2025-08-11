@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timePhaseChannel: {fileID: 11400000, guid: f518807ba3e634a4ea0f618b12752378, type: 2}
-  phaseDuration: 5
+  phaseDuration: 222

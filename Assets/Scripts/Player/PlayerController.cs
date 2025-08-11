@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Player;
+using Player.PlayerStateMachine;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using Utilities;
 
 
 public class PlayerController : MonoBehaviour
@@ -21,6 +23,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float acceleration = 5f;
 
     [SerializeField] private float rotationSpeed = 8f;
+    
+    [SerializeField] private float dashSpeed = 10f;
+    
+    [SerializeField] private float dashDuration = 0.2f;
     private float gravityValue = -9.81f;
 
     [Header("References")]
@@ -59,6 +65,10 @@ public class PlayerController : MonoBehaviour
 
     private AttackState attackState;
 
+    private LocomotionState locomotionState;
+
+    private CountdownTimer _dashTimer;
+
     #region Trigger Transitions
 
     private TriggerTransition attackTrigger;
@@ -84,6 +94,7 @@ public class PlayerController : MonoBehaviour
     void OnEnable()
     {
         input.Jump += OnJump;
+        input.Dash += OnDash;
         input.Attack += OnAttack;
         input.Spell += OnSpell;
         input.Lock += OnLock;
@@ -91,6 +102,7 @@ public class PlayerController : MonoBehaviour
     void OnDisable()
     {
         input.Jump -= OnJump;
+        input.Dash -= OnDash;
         input.Attack -= OnAttack;
         input.Spell -= OnSpell;
         input.Lock -= OnLock;
@@ -99,15 +111,16 @@ public class PlayerController : MonoBehaviour
     }
     private void SetupStateMachine()
     {
+        _dashTimer = new CountdownTimer(dashDuration);
         stateMachine = new StateMachine();
 
-        LocomotionState locomotionState = new LocomotionState(this, animator, PlayerStates.Locomotion);
+        locomotionState = new LocomotionState(this, animator, PlayerStates.Locomotion);
 
         defaultState = locomotionState;//set default state for editor
 
         JumpState jumpState = new JumpState(this, animator, PlayerStates.Jumping);
         FallingState fallingState = new FallingState(this, animator, PlayerStates.Falling);
-
+        DashState dashState = new DashState(this, animator, PlayerStates.Dashing);
         DialogueState dialogueState = new DialogueState(this, animator, PlayerStates.Speaking);
         attackState = new AttackState(this, animator, PlayerStates.Attacking);
         attackManager.AssignAttackState(attackState);
@@ -124,6 +137,13 @@ public class PlayerController : MonoBehaviour
         At(locomotionState, fallingState, new Func<bool>(() => verticalVelocity < -0.3 && !isGrounded));
         At(locomotionState, jumpState, new Func<bool>(() => verticalVelocity > 0 && !isGrounded));
         At(jumpState, fallingState, new Func<bool>(() => verticalVelocity < -0.3 && !isGrounded));
+        
+        At(locomotionState, dashState, new Func<bool>(() => _dashTimer.IsRunning));
+        At(dashState, locomotionState, new Func<bool>(() => !_dashTimer.IsRunning));
+        
+        
+        
+        
 
         At(locomotionState, attackState, attackTrigger.Condition);
         At(attackState, locomotionState, endAttackTrigger.Condition);
@@ -150,7 +170,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         stateMachine.FixedUpdate();
-        
+        _dashTimer?.Tick(Time.fixedDeltaTime);
     }
 
     public void HandleMovement()
@@ -186,6 +206,11 @@ public class PlayerController : MonoBehaviour
         }
         // Move the character using the CharacterController
         characterController.Move(movement);
+    }
+
+    public void HandleDash(float deltaTime)
+    {
+        characterController.Move(Visuals.forward * dashSpeed * deltaTime);
     }
 
     public void HandleGravity(float gravityMultiplier = 1)
@@ -227,6 +252,16 @@ public class PlayerController : MonoBehaviour
             // Calculate the jump velocity using the correct formula
             verticalVelocity = Mathf.Sqrt(2f * jumpHeight * -gravityValue);
         }
+    }
+
+    private void OnDash()
+    {
+        if (blocker.isBlocked) return;
+        if (characterController.isGrounded && stateMachine.Current == locomotionState)
+        {
+            _dashTimer.Start();
+        }
+        
     }
 
     private void OnAttack()

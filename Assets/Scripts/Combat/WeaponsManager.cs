@@ -6,7 +6,7 @@ namespace Combat
 {
     public class WeaponsManager : MonoBehaviour
     { 
-        [SerializeField] private List<Weapon> weapons;
+        [SerializeField] protected List<Weapon> weapons;
 
         private void OnEnable()
         {

@@ -12,6 +12,8 @@ public class ProjectileSpell : Spell
             Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity)
             .WithDamage(5f)
             .WithDirection(transform.forward);
+
+        current.OnHit += InvokeHit;
     }
     
 }

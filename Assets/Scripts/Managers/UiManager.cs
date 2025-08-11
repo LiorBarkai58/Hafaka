@@ -14,7 +14,12 @@ namespace Managers
         [Header("References")]
         [SerializeField] private PlayerInteractor playerInteractor;
         [SerializeField] private ExperienceManager xpManager;
+        
+        [Header("Events Listeners")]
+        [SerializeField] private EmptyEventListener gameOverListener;
+        [SerializeField] private PhaseEventListener phaseEventListener;
         [SerializeField] private PlayerCombatStateListener combatStateListener;
+        
         [Header("Interact")]
         [SerializeField] private GameObject interactUi;
         [SerializeField] private TextMeshProUGUI interactText;
@@ -37,21 +42,27 @@ namespace Managers
         [SerializeField] private TextMeshProUGUI timeChangeText;
         [SerializeField] private float timeChangeTextDuration = 3f;
 
+        [Header("Game Over")] 
+        [SerializeField] private GameObject gameOverParent;
+
         private IInteractable _interactableOwner;
 
         private void OnEnable() {
+            gameOverListener.OnEvent += OpenGameOverUi;
+            phaseEventListener.OnEvent += TimePhaseChange;
+            combatStateListener.OnEvent += UpdateCombatState;
             playerInteractor.InRange += ShowPrompt;
             playerInteractor.OutOfRange += HidePrompt;
             xpManager.OnEssenceChanged += SetXpText;
-            combatStateListener.OnEvent += UpdateCombatState;
         }
 
         private void OnDisable() {
+            gameOverListener.OnEvent -= OpenGameOverUi;
+            phaseEventListener.OnEvent -= TimePhaseChange;
+            combatStateListener.OnEvent -= UpdateCombatState;
             playerInteractor.InRange -= ShowPrompt;
             playerInteractor.OutOfRange -= HidePrompt;
             xpManager.OnEssenceChanged -= SetXpText;
-            combatStateListener.OnEvent -= UpdateCombatState;
-            
         }
 
         public void TimePhaseChange(TimePhase timePhase) {
@@ -104,6 +115,10 @@ namespace Managers
         {
             hpBar.value = combatState.CurrentHealth / combatState.MaxHealth;
             manaBar.value = combatState.CurrentMana / combatState.MaxMana;
+        }
+
+        private void OpenGameOverUi(Empty empty) {
+            gameOverParent.SetActive(true);
         }
     }
 }

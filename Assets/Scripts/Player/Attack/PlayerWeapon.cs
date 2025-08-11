@@ -18,7 +18,9 @@ public class PlayerWeapon : Weapon
                     damage = 5,
                     isCrit = false,
                     staggerValue = 10,
+                    attackedEntity = hitTarget.transform
                 });
+                InvokeHit();
             }
         }
     }

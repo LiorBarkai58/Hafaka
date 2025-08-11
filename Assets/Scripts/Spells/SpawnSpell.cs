@@ -10,6 +10,8 @@ namespace Spells
         public override void Activate()
         {
             DamagingArea current = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity).WithDamage(Damage).WithDirection(shootingPoint.forward);
+            current.OnHit += InvokeHit;
+            
         }
     }
 }
