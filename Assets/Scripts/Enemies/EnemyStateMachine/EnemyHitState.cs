@@ -16,7 +16,11 @@ namespace Enemies.EnemyStateMachine
             Debug.Log("Entered");
             Animator.SetTrigger(HurtHash);
         }
-        
-        
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            EnemyController.transform.position -= EnemyController.transform.forward * (Time.fixedDeltaTime * 3);
+        }
     }
 }
