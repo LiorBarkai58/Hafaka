@@ -24,5 +24,11 @@ namespace Player
                 target = null;
             }
         }
+
+        public void CheckClearTarget()
+        {
+            if (target && target.gameObject && target.gameObject.activeInHierarchy) return;
+            target = null;
+        }
     }
 }

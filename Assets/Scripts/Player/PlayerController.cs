@@ -227,6 +227,7 @@ public class PlayerController : MonoBehaviour
 
     public void RotateToTarget()
     {
+        lockOnTarget.CheckClearTarget();
         if (lockOnTarget.target)
         {
             Vector3 direction = lockOnTarget.target.position - transform.position;

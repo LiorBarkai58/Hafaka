@@ -53,6 +53,11 @@ public class AttackState : PlayerState
         {
             currentAttackTimer.Tick(Time.deltaTime);
         }
+
+        // if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7 && !animator.IsInTransition(0) && !nextAttackQueued)
+        // {
+        //     playerController.HandleMovement();
+        // }
     }
 
     public void TryQueueAttack()
