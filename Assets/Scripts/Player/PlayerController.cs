@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private LockOnTarget lockOnTarget;
 
+    public bool CloseToTarget => lockOnTarget.CloseToTarget();
     [SerializeField] private CinemachineCamera CinemachineCamera;
 
     [Header("Attacking data")]
@@ -207,6 +208,7 @@ public class PlayerController : MonoBehaviour
         // Move the character using the CharacterController
         characterController.Move(movement);
     }
+    
 
     public void HandleDash(float deltaTime)
     {

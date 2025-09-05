@@ -28,6 +28,7 @@ public class AttackState : PlayerState
 
     public AttackState(PlayerController playerController, Animator animator, PlayerStates stateIdentifier) : base(playerController, animator, stateIdentifier)
     {
+        currentAttackTimer = new CountdownTimer(0.05f);
     }
 
     public override void OnEnter()
@@ -37,6 +38,7 @@ public class AttackState : PlayerState
         comboIndex = 0;
         nextAttackQueued = false;
         animator.SetBool(QueuedHash, nextAttackQueued);
+        
         canQueueSpell = true;
         if (startAction == AttackType.Attack) TryQueueAttack();
         if(startAction == AttackType.Spell) TryQueueSpell();
@@ -45,14 +47,19 @@ public class AttackState : PlayerState
 
     public override void FixedUpdate()
     {
-
+        if (currentAttackTimer != null)
+        {
+            currentAttackTimer.Tick(Time.fixedDeltaTime);
+            if (currentAttackTimer.IsRunning && !playerController.CloseToTarget)
+            {
+                playerController.HandleDash(Time.fixedDeltaTime);
+            }
+        }
     }
     public override void Update()
     {
-        if (currentAttackTimer != null)
-        {
-            currentAttackTimer.Tick(Time.deltaTime);
-        }
+        
+        
     }
 
     public void TryQueueAttack()
@@ -103,6 +110,7 @@ public class AttackState : PlayerState
     {
         nextAttackQueued = false;
         animator.SetBool(QueuedHash, nextAttackQueued);
+        currentAttackTimer.Start();
         
     }
 

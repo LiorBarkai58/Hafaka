@@ -7,7 +7,7 @@ namespace Player
     public class LockOnTarget : MonoBehaviour
     {
         public Transform target;
-
+        [SerializeField] private float closeEnoughDistance = 3f;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -23,6 +23,11 @@ namespace Player
             {
                 target = null;
             }
+        }
+
+        public bool CloseToTarget()
+        {
+            return target && Vector3.Distance(transform.position, target.position) < closeEnoughDistance;
         }
 
         public void CheckClearTarget()
