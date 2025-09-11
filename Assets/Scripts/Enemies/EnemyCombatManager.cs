@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using EventSystem;
 using UnityEngine;
+using UnityEngine.Events;
 using Utilities;
 
 namespace Enemies
@@ -18,6 +19,7 @@ namespace Enemies
         [Header("XP Reward")]
         [SerializeField] private int xpReward = 20;
         
+        public event UnityAction<DamageDealtArgs> OnDamageTaken;
 
         private CountdownTimer hurtTimer;
 
@@ -40,6 +42,7 @@ namespace Enemies
             visuals.DOShakePosition(0.5f, 0.5f);
             base.TakeDamage(damageDealtArgs);
             damageArgsEventChannel.Invoke(damageDealtArgs);
+            OnDamageTaken.Invoke(damageDealtArgs);
             if(!hurtTimer.IsRunning) hurtTimer.Start();
         }
 

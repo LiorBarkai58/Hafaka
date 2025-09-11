@@ -19,7 +19,8 @@ public class PlayerWeapon : Weapon
                     damage = 5 * playerAttack.CurrentComboCounter,
                     isCrit = false,
                     staggerValue = 10,
-                    attackedEntity = hitTarget.transform
+                    attackedEntity = hitTarget.transform,
+                    attackingEntity = playerAttack.gameObject
                 });
                 InvokeHit();
             }

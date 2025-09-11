@@ -8,7 +8,7 @@ public struct DamageDealtArgs
 
     public float staggerValue;
 
-    public EntityCombatManager attackingEntity;
+    public GameObject attackingEntity;
     
     public Transform attackedEntity;
 }
