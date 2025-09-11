@@ -91,7 +91,7 @@ public class AttackState : PlayerState
     {
         if (!isAttacking) return true;
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-        return info.normalizedTime >= 0.05f && !animator.IsInTransition(0);
+        return info.normalizedTime >= 0.1f;
 
     }
     public void ComboEnd()
