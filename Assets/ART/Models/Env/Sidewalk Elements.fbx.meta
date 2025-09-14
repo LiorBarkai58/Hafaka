@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: 76be1905c0b76a24b8943023de156bdd
+guid: 1b1b71fc660a899409f3937fc5b41368
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Curbs_mat
+    second: {fileID: 2100000, guid: 8941a6c790a24474fa4d5c0801e9ed48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road_mat
+    second: {fileID: 2100000, guid: 8ce9730e720ba584c82ea72a8b1ef5fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sidewalk_mat
+    second: {fileID: 2100000, guid: c052bbdd095c1e04d8150dae0ea5cc8d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -33,7 +48,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -88,7 +103,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 100
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
