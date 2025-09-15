@@ -7,6 +7,7 @@ using Player;
 using TimeCycleHook;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Managers
@@ -21,10 +22,15 @@ namespace Managers
         [SerializeField] private EmptyEventListener gameOverListener;
         [SerializeField] private PhaseEventListener phaseEventListener;
         [SerializeField] private PlayerCombatStateListener combatStateListener;
+        [SerializeField] private StringEventListener openReadEventListener;
         
         [Header("Interact")]
         [SerializeField] private GameObject interactUi;
         [SerializeField] private TextMeshProUGUI interactText;
+
+        [Header("Reading Panel")] 
+        [SerializeField] private GameObject readingPanel;
+        [SerializeField] private TextMeshProUGUI readingText;
 
         [Header("Bars")] 
         [SerializeField] private Slider hpBar;
@@ -48,11 +54,13 @@ namespace Managers
         [SerializeField] private GameObject gameOverParent;
 
         private IInteractable _interactableOwner;
+        private bool _readPanelToggle;
 
         private void OnEnable() {
             gameOverListener.OnEvent += OpenGameOverUi;
             phaseEventListener.OnEvent += TimePhaseChange;
             combatStateListener.OnEvent += UpdateCombatState;
+            openReadEventListener.OnEvent += ToggleReadPanel; 
             playerInteractor.InRange += ShowPrompt;
             playerInteractor.OutOfRange += HidePrompt;
             xpManager.OnEssenceChanged += SetXpText;
@@ -63,6 +71,7 @@ namespace Managers
             gameOverListener.OnEvent -= OpenGameOverUi;
             phaseEventListener.OnEvent -= TimePhaseChange;
             combatStateListener.OnEvent -= UpdateCombatState;
+            openReadEventListener.OnEvent -= ToggleReadPanel;
             playerInteractor.InRange -= ShowPrompt;
             playerInteractor.OutOfRange -= HidePrompt;
             xpManager.OnEssenceChanged -= SetXpText;
@@ -131,6 +140,21 @@ namespace Managers
             });
         }
 
+        private void ToggleReadPanel(string text) {
+            // Toggle read bool
+            _readPanelToggle = !_readPanelToggle;
+            
+            // If it needs to shut down after the toggle - do it and return
+            if (!_readPanelToggle) {
+                readingPanel.SetActive(false);
+                return;
+            }
+            
+            // Otherwise it should be open and readable
+            readingPanel.SetActive(true);
+            readingText.text = text;
+        }
+        
         private void OpenGameOverUi(Empty empty) {
             gameOverParent.SetActive(true);
         }
