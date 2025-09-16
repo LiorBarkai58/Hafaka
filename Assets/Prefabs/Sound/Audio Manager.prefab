@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 4567709393094107988}
-  defaultMusic: {fileID: 0}
-  musicVolume: 0.8
+  defaultMusic: {fileID: 8300000, guid: 6552f7de65f3f4947945186ab353140b, type: 3}
+  musicVolume: 0.6
   sfxSource: {fileID: 1455789284295342287}
   sfx1: {fileID: 8300000, guid: ddf9b0ea4c0de5e4299bf1dc46f63130, type: 3}
   sfx2: {fileID: 8300000, guid: 124db48f4a574074485be423263462e7, type: 3}
