@@ -38,6 +38,8 @@ namespace Managers
 
         [Header("XP")] 
         [SerializeField] private TextMeshProUGUI xpText;
+        [SerializeField] private GameObject levelUpGameObject;
+        [SerializeField] private TextMeshProUGUI newLevelText;
 
         [Header("Combo")] 
         [SerializeField] private TextMeshProUGUI comboText;
@@ -64,6 +66,7 @@ namespace Managers
             playerInteractor.InRange += ShowPrompt;
             playerInteractor.OutOfRange += HidePrompt;
             xpManager.OnEssenceChanged += SetXpText;
+            xpManager.OnLevelUp += OnLevelUp;
             flaskUpgradeManager.OnFlaskUpgraded += SetFlaskAmountText;
         }
 
@@ -75,6 +78,7 @@ namespace Managers
             playerInteractor.InRange -= ShowPrompt;
             playerInteractor.OutOfRange -= HidePrompt;
             xpManager.OnEssenceChanged -= SetXpText;
+            xpManager.OnLevelUp -= OnLevelUp;
             flaskUpgradeManager.OnFlaskUpgraded -= SetFlaskAmountText;
         }
 
@@ -94,15 +98,15 @@ namespace Managers
                     break;
             }
 
-            StartCoroutine(ShowTextForSeconds());
+            StartCoroutine(ShowTextForSeconds(timePhaseGameObject));
         }
 
-        private IEnumerator ShowTextForSeconds() {
-            timePhaseGameObject.SetActive(true);
+        private IEnumerator ShowTextForSeconds(GameObject objectToShow) {
+            objectToShow.SetActive(true);
 
             yield return new WaitForSeconds(timeChangeTextDuration);
 
-            timePhaseGameObject.SetActive(false);
+            objectToShow.SetActive(false);
         }
 
         private void ShowPrompt(IInteractable interactable) {
@@ -153,6 +157,12 @@ namespace Managers
             // Otherwise it should be open and readable
             readingPanel.SetActive(true);
             readingText.text = readObject.text;
+        }
+
+        private void OnLevelUp(int newLevel) {
+            newLevelText.text = newLevel.ToString();
+            
+            StartCoroutine(ShowTextForSeconds(levelUpGameObject));
         }
         
         private void OpenGameOverUi(Empty empty) {
