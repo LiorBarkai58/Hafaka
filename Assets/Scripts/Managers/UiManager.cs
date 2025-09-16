@@ -4,10 +4,10 @@ using DG.Tweening;
 using Experience;
 using Interactables;
 using Player;
+using ScriptableObjects;
 using TimeCycleHook;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Managers
@@ -22,7 +22,7 @@ namespace Managers
         [SerializeField] private EmptyEventListener gameOverListener;
         [SerializeField] private PhaseEventListener phaseEventListener;
         [SerializeField] private PlayerCombatStateListener combatStateListener;
-        [SerializeField] private StringEventListener openReadEventListener;
+        [SerializeField] private ReadableEventListener openReadEventListener;
         
         [Header("Interact")]
         [SerializeField] private GameObject interactUi;
@@ -140,7 +140,7 @@ namespace Managers
             });
         }
 
-        private void ToggleReadPanel(string text) {
+        private void ToggleReadPanel(ReadObject readObject) {
             // Toggle read bool
             _readPanelToggle = !_readPanelToggle;
             
@@ -152,7 +152,7 @@ namespace Managers
             
             // Otherwise it should be open and readable
             readingPanel.SetActive(true);
-            readingText.text = text;
+            readingText.text = readObject.text;
         }
         
         private void OpenGameOverUi(Empty empty) {

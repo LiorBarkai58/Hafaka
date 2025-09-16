@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c545fb58f29407bbc38142669d50a38, type: 3}
-  m_Name: Read Event Channel
+  m_Script: {fileID: 11500000, guid: f3ddd6c77c694ecfb08bfb15c7110707, type: 3}
+  m_Name: Readable Event Channel
   m_EditorClassIdentifier: 

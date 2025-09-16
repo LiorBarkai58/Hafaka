@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7517349421185167851}
   - component: {fileID: 5470020893924538423}
   - component: {fileID: 4066314922826062034}
-  - component: {fileID: 3597463429845655512}
+  - component: {fileID: 6893062063402737678}
   m_Layer: 0
   m_Name: UiManager
   m_TagString: Untagged
@@ -55,7 +55,7 @@ MonoBehaviour:
   gameOverListener: {fileID: 4066314922826062034}
   phaseEventListener: {fileID: 7517349421185167851}
   combatStateListener: {fileID: 5470020893924538423}
-  openReadEventListener: {fileID: 3597463429845655512}
+  openReadEventListener: {fileID: 6893062063402737678}
   interactUi: {fileID: 880445841154674063}
   interactText: {fileID: 7773128585465164691}
   readingPanel: {fileID: 2737648275162371374}
@@ -117,7 +117,7 @@ MonoBehaviour:
   unityEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3597463429845655512
+--- !u!114 &6893062063402737678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,10 +126,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 648386398792577230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e0ce652e71042a080bba606effac753, type: 3}
+  m_Script: {fileID: 11500000, guid: 2add93069ee54a459b7b2a947f5b8480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventChannel: {fileID: 11400000, guid: c532a11bacebce1448ba50e14ed5357b, type: 2}
+  eventChannel: {fileID: 11400000, guid: f02e8f3507d88d746a63e01b2a08ac5e, type: 2}
   unityEvent:
     m_PersistentCalls:
       m_Calls: []

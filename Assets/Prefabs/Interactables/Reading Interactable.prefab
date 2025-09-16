@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000b0d3ea2c44e4bba7e506c5be26eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  readEventChannel: {fileID: 11400000, guid: c532a11bacebce1448ba50e14ed5357b, type: 2}
-  readPanelText: 
+  readEventChannel: {fileID: 11400000, guid: f02e8f3507d88d746a63e01b2a08ac5e, type: 2}
+  readPanelText: {fileID: 0}

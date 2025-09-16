@@ -1,10 +1,11 @@
 ﻿using EventSystem;
+using ScriptableObjects;
 using UnityEngine;
 
 namespace Interactables {
     public class ReadingInteractable : MonoBehaviour, IInteractable {
-        [SerializeField] private StringEventChannel readEventChannel;
-        [SerializeField] private string readPanelText;
+        [SerializeField] private ReadableEventChannel readEventChannel;
+        [SerializeField] private ReadObject readPanelText;
         
         public void Interact() {
             readEventChannel.Invoke(readPanelText);
