@@ -1983,7 +1983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7dd2638265e4d3ab97fb135893c9cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 95
+  maxHealth: 50
   damageArgsEventChannel: {fileID: 11400000, guid: 89bb1247dfb802f478ba04f913e5a537, type: 2}
   onEnemyDeathEventChannel: {fileID: 11400000, guid: 89acc08e29faba34581e8f1e3a2843b7, type: 2}
   visuals: {fileID: 4616667403579744}

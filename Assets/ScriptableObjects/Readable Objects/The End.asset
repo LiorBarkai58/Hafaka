@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e1c7a661635554d8114ecebd4bcd44, type: 3}
   m_Name: The End
   m_EditorClassIdentifier: 
-  text: 
+  text: "The trick is that the gift is a lock, not a sword. If I wield it to win,
+    the world shrinks; if I wield it to end itself, the world breathes. I will return
+    the power to the soil, and if the gods rage, let the wind be my answer. A successor
+    who refuses\u2014ends the line."
