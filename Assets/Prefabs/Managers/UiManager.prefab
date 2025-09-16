@@ -753,6 +753,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6372957716695325203, guid: 64c082bcb52fa2243bbb10636a978faf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6540672723477588469, guid: 64c082bcb52fa2243bbb10636a978faf, type: 3}
       propertyPath: m_Name
       value: Gameplay Canvas
