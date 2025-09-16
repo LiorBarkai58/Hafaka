@@ -1154,7 +1154,7 @@ MonoBehaviour:
   damageArgsEventChannel: {fileID: 11400000, guid: 89bb1247dfb802f478ba04f913e5a537, type: 2}
   onEnemyDeathEventChannel: {fileID: 11400000, guid: 89acc08e29faba34581e8f1e3a2843b7, type: 2}
   visuals: {fileID: 0}
-  xpReward: 20
+  xpReward: 80
   hurtDuration: 1
 --- !u!136 &1054110150967121672
 CapsuleCollider:

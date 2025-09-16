@@ -2298,7 +2298,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseEssenceCost: 100
   growthMultiplier: 1.5
-  levelExponent: 1.2
   onEnemyDeathEventListener: {fileID: 3397115674827445935}
   statBumps: []
 --- !u!114 &3397115674827445935

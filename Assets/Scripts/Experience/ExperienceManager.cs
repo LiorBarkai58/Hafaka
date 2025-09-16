@@ -8,7 +8,6 @@ namespace Experience {
         [Header("Essence (XP) Formula")]
         [SerializeField] private int baseEssenceCost = 100;
         [SerializeField] private float growthMultiplier = 1.5f;
-        [SerializeField] private float levelExponent = 1.2f;
 
         [Header("Event Listener")] 
         [SerializeField] private IntEventListener onEnemyDeathEventListener;
@@ -44,7 +43,7 @@ namespace Experience {
 
         private int EssenceForLevel(int level) {
             // Formula: baseCost * growthMultiplier^(level-1) * level^levelExponent
-            float cost = baseEssenceCost * Mathf.Pow(growthMultiplier, level - 1) * Mathf.Pow(level, levelExponent);
+            float cost = baseEssenceCost * Mathf.Pow(growthMultiplier, level - 1);
             return Mathf.FloorToInt(cost);
         }
 
