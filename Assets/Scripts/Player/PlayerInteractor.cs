@@ -28,7 +28,7 @@ namespace Player
             if (_interactables.Count == 0) return;
             
             _interactables[0].Interact();
-            _interactables.Remove(_interactables[0]);
+            //_interactables.Remove(_interactables[0]);
             if (_interactables.Count == 0)
             {
                 OutOfRange?.Invoke(null);
