@@ -23887,6 +23887,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: UiManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3946981951815986716, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: _text
+      value: New Text Bla Bla Bla
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946981951815986716, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: databaseActions
+      value: 
+      objectReference: {fileID: 11400000, guid: 16150545ba19fce4b8fd9c215fe3f07a, type: 2}
+    - target: {fileID: 3946981951815986716, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: databaseBehaviors
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ff08c57cbb77fc4f821dfbfdf55eb44, type: 2}
+    - target: {fileID: 3946981951815986716, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: databaseAppearances
+      value: 
+      objectReference: {fileID: 11400000, guid: 7711de222087b7a479de8e3e1395871a, type: 2}
+    - target: {fileID: 3946981951815986716, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: defaultAppearancesTags.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780887465987793545, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: _text
+      value: God of Deception is Ruling
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780887465987793545, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: databaseActions
+      value: 
+      objectReference: {fileID: 11400000, guid: 16150545ba19fce4b8fd9c215fe3f07a, type: 2}
+    - target: {fileID: 5780887465987793545, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: databaseBehaviors
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ff08c57cbb77fc4f821dfbfdf55eb44, type: 2}
+    - target: {fileID: 5780887465987793545, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: databaseAppearances
+      value: 
+      objectReference: {fileID: 11400000, guid: 7711de222087b7a479de8e3e1395871a, type: 2}
+    - target: {fileID: 5780887465987793545, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
+      propertyPath: defaultAppearancesTags.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5867010456667279980, guid: f23049652e2fdc54a8c9ccc60345f570, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
