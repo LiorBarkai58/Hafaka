@@ -29357,14 +29357,6 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 11.91
       objectReference: {fileID: 0}
-    - target: {fileID: 2654890821740341496, guid: aacbafcf9fb67a74b9812adf1c6ed6fa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.388
-      objectReference: {fileID: 0}
-    - target: {fileID: 2654890821740341496, guid: aacbafcf9fb67a74b9812adf1c6ed6fa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.769
-      objectReference: {fileID: 0}
     - target: {fileID: 4371511902645670990, guid: aacbafcf9fb67a74b9812adf1c6ed6fa, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
@@ -29372,10 +29364,6 @@ PrefabInstance:
     - target: {fileID: 5683970766987035967, guid: aacbafcf9fb67a74b9812adf1c6ed6fa, type: 3}
       propertyPath: m_Name
       value: Player (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7168930028764805114, guid: aacbafcf9fb67a74b9812adf1c6ed6fa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8568997590137005627, guid: aacbafcf9fb67a74b9812adf1c6ed6fa, type: 3}
       propertyPath: dashSpeed
